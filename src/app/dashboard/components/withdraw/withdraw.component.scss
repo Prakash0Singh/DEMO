@@ -1,0 +1,72 @@
+@import "../../../../variables";
+
+[data-page-name="walletPage"] {
+    &.withdrawPage {
+        .fs-16 {
+            font-size: 16px;
+        }
+        .fs-14 {
+            font-size: 14px;
+        }
+        .fs-12 {
+            font-size: 12px;
+        }
+        & .warningCard {
+            & .input {
+                border-bottom: 2px solid #282828 !important;
+            }
+            & .mobileImg {
+                width: 40px;
+            }
+        }
+        & .withdrawNow {
+            margin-top: -40px;
+        }
+    }
+}
+
+[data-page-name="walletPage"] {
+background-color: $gray-200;
+ .mainCenterPart {
+    & .rupees {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+        background-color: lighten($danger, 8);
+    }
+    & .balance {
+        font-size: 12px;
+    }
+    & .subbalance {
+        font-size: 10px;
+    }
+    & .balanceAmount {
+        font-size: 14px;
+    }
+    & .warningCard {
+        z-index: 1;
+        &.addcase {
+            background-color: $theme1;
+        }
+    }
+    & .warningImg {
+        width: 40px;
+        height: 40px;
+    }
+    & .winningAmount {
+        color: lighten($theme1, 15);
+    }
+    & .withdrawAmount {
+        margin-top: -28px;
+        background-color: lighten($success, 5);
+        border-radius: 0px 0px 1rem 1rem;
+    }
+
+}
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

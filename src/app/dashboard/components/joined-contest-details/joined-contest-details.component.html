@@ -1,0 +1,127 @@
+<main class="container-fluid">
+    <div class="row mainInner">
+        <nav class="col-12 header d-flex align-items-center px-0">
+            <div class="row mx-0 innerheader align-items-center w-100">
+                <div class="col-auto notification">
+                    <a (click)="api.onBack()" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/leftCricleArrow.png" class="w-100" alt="bell"></a>
+                </div>
+                <div class="col">
+                    <div class="title text-white text-center">{{match.team1ShortName}} vs {{match.team2ShortName}}</div>
+                    <div class="matchTime text-center text-white fw-semibold "><cd-timer *ngIf="finalDate>0" [countdown]="true" [startTime]="finalDate" [format]="'user'">[days]d : [hours]h : [minutes]m : [seconds]s</cd-timer></div>
+                </div>
+                <div class="col-auto notification">
+                    <a [routerLink]="['/dashboard/wallet']" routerLinkActive="router-link-active"  type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/wallet_white_color.png" class="w-100" alt="bell"></a>
+                </div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill" data-page-name="joinedContestDetailPage" data-scrollbar>
+            <div class="row mx-0 h-100 flex-column flex-nowrap mainDiv">
+                <div class="col-12 px-0 cricketheader bg-white z-2">
+                    
+                    <div class="card matchesCard overflow-hidden border border-1 border-light bg-white">
+                        <div class="card-body p-0">
+                            <div class="teamHeadline row align-items-center">
+                                <div class="col fw-semibold matchteams text-mutedb py-1 text-center mx-5 border-bottom borderlight ">{{match.series_name}}</div>
+                            </div>
+                            <div class="innerBody firstMatchBody p-2">
+                                <div class="row align-items-center">
+                                    <div class="col-auto leftSideTeams px-2">
+                                        <div class="team d-flex align-items-center mt-2">
+                                            <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center">
+                                                <span class="position-absolute teamCountryLogo" [style.backgroundColor]="match.team1color"></span>
+                                                <img src={{match.team1logo}} class="w-100" alt="">
+                                            </div>
+                                            <div class="teamName text-uppercase text-black fw-bold ms-2">{{match.team1ShortName}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col px-0 matchTimer">
+                                        <div class="pichTime text-center fw-semibold "><cd-timer *ngIf="finalDate>0" [countdown]="true" [startTime]="finalDate" [format]="'user'">[days]d : [hours]h : [minutes]m : [seconds]s</cd-timer></div>
+                                    </div>
+                                    <div class="col-auto rightSideTeams px-2">
+                                        <div class="team d-flex align-items-center mt-2">
+                                            <div class="teamName text-uppercase text-black fw-bold me-2">{{match.team2ShortName}}</div>
+                                            <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center">
+                                                <span class="position-absolute teamCountryLogo" [style.backgroundColor]="match.team2color"></span>
+                                                <img src={{match.team2logo}} class="w-100" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 flex-fill h-100 overflow-hidden-auto">
+                    <div class="row py-3">
+                        <div class="col-12 mb-3" *ngFor="let d of joinedcontests" (click)="onContest(d.matchchallengeid)" style="cursor: pointer;">
+                            <div class="card matchesCard position-relative overflow-hidden border border-1 border-light bg-white">
+                                <div class="card-body p-0">
+                                    <div class="teamHeadline row mx-0 border-bottom border-bottom-1 border-bottom-light py-1 align-items-center">
+                                        <!-- <div class="col fw-semibold matchteams text-muted px-2" *ngIf="d.confirmed_challenge == 1"><span class="me-1">Guaranteed</span><img width="15" src="assets/svg/icons/check-circle.png" alt=""></div> -->
+                                        <div class="col-12 fw-semibold matchteams text-muted px-2 d-flex justify-content-end align-items-center">
+                                            <div class="col fw-semibold matchteams text-muted" *ngIf="d.confirmed_challenge == 1"><span class="me-1">Guaranteed</span><img width="15" src="assets/svg/icons/check-circle.png" alt=""></div>
+                                            <img width="15" src="assets/svg/icons/starIcon.svg" alt="">
+                                        </div>
+                                        <!-- <a href="contestWinnerLeaderBoard.html" class="stretched-link"></a> -->
+                                    </div>
+                                    <div class="innerBody firstMatchBody">
+                                        <div class="row mx0 align-items-center p-2">
+                                            <div class="col-auto leftSideTeams">
+                                                <div class="team">
+                                                    <div class="teamName text-black">Prize Pool</div>
+                                                    <div class="teamName text-black fw-bold fs-12">{{d.winamount==0?'Practice Contest':'₹'+d.winamount}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="col px-0 matchTimer">
+                                                <div class="pichTime text-center fw-semibold text-black">Winners</div>
+                                                <div class="pichTime text-center fw-semibold text-black">{{d.totalwinners}}</div>
+                                            </div>
+                                            <div class="col-auto">
+                                             <button type="button" class="btn btn-success btnSuccess border-0 text-white fw-semibold position-relative z-1" [cdkCopyToClipboard]="d.refercode" onclick="event.stopPropagation()" (click)="openSnackBar('Code Copied Successfully', '&nbsp;')">Invite</button>
+                                            </div>
+                                        </div>
+                                        <div class="row mx-0">
+                                            <div class="col-12 border-bottom px-0">
+                                                <div class="progress mt-1 mb-1 rounded-0 bg-light">
+                                                    <div class="progress-bar" role="progressbar" aria-label="Basic example" [style.width]="d.value+'%'" aria-valuenow="0.10" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between px-2 p-1">
+                                                    <div class="fs-12 text-danger">{{d.maximum_user - d.joinedusers}} teams left</div>
+                                                    <div class="fs-12">{{d.maximum_user}} Teams</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 px-0 position-relative py-2">
+                                                <div class="enteryType fw-bold text-center fs-12"  *ngIf="d.multi_entry == 0">Single Entry</div>
+                                                <div class="enteryType fw-bold text-center fs-12"  *ngIf="d.multi_entry == 1">Upto {{d.team_limit}} Entries</div>
+                                                <div class="position-absolute badges fs-12 text-white align-items-center d-flex gap-2">
+                                                    <span class="badge badge1 bg-success rounded-2 align-items-center d-flex justify-content-center" *ngIf="d.multi_entry == 0">S</span>
+                                                    <span class="badge badge1 bg-success rounded-2 align-items-center d-flex justify-content-center" *ngIf="d.multi_entry == 1">M</span>
+                                                    <div class="d-flex align-items-center borderBage" *ngIf="d.is_bonus == 1">
+                                                        <span class="badge badge1 rounded-0 align-items-center d-flex justify-content-center">B</span>
+                                                        <span class="badge badge1 bg-white text-black rounded-0 rounded-end rounded-end-2 align-items-center d-flex justify-content-center px-3">{{d.bonus_percentage}}%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="dataCheck" class="text-center">
+                                <button class="btn btn-primary btn-sm mt-2" (click)="loadMore()" >Load More</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <footer class="col-12 footer bottomBar d-flex align-items-center">
+            <div class="row mx-0 align-items-center innerBar w-100">
+                <div class="col px-0 bottombarTabs text-center"><a href="home.html" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/Home_Blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Home</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a href="myMatches.html" class="linkTab active text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/My_Matches_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">My Matches</span></a></div>
+                 <div class="col px-0 bottombarTabs text-center"><a href="profile.html" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/Profile_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Profile</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a href="otherMenu.html" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/More_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">More</span></a></div>
+            </div>
+        </footer> -->
+    </div>
+</main>

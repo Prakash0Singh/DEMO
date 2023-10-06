@@ -1,0 +1,57 @@
+<main class="container-fluid">
+    <div class="row mainInner">
+        <nav class="col-12 header  d-flex align-items-center px-0">
+            <div class="row mx-0 innerheader align-items-center w-100">
+                <div class="col"><div class="title text-white text-center">More</div></div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill" data-page-name="otherMenu" data-scrollbar>
+            <div class="moreMain">
+                <ul class="list-unstyled p-0 m-0">
+                    <li class="py-2 position-relative border-bottom px-2">
+                        <a [routerLink]="'/dashboard/invite'" class="stretched-link links py-1 fw-semibold fs-14 d-flex gap-3 align-items-center text-dark"><span class="icon d-block"><img class="w-100" src="assets/svg/icons/invite.svg" alt=""></span> <span>Invite Friends</span></a>
+                    </li>
+                    <li class="py-2 position-relative border-bottom px-2">
+                        <a [routerLink]="'/dashboard/point-system'" class="stretched-link links py-1 fw-semibold fs-14 d-flex gap-3 align-items-center text-dark"><span class="icon d-block"><img class="w-100" src="assets/svg/icons/fantasyPoint.svg" alt=""></span> <span>Fantasy Cricket Point System</span></a>
+                    </li>
+                    <!-- <li class="py-2 position-relative border-bottom px-2">
+                        <a [routerLink]="'/dashboard/over-fantasy-points'" class="stretched-link links py-1 fw-semibold fs-14 d-flex gap-3 align-items-center text-dark"><span class="icon d-block"><img class="w-100" src="assets/svg/icons/overFantasyPoint.svg" alt=""></span> <span>OverFantasy Cricket Point System</span></a>
+                    </li> -->
+                    <!-- <li class="py-2 position-relative border-bottom px-2">
+                        <a [routerLink]="'/dashboard/more/partner-program'" class="stretched-link links py-1 fw-semibold fs-14 d-flex gap-3 align-items-center text-dark"><span class="icon d-block"><img class="w-100" src="assets/svg/icons/invite.svg" alt=""></span> <span>Partner Program</span></a>
+                    </li> -->
+                    <li class="py-2 position-relative border-bottom px-2">
+                        <a [routerLink]="'/dashboard/more/contact-us'" class="stretched-link links py-1 fw-semibold fs-14 d-flex gap-3 align-items-center text-dark"><span class="icon d-block"><img class="w-100" src="assets/svg/icons/contactUs.svg" alt=""></span> <span>Contact Us</span></a>
+                    </li>
+                    <li class="py-2 position-relative border-bottom px-2">
+                        <a [routerLink]="'/dashboard/more/terms-contitions'" class="stretched-link links py-1 fw-semibold fs-14 d-flex gap-3 align-items-center text-dark"><span class="icon d-block"><img class="w-100" src="assets/svg/icons/treamCondition.svg" alt=""></span> <span>Terms & Conditions</span></a>
+                    </li>
+                    <li class="py-2 position-relative border-bottom px-2">
+                        <a [routerLink]="'/dashboard/more/rules-regulations'" class="stretched-link links py-1 fw-semibold fs-14 d-flex gap-3 align-items-center text-dark"><span class="icon d-block"><img class="w-100" src="assets/svg/icons/invite.svg" alt=""></span> <span>Rules & Regulations</span></a>
+                    </li>
+                    <li class="py-2 position-relative border-bottom px-2">
+                        <a [routerLink]="'/dashboard/more/about-us'" class="stretched-link links py-1 fw-semibold fs-14 d-flex gap-3 align-items-center text-dark"><span class="icon d-block"><img class="w-100" src="assets/svg/icons/aboutUs.svg" alt=""></span> <span>About us</span></a>
+                    </li>
+                    <li class="py-2 position-relative border-bottom px-2">
+                        <a [routerLink]="'/dashboard/more/legality'" class="stretched-link links py-1 fw-semibold fs-14 d-flex gap-3 align-items-center text-dark"><span class="icon d-block"><img class="w-100" src="assets/svg/icons/legality.svg" alt=""></span> <span>Legality</span></a>
+                    </li>
+                    <li class="py-2 position-relative border-bottom px-2">
+                        <a [routerLink]="'/dashboard/more/privacy-policy'" class="stretched-link links py-1 fw-semibold fs-14 d-flex gap-3 align-items-center text-dark"><span class="icon d-block"><img class="w-100" src="assets/svg/icons/privacyPolicy.svg" alt=""></span> <span>Privacy Policy</span></a>
+                    </li>
+                    <li class="py-2 px-2 text-center">
+                        <div  class="links py-1 fw-semibold fs-14 text-dark text-center">Version: {{version}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <footer class="col-12 footer bottomBar d-flex align-items-center px-0">
+            <div class="row mx-0 align-items-center innerBar w-100">
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/home'" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/Home_Blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Home</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/myMatches'" (click)="api.mymatches()" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/My_Matches_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">My Matches</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/profile'" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/Profile_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Profile</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/chat'" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/chat/chaticon.svg" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Chat</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/more'" class="linkTab active text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/More_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">More</span></a></div>
+            </div>
+        </footer>
+    </div>
+</main>

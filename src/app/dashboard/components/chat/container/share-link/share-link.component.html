@@ -1,0 +1,68 @@
+<main class="container-fluid inviteFriend">
+    <div class="row mainInner">
+        <nav class="col-12 header d-flex align-items-center px-0">
+            <div class="row mx-0 innerheader align-items-center w-100">
+                <div class="col-auto notification">
+                    <a (click)="api.onBack()" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/leftCricleArrow.png" class="w-100" alt="bell"></a>
+                    <!-- <a href="javascript:;" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/chatimages/closeIcon.svg" class="w-100" alt="close"></a> -->
+                </div>
+                <div class="col"><div class="title text-white text-center">Share Link To Invite Friends</div></div>
+                <div class="col-auto"><div class="backBtn"></div></div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill inviteFriend" data-page-name="pointSystemPage" data-scrollbar>
+            <div class="row mx-0 h-100 flex-column flex-nowrap ">
+                <div class="col-12 px0 py-3 my-2 inviteimghead">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="invitefriendImg mx-auto rounded-circle d-flex align-items-center justify-content-center">
+                                <img src="{{chatdata.image}}" alt="player" class="h-100 w-100 img-fluid rounded-pill">
+                            </div>
+                        </div>
+                        <div class="col-12 text-center pt-2 invitefriendHeading">{{chatdata.groupName}}</div>
+                    </div>
+                </div>
+                <div class="col-12 py-3 shareLinkMain">
+                    <div class="row">
+                        <div class="col-12 ShareLinkTitle fw-medium text-center">Share Link To invite Friend</div>
+                        <div class="col-12 pt-1 pb-2" (click)="share()" [cdkCopyToClipboard]="link" >
+                            <div class="copyinviteLinkMain rounded-1 d-flex align-items-center justify-content-between" >
+                                <div class="copyLinkTitle">Copy Invite Link</div>
+                                <a  class="copyIcon d-flex align-items-center justify-content-center"   >
+                                    <img src="assets/svg/chat/Copy.svg" alt="copy" class="h-100 w-100 img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12 py-2">
+                            <a href="javascript:;" class="d-flex align-items-center justify-content-center whatsappBtn gap-2">
+                                <span class="whatsappicon">
+                                    <img src="assets/svg/chat/whatsapp.svg" alt="whatsapp" class="h-100 w-100 img-fluid">
+                                </span>
+                                Whatsapp
+                            </a>
+                        </div>
+                        <div class="col-12">
+                            <a href="javascript:;" class="d-flex align-items-center justify-content-center text-uppercase MoreOptionBtn gap-2 whatsappBtn">
+                                <span class="moreOptionIcon d-flex align-self-lg-center justify-content-center">
+                                    <img src="assets/svg/chat/share.svg" alt="share" class="h-100 w-100 img-fluid">
+                                </span>
+                                More Option
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 Notetilte pt-3">
+                    Note:Anyone on Play Cricket canf follow the link to join this group. Only share it with people you trust.
+                </div>
+            </div>
+        </div>
+        <!-- <footer class="col-12 footer bottomBar d-flex align-items-center">
+            <div class="row mx-0 align-items-center innerBar w-100">
+                <div class="col px-0 bottombarTabs text-center"><a href="home.html" class="linkTab active text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/Home_Blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Home</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a href="myMatches.html" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/My_Matches_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">My Matches</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a href="profile.html" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/Profile_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Profile</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a href="otherMenu.html" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/More_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">More</span></a></div>
+            </div>
+        </footer> -->
+    </div>
+</main>

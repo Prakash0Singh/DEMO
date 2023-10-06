@@ -1,0 +1,89 @@
+@import "../../../../variables";
+
+ .mainCenterPart {
+            background-color: $gray-200;
+            & .verifyNav {
+                box-shadow: 0px 0px 6px rgba($black, 0.1);
+                & .navTabs {
+                    & .nav-item {
+                        & .nav-link {
+                            font-size: 12px;
+                            &.active {
+                                color: darken($theme1, 5) !important;
+                            }
+                        }
+                    }
+                }
+            }
+            & .navContent {
+                & .contestCard {
+                    box-shadow: 0px 0px 6px rgba($black, 0.1);
+                    & .card-body {
+                        & .form-floating {
+                            & .form-control,
+                            & .formLabel {
+                                font-size: 14px;
+                                color: rgba($black, 0.3);
+                            }
+                            & .invaildLabel {
+                                font-size: 12px;
+                            }
+                            & .form-control {
+                                &:focus{
+                                    border-bottom: 2px solid $theme1 !important;
+                                }
+                                &:focus~label{
+                                    color: $theme1 !important;
+                                }
+                            }
+                        }
+                        & .joinMultiple, & .enteryFee {
+                            font-size: 12px;
+                        }
+                        & .checkBoxBtn {
+                            & .check-box {
+                                transform: scale(2);
+                                & input[type="checkbox"] {
+                                    position: relative;
+                                    appearance: none;
+                                    width: 16px;
+                                    height: 8px;
+                                    background: $gray-200;
+                                    border-radius: 50px;
+                                    box-shadow: inset 0px 0px 5px rgba($black, 0.2);
+                                    cursor: pointer;
+                                    transition: 0.3s;
+                                    &:checked[type="checkbox"] {
+                                        background: rgba($info,  0.3);
+                                        &::after {
+                                            left: 50%;
+                                            background: darken($info,  10);
+                                        }
+                                    }
+                                    &::after {
+                                        position: absolute;
+                                        content: "";
+                                        width: 8px;
+                                        height: 8px;
+                                        top: 0;
+                                        left: 0;
+                                        background: $white;
+                                        border-radius: 50%;
+                                        box-shadow: 0px 0px 5px rgba($black, 0.2);
+                                        transform: scale(1.15);
+                                        transition: 0.3s;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                & .inviteContest {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .otpverfication {
+            font-size: 11px;
+        }

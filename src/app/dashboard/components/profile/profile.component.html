@@ -1,0 +1,134 @@
+<main class="container-fluid">
+    <div class="row mainInner">
+        <nav class="col-12 header  d-flex align-items-center px-0">
+            <div class="row mx-0 innerheader align-items-center w-100">
+                <div class="col-auto notification">
+                    <a [routerLink]="'/dashboard/home'" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/leftCricleArrow.png" class="w-100" alt="bell"></a>
+                </div>
+                <div class="col"><div class="title text-white text-center">My Profile</div></div>
+                <div class="col-auto notification">
+                    <a [routerLink]="'/dashboard/wallet'" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/wallet_white_color.png" class="w-100" alt="bell"></a>
+                </div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill overflow-y-auto" data-page-name="myProfilePage" data-scrollbar>
+        <div class="row profileMain h100 flex-column flex-nowrap mx-0">
+            <div class="col-12 bannerSection align-items-center d-flex">
+                <div class="profileDetial px-4">
+                    <div class="row">
+                        <div class="col-auto">
+                            <div class="imgOuter position-relative mx-auto">
+                                <div class="img w-100 h-100 rounded-circle overflow-hidden">
+                                    <img src={{userDetails.image}} alt="" class="w-100 h-100">
+                                </div>
+                                <label for="profileImg" class="form-label m-0 bg-black p-1 rounded-circle align-items-center d-flex justify-content-center position-absolute bottom-0 end-0">
+                                    <img class="w-100" src="assets/svg/icons/img_camera.png" alt="">
+                                </label>
+                                <input class="form-control" type="file" id="profileImg" (change)="imgUp($event)" hidden>
+                            </div>
+                            <div class="name fs-12 text-white text-center mt-1">{{userDetails.team}}</div>
+                            <div class="verificationStatus text-center">
+                                <div class="status fs-10 text-white my-1" *ngIf="userDetails.verified==0">Verification Pending</div>
+                                <div class="status fs-10 text-white my-1" *ngIf="userDetails.verified==1">Verified Account</div>
+                                <a [routerLink]="'/dashboard/kyc'" class="btn btn-success fs-10 text-white rounded-pill">View Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 px-0 accountMain">
+                <div class="fs-12 bg-white py-1 px-2">Account</div>
+                <div class="accountInner">
+                    <div class="row py-3 border-bottom border-1 border-white">
+                        <div class="col text-center">
+                            <div class="fs-14 text-white">Rs. {{userDetails.totalbalance}}</div>
+                            <div class="fs-12 text-white">Deposit</div>
+                        </div>
+                        <div class="col text-center">
+                            <div class="fs-14 text-white">Rs. {{userDetails.totalwon}}</div>
+                            <div class="fs-12 text-white">Winnings</div>
+                        </div>
+                        <div class="col text-center">
+                            <div class="fs-14 bonus">Rs. {{userDetails.totalbonus}}</div>
+                            <div class="fs-12 text-white">Bonus</div>
+                        </div>
+                    </div>
+                    <div class="row mx-0 py-3 border-bottom border-1 border-white">
+                        <div class="col-6 text-center">
+                            <a [routerLink]="'/dashboard/add-cash'" class="btn btn-danger fs-12 w-100 text-white rounded-pill p-0 d-flex align-items-center justify-content-start gap-4 border-0"><span class="d-block btnIcon me-1"><img class="w-100" src="assets/svg/icons/add_cash.png" alt=""></span> Add Cash</a>
+                        </div><div class="col-6 textcenter">
+                            <a (click)="withdrawbtn()" class="btn btn-warning btnWarning fs-12 w-100 text-white rounded-pill p-0 d-flex align-items-center justify-content-end gap-4 border-0">Withdraw <span class="d-block btnIcon ms-1"><img class="w-100" src="assets/svg/icons/withdraw.png" alt=""></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 px-0 accountMain">
+                <div class="fs-12 py-1 px-2 text-white text-center py-2" (click)="transaction()" style="cursor: pointer;">Transactions</div>
+                <div class="fs-12 bg-white py-1 px-2">Playing Stats</div>
+                <div class="accountInner">
+                    <div class="row mx-0 py-3 border-bottom border-1 border-white gx-2 gy-4">
+                        <div class="col-6">
+                            <div class="bg-white rounded-3 p-2 d-flex gap-2 align-items-center">
+                                <img class="" width="35" src="assets/svg/img/contests.png" alt="">
+                                <div class="fs-12">
+                                    <span>{{userDetails.totalchallenges}}</span>
+                                    <br>
+                                    <span>Contest Played</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="bg-white rounded-3 p-2 d-flex gap-2 align-items-center">
+                                <img class="" width="35" src="assets/svg/img/series.png" alt="">
+                                <div class="fs-12">
+                                    <span>{{userDetails.totalseries}}</span>
+                                    <br>
+                                    <span>Series</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="bg-white rounded-3 p-2 d-flex gap-2 align-items-center">
+                                <img class="" width="35" src="assets/svg/img/matches.png" alt="">
+                                <div class="fs-12">
+                                    <span>{{userDetails.totalmatches}}</span>
+                                    <br>
+                                    <span>Matches</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="bg-white rounded-3 p-2 d-flex gap-2 align-items-center">
+                                <img class="" width="35" src="assets/svg/img/wins.png" alt="">
+                                <div class="fs-12">
+                                    <span>{{userDetails.totalwinning}}</span>
+                                    <br>
+                                    <span>Contests Won</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 px-0 accountMain mb-2">
+                <div class="accountInner">
+                    <div class="row mx-0 py-3 px-3">
+                        <div class="col-12 px-5">
+                            <button type="button" (click)="api.logoutbtn()" class="btn btn-light fs-12 fw-bold w-100 border-dark p-2 text-theme2">LOG OUT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <footer class="col-12 footer bottomBar d-flex align-items-center px-0">
+            <div class="row mx-0 align-items-center innerBar w-100">
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/home'" class="linkTab  text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/Home_Blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Home</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/myMatches'" (click)="api.mymatches()" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/My_Matches_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">My Matches</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/profile'" class="linkTab active text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/Profile_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Profile</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/chat'" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/chat/chaticon.svg" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Chat</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/more'" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/More_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">More</span></a></div>
+            </div>
+        </footer>
+    </div>
+</main>

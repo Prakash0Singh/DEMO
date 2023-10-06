@@ -1,0 +1,67 @@
+@import "../../../../variables";
+
+
+.mainCenterPart {
+    background-color: $gray-200;
+    & .verifyNav {
+        box-shadow: 0px 0px 6px rgba($black, 0.1);
+        & .navTabs {
+            & .nav-item {
+                & .nav-link {
+                    font-size: 12px;
+                    &.active {
+                        color: darken($theme1, 5) !important;
+                    }
+                }
+            }
+        }
+    }
+    & .navContent {
+        & .mobileCard {
+            box-shadow: 0px 0px 6px rgba($black, 0.1);
+            & .card-body {
+                & .mobileImg {
+                    width: 20px;
+                }
+                & .verifyMobile {
+                    font-size: 14px;
+                    line-height: 100%;
+                    &.verifyPanDetails {
+                        color: $theme1;
+                    }
+                }
+                & .mobileLabel,
+                & .otpBtn {
+                    font-size: 12px;
+                }
+                & .form-control {
+                    border-bottom: 2px solid $black !important;
+                    font-size: 14px;
+                }
+                & .form-select {
+                    font-size: 14px;
+                }
+                & .otpverfication {
+                    font-size: 10px;
+                }
+            }
+        }
+        & .verifyPanCard {
+            & .idCard {
+                height: 50px;
+            }
+        }
+    }
+}
+
+#myModal {
+    position: absolute;
+    top: 200px;
+    right: 100px;
+    bottom: 0;
+    left: 0;
+    z-index: 10040;
+    overflow: auto;
+    overflow-y: auto;
+ }
+

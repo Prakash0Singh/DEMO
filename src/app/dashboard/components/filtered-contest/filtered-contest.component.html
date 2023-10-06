@@ -1,0 +1,195 @@
+<main class="container-fluid">
+    <div class="row mainInner bg-white">
+        <nav class="col-12 header py-3">
+            <div class="row innerheader align-items-center h-100">
+                <div class="col-auto"><a (click)="api.onBack()" style="cursor: pointer;" class="backBtn d-flex align-items-center justify-content-center"><img class="w-100" src="assets/svg/icons/leftCricleArrow.png" alt=""></a></div>
+                <div class="col"><div class="title text-white text-center">{{match.team1name}} vs {{match.team2name}}</div><div class="title text-white text-center"><cd-timer *ngIf="finalDate>0" [countdown]="true" [startTime]="finalDate" [format]="'user'">[days]d : [hours]h : [minutes]m : [seconds]s</cd-timer></div></div>
+                <div class="col-auto notification">
+                    <a [routerLink]="'/dashboard/wallet'" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/wallet_white_color.png" class="w-100" alt="bell"></a>
+                </div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill" data-page-name="matcheDetailsPage" data-scrollbar>
+            <div class="row mainCenterPart mx-0 pb-3 h-100 flex-column flex-nowrap">
+                    <div class="col-12 flex-fill h-100 overflow-hidden-auto px-0">
+                        <div class="navContent h-100" >
+                            <div class="tab-pane fade show active h-100 flex-fill" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                                <div class="row flex-column mx-0 flex-nowrap h-100 position-relative">
+                                    <div class="col-12 px-0 row mx-0 topFilterBar bg-white py-2 align-items-center">
+                                        <!-- <div class="col d-flex justify-content-center align-items-center gap-2 filterTabs privateLeague py-2 position-relative border-end border-end-1">
+                                            <a href="createContest.html" class="filterBtn fw-bold stretched-link text-muted">Private League </a>
+                                            <div class="additionImg rounded-circle bg-success d-flex"><svg width="192" height="192" class="w-100 h-100" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M48 96H144" stroke="#fff" stroke-width="24"/><path d="M96 144L96 48" stroke="#fff" stroke-width="24"/></svg></div>
+                                        </div>
+                                        <div class="col d-flex justify-content-center align-items-center gap-2 filterTabs py-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
+                                            <div class="filterBtn fw-bold text-muted">Apply Filtter </div>
+                                            <div class="additionImg d-flex"><img src="assets/svg/icons/filtter_icon.svg" class="w-100" alt=""></div>
+                                        </div> -->
+                                        <div class="col-12 fs-14 fw-bold text-black mb-1">All Contests</div>
+                                        <div class="col fs-12 text-secondary fw-bold">{{filteredData4.length}} Contests Available</div>
+                                        <div class="col-auto d-flex justify-content-center align-items-center gap-2 filterTabs py-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
+                                            <div class="filterBtn fw-bold text-muted fs-14">Apply Filtter </div>
+                                            <div class="additionImg d-flex"><img src="assets/svg/icons/side_settings.png" class="w-100" alt=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 innerBodyContentTab h-100 flex-fill overflow-hidden-auto">
+                                        <div class="row mx-0 g-3 py-3">
+                                            <div class="col-12 px-0" style="cursor: pointer;" *ngFor="let d of filteredData4;index as i" (click)="onContest(d.matchchallengeid)">
+                                                <div class="card matchesCard position-relative overflow-hidden border border-1 border-light bg-white">
+                                                    <div class="card-body p-0">
+                                                        <div class="teamHeadline row mx-0 border-bottom border-bottom-1 border-bottom-light py-1 align-items-center">
+                                                            <!-- <div class="col fw-semibold matchteams text-muted px-2" *ngIf="d.confirmed_challenge == 1"><span class="me-1">Guaranteed</span><img width="15" src="assets/svg/icons/check-circle.png" alt=""></div> -->
+                                                            <div class="col-12 fw-semibold matchteams text-muted px-2 d-flex justify-content-end align-items-center">
+                                                                <div class="col fw-semibold matchteams text-muted" *ngIf="d.confirmed_challenge == 1"><span class="me-1">Guaranteed</span><img width="15" src="assets/svg/icons/check-circle.png" alt=""></div>
+                                                                <img width="15" src="assets/svg/icons/starIcon.svg" alt="">
+                                                            </div>
+                                                            <!-- <a href="contestWinnerLeaderBoard.html" class="stretched-link"></a> -->
+                                                        </div>
+                                                        <div class="innerBody firstMatchBody">
+                                                            <div class="row mx0 justify-content-between p-2">
+                                                                <div class="col-4 leftSideTeams">
+                                                                    <div class="team">
+                                                                        <div class="teamName text-black fw-semibold">Prize Pool</div>
+                                                                        <div class="teamName text-black fw-bold fs-12" *ngIf="d.gift_type=='amount'">{{d.win_amount==0?'Practice Contest':'₹'+d.win_amount}}</div>
+                                                                        <div class="text-black fw-bold" *ngIf="d.gift_type=='gift'"> <img style="width: 30%;" src={{d.gift_image}} alt=""></div>                                                                    
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-4 px-0 matchTimer">
+                                                                    <div class="pichTime text-center fw-semibold text-black">Winners</div>
+                                                                    <div class="pichTime text-center fw-semibold text-black">{{totalWinners[i]==0?'1':totalWinners[i]}}</div>
+                                                                </div>
+                                                                <div class="col-4 text-end">
+                                                                    <button type="button" class="btn btn-success btnSuccess border-0 text-white fw-semibold position-relative z-1" (click)="onJoinContest(d)" onclick="event.stopPropagation()" *ngIf="d.isselected==false"> {{d.entryfee==0?'Free':'₹'+d.entryfee}}</button>
+                                                                    <button type="button" class="btn btn-success btnSuccess border-0 text-white fw-semibold position-relative z-1" onclick="event.stopPropagation()" *ngIf="d.isselected==true">joined</button>                                                                    <button type="button" class="btn btn-success border-0 btnSuccess text-white" id="openModal" onclick="event.stopPropagation()" data-bs-toggle="modal" data-bs-target="#exampleModal" [hidden]="true">join</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mx-0">
+                                                                <div class="col-12 border-bottom px-0">
+                                                                    <div class="progress rounded-0 bg-light">
+                                                                        <div class="progress-bar" role="progressbar" [style.width]="d.value+'%'" aria-label="Basic example" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                    </div>
+                                                                    <div class="d-flex align-items-center justify-content-between px-2 p-1">
+                                                                        <div class="fs-12 text-danger fw-semibold">{{d.maximum_user - d.joinedusers == 1?d.maximum_user - d.joinedusers+' team left':d.maximum_user - d.joinedusers+' teams left'}}</div>
+                                                                        <div class="fs-12 fw-semibold">{{d.maximum_user}} Teams</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 px-0 position-relative py-2">
+                                                                    <div class="enteryType fw-bold text-center fs-12"  *ngIf="d.multi_entry == 0">Single Entry</div>
+                                                                    <div class="enteryType fw-bold text-center fs-12"  *ngIf="d.multi_entry == 1">Upto {{d.team_limit}} Entries</div>
+                                                                    <div class="position-absolute badges fs-12 text-white align-items-center d-flex gap-2">
+                                                                        <span class="badge badge1 bg-success rounded-2 align-items-center d-flex justify-content-center" *ngIf="d.multi_entry == 0">S</span>
+                                                                        <span class="badge badge1 bg-success rounded-2 align-items-center d-flex justify-content-center" *ngIf="d.multi_entry == 1">M</span>
+                                                                        <div class="d-flex align-items-center borderBage" *ngIf="d.is_bonus == 1">
+                                                                            <span class="badge badge1 rounded-0 align-items-center d-flex justify-content-center">B</span>
+                                                                            <span class="badge badge1 bg-white text-black rounded-0 rounded-end rounded-end-2 align-items-center d-flex justify-content-center px-3">{{d.bonus_percentage}}%</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-12 bg-transprient d-flex justify-content-center align-items-center bg-transparent text-center fixed-bottom bottomFixedBtn z-3"><a href="createYourTeam.html" class="createBtn rounded-3 fw-semibold bg-white position-relative z-3">Create Team</a></div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Toggle bottom offcanvas</button> -->
+
+        <div class="offcanvas filterOffcanvas offcanvas-bottom h-100 border-0 p-0" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+            <div class="offcanvas-header p-0">
+                <div class="row w-100 mx-0">
+                    <nav class="col-12 header py-3">
+                        <div class="row innerheader align-items-center h-100">
+                            <div class="col"><a href="javascript:;" class="backBtn d-flex align-items-center justify-content-center" data-bs-dismiss="offcanvas" aria-label="Close"><img class="w-100" src="assets/svg/icons/leftCricleArrow.png" alt=""></a></div>
+                            <div class="col"><div class="title text-white text-center">FILTERS</div></div>
+                            <div class="col text-end">
+                                <a href="javascript:;" type="button" class="shadow-none title bg-transparent p-0 border-0 text-white text-decoration-none" (click)="uncheckAll()">CLEAR ALL</a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="offcanvas-body small position-relative">
+                <form action="" class="row mx-0 g-3" [formGroup]="filterForm">
+                    <div class="col-12 filterHeading fw-bold text-black px-0">Entry</div>
+                    <div class="col-12 px-0">
+                        <div class="row mx-0 checkBoxed g-2">
+                            <div class="col-6 px-1" *ngFor="let box of entry;index as i;">
+                                <input #checkboxes type="checkbox"  (change)="onDescribeChange(box,$event.target)"  class="btn-check checkInput" name="entry" id={{box.id}}   autocomplete="off" >
+                                <label class="btn btn-sm text-start checkLabel border border-1 w-100 rounded-2 text-muted fw-bold" for={{box.id}}>{{box.name}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 filterHeading fw-bold text-black px-0">Number Of Teams</div>
+                    <div class="col-12 px-0">
+                        <div class="row mx-0 checkBoxed g-2">
+                            <div class="col-6 px-1" *ngFor="let box of teams;index as i;">
+                                <input #checkboxes type="checkbox" class="btn-check checkInput" (change)="onDescribeChange(box,$event.target)" name="teams" id={{box.id}}  autocomplete="off"  >
+                                <label class="btn btn-sm text-start checkLabel border border-1 w-100 rounded-2 text-muted fw-bold" for={{box.id}}>{{box.name}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 filterHeading fw-bold text-black px-0">Prize Pool</div>
+                    <div class="col-12 px-0">
+                        <div class="row mx-0 checkBoxed g-2">
+                            <div class="col-6 px-1" *ngFor="let box of prizePool;index as i;">
+                                <input #checkboxes type="checkbox" class="btn-check checkInput" (change)="onDescribeChange(box,$event.target)" name="pool" id={{box.id}}  autocomplete="off" >
+                                <label class="btn btn-sm text-start checkLabel border border-1 w-100 rounded-2 text-muted fw-bold" for={{box.id}}>{{box.name}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 filterHeading fw-bold text-black px-0">Contest Type</div>
+                    <div class="col-12 px-0">
+                        <div class="row mx-0 checkBoxed g-2">
+                            <div class="col-6 px-1" *ngFor="let box of contestType;index as i;">
+                                <input #checkboxes type="checkbox"  class="d-none btn-check checkInput" (change)="onDescribeChange(box,$event.target)" name="contest" id={{box.id}}  autocomplete="off" >
+                                <label  class="btn btn-sm text-start checkLabel border border-1 w-100 rounded-2 text-muted fw-bold" for={{box.id}}>{{box.name}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 bg-transprient d-flex justify-content-center align-items-center bg-transparent text-center position-fixed bottomFixedBtn"><button type="button" class="btn btn-sm px-4 footerBtn btn-success text-white" data-bs-dismiss="offcanvas" (click)="applyFilter()">Apply</button></div>
+                </form>
+            </div>
+            </div>
+            
+            <!-- Modal -->
+            <div class="modal fade bg-black confermationModal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content border-0 rounded-4">
+                    <div class="modal-header border-0">
+                        <div class="modal-title" id="exampleModalLabel">
+                            <div class="confiramtionHeading fw-semibold text-black fs-6">CONFIRMATION</div>
+                            <div class="balance fw-semibold">Unutilized Balance + Winnings = ₹{{usableBalanceArr.usablebalance}}</div>
+                        </div>
+                        
+                        <button type="button" class="shadow-none border-0 bg-transparent p-0" data-bs-dismiss="modal" aria-label="Close"><img src="assets/svg/icons/close-_icon.svg" class="w-100" alt=""></button>
+                    </div>
+                    <div class="modal-body row mx-0">
+                        <div class="col-12 px-0 row mx-0 align-items-center">
+                            <div class="col leftEntery fw-semibold px-0">Entry</div>
+                            <div class="col-auto prich fw-semibold pe-0">₹ {{usableBalanceArr.entryfee}}</div>
+                        </div>
+                        <div class="col-12 px-0 row mx-0 align-items-center bonus pb-1">
+                            <div class="col leftEntery fw-semibold px-0">Usable Cash Bonus</div>
+                            <div class="col-auto prich fw-semibold pe-0">- ₹ {{usableBalanceArr.bonus}}</div>
+                        </div>
+                        <div class="col-12 px-0 row mx-0 align-items-center mt-3 mb-2 payAmount">
+                            <div class="col leftEntery fw-semibold px-0">To Pay</div>
+                            <div class="col-auto prich fw-semibold pe-0">₹ {{usableBalanceArr.entryfee- usableBalanceArr.bonus}}</div>
+                        </div>
+                        <div class="col-12 joinAddress fw-semibold text-center">By joining this contest,you accept MyGames11’s T&C and confirm that you are not a resident of Assam, Odhissa, Telangana, Nagaland & Sikkim.</div>
+                    </div>
+                    <div class="modal-footer border-0 justify-content-center">
+                        <button class="invite btn btn-success px-5 text-white btn-sm fs-6" (click)="joincontest()">JOIN CONTEST</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+    </div>
+</main>

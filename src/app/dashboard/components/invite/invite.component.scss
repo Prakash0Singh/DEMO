@@ -1,0 +1,88 @@
+@import "../../../../variables";
+
+.mainCenterPart {
+             background-color: $gray-200;
+            & .invite {
+                font-size: 10px;
+            }
+            & .referValue {
+                background-color: $theme1;
+                font-size: 14px;
+            }
+        }
+         .referoffcanvas {
+            background-color: lighten($gray-600,40);
+            border-radius: 14px 14px 0px 0px;
+            & .offcanvas-header {
+                & .underline{
+                    & span {
+                        height: 3px;
+                        background-color: $black;
+                        width: 70px;
+                        cursor: pointer;
+                    }
+                }
+            }
+            & .offcanvas-body{
+                background-color: $gray-300;
+                // border-radius: 14px 14px 0px 0px;
+                & .nodata {
+                    font-size: 12px;
+                }
+            }
+
+        }
+
+        table {
+            &.table {
+                // border-radius: 14px 14px 0px 0px !important;
+                background-color: white !important;
+                & thead {
+                    & tr {
+                        margin-bottom: 20px!important;
+                        // background-color: white;
+                        outline: 3px solid #d8dbdd;
+                        & th {
+                            font-weight: normal;
+                            & .icon {
+                                width: 16px;
+                                height: 16px;
+                                & img {
+                                    filter: invert(1);
+                                }
+                            }
+                        }
+                    }
+                }
+                & tbody {
+                    vertical-align: baseline;
+                    & tr {
+                        & td {
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+         .teamDetail {
+            & .imgOuter {
+                width: 32px;
+                height: 32px;
+                & img {
+                    object-fit: cover;
+                    object-position: center top;
+                }
+            }
+        }
+         .winningAmount {
+            font-size: 14px;
+        }
+         .myRank {
+            font-size: 14px;
+            & .icon {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+ 

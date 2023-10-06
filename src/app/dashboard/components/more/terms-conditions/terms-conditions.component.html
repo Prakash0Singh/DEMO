@@ -1,0 +1,22 @@
+<main class="container-fluid">
+    <div class="row mainInner">
+        <nav class="col-12 header d-flex align-items-center px-0">
+            <div class="row mx-0 innerheader align-items-center w-100">
+                <div class="col-auto notification">
+                    <a [routerLink]="'/dashboard/more'" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/leftCricleArrow.png" class="w-100" alt="bell"></a>
+                </div>
+                <div class="col"><div class="title text-white text-center">Treams and Conditions</div></div>
+                <div class="col-auto notification">
+                    <div class="notificationIcon"></div>
+                </div>
+            </div>
+        </nav>
+        <div class="col-12 py-3 flex-fill overflow-y-auto h-100" data-page-name="treamsConditionPage" data-scrollbar>
+            <div class="row gap-5 treamsConditionMain">
+              <div  class="col-12">
+            <div [innerHTML]="data"></div>
+              </div>
+            </div>
+        </div>
+    </div>
+</main>

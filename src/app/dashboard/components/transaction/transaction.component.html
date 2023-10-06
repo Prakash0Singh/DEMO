@@ -1,0 +1,73 @@
+<main class="container-fluid">
+    <div class="row mainInner bg-white">
+        <nav class="col-12 header py-3">
+            <div class="row align-items-center h-100">
+                <div class="col-auto"><a (click)="onBack()" style="cursor: pointer;" class="backBtn d-flex align-items-center justify-content-center"><img class="w-100" src="assets/svg/icons/leftCricleArrow.png" alt=""></a></div>
+                <div class="col"><div class="title text-white text-center">Transaction</div></div>
+                <div class="col-auto"><div class="backBtn"></div></div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill" data-page-name="transactionPage" class="main" data-scrollbar>
+            <div class="row mainCenterPart g-3 mx-0 py-4 pb-5 mb-4">
+                <div class="col-12" *ngFor="let d of txn">
+                    <div class="card rounded-3 transectionCard border border-light border-1">
+                        <div class="card-body px-0 py-2">
+                            <div class="row mx-0">
+                                <div class="col d-flex align-items-center pe-0">
+                                    <div class="me-2" *ngIf="d.transaction_type =='Debit'" ><div class="d-flex rounded-circle neg"  ><img src="assets/svg/icons/nagetive_icon.svg" class="w-100 h-100" alt=""></div></div>
+                                    <div class="me-2" *ngIf=" d.transaction_type =='Credit'"><div class="d-flex rounded-circle  additionImag"  ><img src="assets/svg/icons/plus_icon.svg" class="w-100 h-100" alt=""></div></div>
+                                    <div class="">
+                                        <div class="transactionBonus text-black fw-bold">{{d.type}}</div>
+                                        <div class="transactionId text-muted fw-semibold">Transaction Id: {{d.txnid}}</div>
+                                        <div class="transactionId text-muted fw-semibold">{{d.date_time}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="transactionBonus fw-bold" [ngClass]="{'text-success': d.transaction_type =='Credit', 'text-danger': d.transaction_type =='Debit'}">Rs {{d.amount}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-12">
+                    <div class="card rounded-3 transectionCard border border-light border-1">
+                        <div class="card-body px-0 py-2">
+                            <div class="row mx-0">
+                                <div class="col d-flex align-items-center pe-0">
+                                    <div class="me-2"><div class="additionImag nagetiveImg d-flex rounded-circle"><img src="assets/svg/icons/nagetive_icon.svg" class="w-100 h-100" alt=""></div></div>
+                                    <div class="">
+                                        <div class="transactionBonus text-black fw-bold">Contest Joining Fee</div>
+                                        <div class="transactionId text-muted fw-semibold">Transaction Id: MG11-1679051954524-YNDR</div>
+                                        <div class="transactionId text-muted fw-semibold">18 Mar 2023 09:27</div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="transactionBonus text-danger fw-bold">Rs 50.00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- <div class="col-12">
+                    <div class="card rounded-3 transectionCard border border-light border-1">
+                        <div class="card-body px-0 py-2">
+                            <div class="row mx-0">
+                                <div class="col d-flex align-items-center pe-0">
+                                    <div class="me-2"><div class="additionImag d-flex rounded-circle"><img src="assets/svg/icons/plus_icon.svg" class="w-100 h-100" alt=""></div></div>
+                                    <div class="">
+                                        <div class="transactionBonus text-black fw-bold">Email Bonus</div>
+                                        <div class="transactionId text-muted fw-semibold">Transaction Id: MG11-EBONUS-1679051957591</div>
+                                        <div class="transactionId text-muted fw-semibold">17 Mar 2023 18:03</div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="transactionBonus text-success fw-bold">Rs 50.00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</main>

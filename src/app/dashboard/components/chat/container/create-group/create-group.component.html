@@ -1,0 +1,70 @@
+
+<main class="container-fluid addtogroup">
+    <div class="row mainInner">
+        <nav class="col-12 header d-flex align-items-center px-0">
+            <div class="row mx-0 innerheader align-items-center w-100">
+                <div class="col-auto notification">
+                    <a (click)="api.onBack()" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/leftCricleArrow.png" class="w-100" alt="bell"></a>
+                </div>
+                <div class="col">
+                    <div class="title text-white textcenter">Add To Group</div>
+                    <div class="selectTtile">Select At Least 1 Participant</div>
+                </div>
+                <div class="col-auto"><div class="backBtn"></div></div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill" data-page-name="pointSystemPage" data-scrollbar>
+            <div class="row mx-0 h-100 flex-column flex-nowrap pt-4">
+                <div class="col-12 pb-4">
+                    <form action="javascript:;">
+                        <div class="input-group searchMain rounded-2 align-items-center ps-2">
+                            <button class="input-group-text searchicon p-0 border-0 bg-transparent" id="Search">
+                                <img src="assets/svg/chat/search.svg" alt="search" class="h-100 w-100 img-fluid">
+                            </button>
+                            <input #val  (input)="query(val.value)" type="search" class="form-control searchInput bg-transparent shadow-none border-0" placeholder="Search For Contact Name" aria-label="Username" aria-describedby="Search">
+                        </div>
+                    </form>
+                </div>
+                <div class="usertop col-12 mt-2 mb-1 pe-0 ">
+                    <!-- <div class="d-flex align-items-center">
+                        <span class="sorttitle">+</span> 
+                        <div class="borderline w-100"></div>
+                    </div> -->
+                </div>
+                <div class="col-12 pt-2 px-0" *ngFor="let item of userList , let i = index">
+                    <label for="contacttwo" class="contactLabel w-100">
+                        <div class="row mx-0 align-items-center">
+                            <div class="col-auto">
+                                <div class="contactIcon rounded-pill d-flex position-relative align-items-start justify-content-center">
+                                    <img src="{{item.image}}" alt="contact" class="h-100 w-100 img-fluid rounded-pill">
+                                    <span class="callIcon rounded-pill d-flex align-items-center position-absolute justify-content-center">
+                                        <img src="assets/svg/chat/call.svg" alt="call" class="h-100 w-100 img-fluid">
+                                    </span>
+                                </div>
+                            </div>
+                            <label class="col pe-0" for="{{item._id}}" >
+                                <div class="row mx-0 align-items-center contactContent position-relative py-3">
+                                    <div class="col ps-0">
+                                        <div class ="contactUserName">{{item.email}}</div>
+                                        <div class ="contactUsertitle">{{item.username}}</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <input type="checkbox" id="{{item._id}}" [value]="item._id"  [checked]="existingUser.includes(item._id)" [disabled]="existingUser.includes(item._id)" class="form-control contactCheck rounded-pill p-0 shadow-none" (change)="checked($event)">
+                                    </div>
+                                </div>
+                            </label>
+                            
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <footer class="col-12 footer bottomBar d-flex align-items-center">
+            <div class="row mx-0 align-items-center innerBar w-100">
+                <div class="col-12">
+                    <button  (click)="addToGroup()" class="addtoBtn w-100 d-flex align-items-center justify-content-center rounded-1  btn border-0" aria-disabled="true"  [disabled]="checkedID.length === 0" [ngClass]="checkedID.length ? 'bg-primary' : 'bg-secondary' " >ADD TO GROUP</button>
+                </div>
+            </div>
+        </footer>
+    </div>
+</main>

@@ -1,0 +1,50 @@
+
+.redd{
+    border-color: red;
+}
+.profileOffcanvas {
+    width: 360px !important;
+
+    & .offcanvas-body {
+        & .innerbody {
+            & .linkBox {
+                & .tagicon {
+                    width: 22px;
+                    height: 22px;
+                }
+
+                & .linkContent {
+                    font-size: 14px;
+
+                    &.walletBalance {
+                        color: lighten(#097BFF, 10);
+                    }
+                }
+
+                transition: all ease-in-out 0.3s;
+
+                &:hover {
+                    opacity: 0.9;
+                }
+            }
+        }
+    }
+
+    & .profileFooter {
+        height: 114px;
+        background-color: #097BFF;
+
+        & .contectText {
+            font-size: 14px;
+        }
+
+        & .addlink {
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+}
+.red{
+    border: 1px solid red !important;
+}

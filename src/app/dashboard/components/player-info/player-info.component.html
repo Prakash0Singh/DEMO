@@ -1,0 +1,116 @@
+<main class="container-fluid">
+    <div class="row mainInner">
+        <nav     class="col-12 header d-flex align-items-center px-0">
+            <div class="row mx-0 innerheader align-items-center w-100">
+                <div class="col-auto notification">
+                    <a (click)="api.onBack()" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/leftCricleArrow.png" class="w-100" alt="bell"></a>
+                </div>
+                <div class="col">
+                    <div class="title text-white text-center">Player Info</div>
+                    <!-- <div class="matchTime text-center text-white fw-semibold ">00h:50m:03s</div> -->
+                </div>
+                <div class="col-auto notification">
+                    <div class="backBtn"></div>
+                </div>
+            </div>
+        </nav   >
+        <div class="col-12 px0 flex-fill h-100 overflow-y-auto" data-page-name="playerInformationPage" data-scrollbar>
+            <div class="row p-3">
+                <div class="col-12 px-0">
+                    <div class="card shadow overflow-hidden">
+                        <div class="row h-100">
+                            <div class="col-12 p-2 pb-0">
+                                <div class="row mx-0 align-items-center">
+                                    <div class="col-auto ps-1">
+                                        <div class="imgouter">
+                                            <img src={{playerInfo.playerimage}} alt="" class="w-100">
+                                        </div>
+                                    </div>
+                                    <div class="col-auto pe-5">
+                                        <div class="name fs-12">{{playerInfo.playername}}</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="fs-12">Total Points: {{playerInfo.total}}</div>
+                                        <div class="fs-12">Credits: {{playerInfo.credit}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="row mx-0">
+                                    <div class="col-12 px-2 py-1 bg-secondary bg-opacity-75 d-flex justify-content-between">
+                                        <span class="text-white fs-12">Role</span>
+                                        <span class="text-white fs-12">Points</span>
+                                    </div>
+                                    <div class="col-12 px-0">
+                                        <ul class="p-0 m-0 list-unstyled">
+                                            <li class="d-flex py-1 border-bottom justify-content-between px-2">
+                                                <span class="text-black fs-12">Starting 11</span>
+                                                <span class="text-black fs-12">{{playerInfo.startingpoints}}</span>
+                                            </li>
+                                            <li class="d-flex py-1 border-bottom justify-content-between px-2">
+                                                <span class="text-black fs-12">Runs</span>
+                                                <span class="text-black fs-12">{{playerInfo.runs}}</span>
+                                            </li>
+                                            <li class="d-flex py-1 border-bottom justify-content-between px-2">
+                                                <span class="text-black fs-12">4's</span>
+                                                <span class="text-black fs-12">{{playerInfo.fours}}</span>
+                                            </li>
+                                            <li class="d-flex py-1 border-bottom justify-content-between px-2">
+                                                <span class="text-black fs-12">6's</span>
+                                                <span class="text-black fs-12">{{playerInfo.sixs}}</span>
+                                            </li>
+                                            <li class="d-flex py-1 border-bottom justify-content-between px-2">
+                                                <span class="text-black fs-12">Strike Rate</span>
+                                                <span class="text-black fs-12">{{playerInfo.strike_rate}}</span>
+                                            </li>
+                                            <li class="d-flex py-1 border-bottom justify-content-between px-2">
+                                                <span class="text-black fs-12">30/50/100</span>
+                                                <span class="text-black fs-12">{{playerInfo.halfcentury + playerInfo.century + playerInfo.thirty}}</span>
+                                            </li>
+                                            <li class="d-flex py-1 border-bottom justify-content-between px-2">
+                                                <span class="text-black fs-12">Duck</span>
+                                                <span class="text-black fs-12">{{playerInfo.duck}}</span>
+                                            </li>
+                                            <li class="d-flex py-1 border-bottom justify-content-between px-2">
+                                                <span class="text-black fs-12">Wickets</span>
+                                                <span class="text-black fs-12">{{playerInfo.wickets}}</span>
+                                            </li>
+                                            <li class="d-flex py-1 border-bottom justify-content-between px-2">
+                                                <span class="text-black fs-12">LBW/Bowled Bonus</span>
+                                                <span class="text-black fs-12">{{playerInfo.wicketbonuspoint}}</span>
+                                            </li>
+                                            <li class="d-flex py-1 border-bottom justify-content-between px-2">
+                                                <span class="text-black fs-12">Maiden Overs</span>
+                                                <span class="text-black fs-12">{{playerInfo.maidens}}</span>
+                                            </li>
+                                            <li class="d-flex py-1 border-bottom justify-content-between px-2">
+                                                <span class="text-black fs-12">Economy Rate</span>
+                                                <span class="text-black fs-12">{{playerInfo.economy_rate}}</span>
+                                            </li>
+                                            <li class="d-flex py-1 border-bottom justify-content-between px-2">
+                                                <span class="text-black fs-12">Catch</span>
+                                                <span class="text-black fs-12">{{playerInfo.catchpoints}}</span>
+                                            </li>
+                                            <li class="d-flex py-1 border-bottom justify-content-between px-2">
+                                                <span class="text-black fs-12">Stumping/Runout</span>
+                                                <span class="text-black fs-12">{{playerInfo.stumping + playerInfo.thrower}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <footer class="col-12 footer bottomBar d-flex align-items-center">
+            <div class="row mx-0 align-items-center innerBar w-100">
+                <div class="col px-0 bottombarTabs text-center"><a href="home.html" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/Home_Blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Home</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a href="myMatches.html" class="linkTab active text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/My_Matches_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">My Matches</span></a></div>
+                 <div class="col px-0 bottombarTabs text-center"><a href="profile.html" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/Profile_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Profile</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a href="otherMenu.html" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/More_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">More</span></a></div>
+            </div>
+        </footer> -->
+    </div>
+</main>

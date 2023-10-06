@@ -1,0 +1,15 @@
+@import "../../../../variables";
+
+.moreMain {
+    & ul {
+        & li {
+            & .links {
+                text-decoration: none;
+                & .icon{
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+}

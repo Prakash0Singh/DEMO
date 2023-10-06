@@ -1,0 +1,39 @@
+
+@import "../../../../variables";
+
+.mainCenterPart {
+    & .transectionCard {
+        & .card-body {
+            & .additionImag {
+                width: 18px;
+                height: 18px;
+                // border: 2px solid darken($success, 15);
+                border: 2px solid $success;
+                &.nagetiveImg {
+                    width: 18px;
+                    height: 18px;
+                    border: 2px solid $danger;
+                    // border-color: $danger;
+                }
+            }
+            & .transactionBonus {
+                font-size: 12px;
+            }
+            & .transactionId {
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+.main{
+    background-color: $gray-200;
+
+}
+.neg{
+    width: 18px;
+    height: 18px;
+    // border: 2px solid darken($success, 15);
+    border: 2px solid $danger;
+    // border: 2px solid $danger;
+}

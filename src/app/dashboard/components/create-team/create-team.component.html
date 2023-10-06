@@ -1,0 +1,585 @@
+<main class="container-fluid">
+    <div class="row mainInner">
+        <nav class="col-12 header d-flex align-items-center px-0">
+            <div class="row mx-0 innerheader align-items-center w-100">
+                <div class="col-auto notification">
+                    <a (click)="onBack()" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/leftCricleArrow.png" class="w-100" alt="bell"></a>
+                </div>
+                <div class="col">
+                    <div class="title text-white text-center">{{match.seriesname}}</div>
+                    <div class="matchTime text-center text-white fw-semibold "><cd-timer *ngIf="finalDate>0" [countdown]="true" [startTime]="finalDate" [format]="'user'">[days]d : [hours]h : [minutes]m : [seconds]s</cd-timer></div>
+                </div>
+                <div class="col-auto notification">
+                    <a [routerLink]="'/dashboard/wallet'" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/wallet_white_color.png" class="w-100" alt="bell"></a>
+                </div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill" data-page-name="createYourTeam" data-scrollbar>
+            <div class="row mx-0 h-100 flex-column flex-nowrap mainInner position-relative">
+                <div class="col-12 px-0 cricketheader bg-white z-2">
+                    <div class="card border-0 matchesCard overflow-hidden border-top bg-white rounded-0">
+                        <div class="card-body p-0">
+                            <!-- <div class="teamHeadline align-items-center">
+                                <div class="fw-semibold matchteams text-mutedb py-1 px-2 border-bottom borderlight ">Scorecard</div>
+                            </div> -->
+                            <div class="innerBody firstMatchBody pb-0 px-0">
+                                <div class="row align-items-center mx-0">
+                                    <div class="col-12 px-0 border-bottom pb-2">
+                                        <div class="row mx-0">
+                                            <div class="col-12 text-center text-white fs-10 py-2">Max 7 players from a team</div>
+                                            <div class="col-12 d-flex justify-content-between fs-12 fw-bold text-white"><span>{{match.teamfullname1}}</span><span>{{match.teamfullname2}}</span></div>
+                                            <div class="col-auto mt-2 leftSideTeams px-2 d-flex align-items-center">
+                                                <div class="team d-flex align-items-center justify-content-end">
+                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center">
+                                                        <span class="position-absolute teamCountryLogo" [style.backgroundColor]="match.team1color"></span>
+                                                        <img src={{match.team1logo}} class="w-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="text-white fs-12 fw-bold ms-3">{{match.team1name}}</div>
+                                            </div>
+                                            <div class="col d-flex align-items-center gap-3 px-0 justify-content-center">
+                                                <div class="players bg-white d-flex align-items-center justify-content-center rounded-circle p-1 fs-12 fw-bold">{{team1_player.length}}</div>
+                                                <div class="fs-12 text-white fw-bold text-center">
+                                                    <span class="d-block">Credits Left</span>
+                                                    <span class="d-block">{{creditLimit}}</span>
+                                                </div>
+                                                <div class="players bg-white d-flex align-items-center justify-content-center rounded-circle p-1 fs-12 fw-bold">{{team2_player.length}}</div>
+                                            </div>
+                                            <div class="col-auto mt-2 rightSideTeams px-2 d-flex align-items-center">
+                                                <div class="text-white fs-12 fw-bold me-3">{{match.team2name}}</div>
+                                                <div class="team d-flex align-items-center">
+                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center">
+                                                        <span class="position-absolute teamCountryLogo" [style.backgroundColor]="match.team2color"></span>
+                                                        <img src={{match.team2logo}} class="w-100" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 py-2 playerCounter text-center">
+                                        <ul class="list-unstyled p-0 m-0 d-flex align-items-center gap-1 justify-content-center">
+                                            <li class="rounded-circle border border-white text-white d-flex align-items-center justify-content-center" [ngClass]="{'selected' : d.Select}" *ngFor="let d of progressBar;let i=index">{{i+1}}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-12 px-0 cricketheader bg-white z-1">
+                                        <ul class="nav row mx-0 nav-pills navtab " id="pills-tab" role="tablist">
+                                            <li class="nav-item col px-0" role="presentation">
+                                                <button class="nav-link py-3 rounded-0 text-black w-100 border-0 active" id="wicketKiper-tab" data-bs-toggle="pill" data-bs-target="#wicketKiper" type="button" role="tab" aria-controls="wicketKiper" aria-selected="true">
+                                                    <span class="gamesheading pt1 d-flex justify-content-center">WK({{wk.length}})</span>
+                                                </button>
+                                            </li>
+                                            <li class="nav-item col px-0" role="presentation">
+                                                <button class="nav-link py-3 rounded-0 text-black w-100 border-0" id="batsMan-tab" data-bs-toggle="pill" data-bs-target="#batsMan" type="button" role="tab" aria-controls="batsMan" aria-selected="false">
+                                                    <span class="gamesheading pt1 d-flex justify-content-center">BAT({{bat.length}})</span>
+                                                </button>
+                                            </li>
+                                            <li class="nav-item col px-0" role="presentation">
+                                                <button class="nav-link py-3 rounded-0 text-black w-100 border-0" id="allRounder-tab" data-bs-toggle="pill" data-bs-target="#allRounder" type="button" role="tab" aria-controls="allRounder" aria-selected="false">
+                                                    <span class="gamesheading pt1 d-flex justify-content-center">AR({{ar.length}})</span>
+                                                </button>
+                                            </li>
+                                            <li class="nav-item col px-0" role="presentation">
+                                                <button class="nav-link py-3 rounded-0 text-black w-100 border-0" id="bowling-tab" data-bs-toggle="pill" data-bs-target="#bowling" type="button" role="tab" aria-controls="bowling" aria-selected="false">
+                                                    <span class="gamesheading pt1 d-flex justify-content-center">BOWl({{bow.length}})</span>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 flex-fill h-100 overflow-hidden-auto mb-5">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="tab-content tabContents h-100" id="pills-tabContent">
+                                <div class="tab-pane fade h-100 show active" id="wicketKiper" role="tabpanel" aria-labelledby="wicketKiper-tab" tabindex="0">
+                                    <div class="row h-100">
+                                        <div class="col-12 px-0">
+                                            <div class="playersOuter">
+                                                <div class="row mx-0">
+                                                    <div class="col-12 px-0">
+                                                        <div class="row mx-0 sticky-top">
+                                                            <div class="fs-12 py-1 text-white bg-secondary">Pick 1-4 Wicket-Keepers</div>
+                                                            <div class="row mx-0 py-2 one-edge-shadow bg-white">
+                                                                <div class="col">
+                                                                    <div class="fs-12 text-black">Player</div>
+                                                                </div>
+                                                                <div class="col-3">
+                                                                    <div class="fs-12 text-black text-end cursor" (click)="sortoptions('points','keeper')">Points <img class="sortImg" *ngIf="imgPoint1" [src]="imgType == false?'assets/svg/icons/down-arrow.png':'assets/svg/icons/upArrow.png'" alt=""></div>
+                                                                </div>
+                                                                <div class="col-3">
+                                                                    <div class="fs-12 text-black text-end cursor" (click)="sortoptions('credits','keeper')">Credits <img class="sortImg" *ngIf="imgcredit1" [src]="imgType2 == false?'assets/svg/icons/down-arrow.png':'assets/svg/icons/upArrow.png'" alt=""></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mx-0" *ngFor="let d of keeper" (click)="onPlayer(d.players_key)" [ngStyle]="{'background-color' : d.isSelected ? '#C4FFDC' : '#F8F9FA'}" [ngClass]="{'disable' : d.disable}">
+                                                            <div class="col-12 player">
+                                                                <!-- <input class="form-check-input position-absolute" type="checkbox" value="" id="wkPlayer1" hidden> -->
+                                                                <label class="row pt-2 border-bottom" for="wkPlayer1">
+                                                                    <div class="col">
+                                                                        <div class="teamDetail d-flex align-items-end gap-2 position-relative">
+                                                                            <div class="imgOuter overflow-hidden" (click)="playerInfo(d.playerid)" data-bs-toggle="modal" data-bs-target="#playerInfo" onclick="event.stopPropagation()">
+                                                                                <img class="w-100 h-100" src={{d.image}} alt="">
+                                                                            </div>
+                                                                            <div class="teamName position-absolute fs-10 bg-dark px-2 rounded-pill text-white" *ngIf="d.team == 'team1'">{{d.team_short_name}}</div>
+                                                                            <div class="teamName position-absolute fs-10 bg-light px-2 rounded-pill" *ngIf="d.team == 'team2'">{{d.team_short_name}}</div>
+                                                                            <div class="pb-1">
+                                                                                <div class="teamName text-black fs-12 fw-bold">{{d.name}}</div>
+                                                                                <div class="teamName text-black fs-10">Sel by: {{d.player_selection_percentage}}%</div>
+                                                                                <!-- <div class="playingStatus play fs-10 d-flex align-items-center" *ngIf="d.playingstatus==1"><span class="p-1 rounded-circle me-1"></span>Playing</div>
+                                                                                <div class="playingStatus play fs-10 d-flex align-items-center" *ngIf="d.playingstatus==-1"><span class="p-1 rounded-circle me-1"></span>In Last playing</div>
+                                                                                <div class="playingStatus play fs-10 d-flex align-items-center" *ngIf="d.playingstatus==0"><span class="p-1 rounded-circle me-1"></span>Not Playing</div> -->
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-2 justify-content-center align-items-center d-flex">
+                                                                        <div class="myRank fs-12">
+                                                                            {{d.totalpoints}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-3 align-items-center d-flex justify-content-end">
+                                                                        <div class="d-flex align-items-center justify-content-end gap-2">
+                                                                            <div class="winningAmount fs-12">{{d.credit}}</div>
+                                                                            <div class="select">
+                                                                                <span class="d-flex align-items-center justify-content-center rounded-circle" *ngIf="d.isSelected == false">+</span>
+                                                                                <span class="d-flex align-items-center justify-content-center rounded-circle" [ngClass]="'red'" *ngIf="d.isSelected == true">-</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade h-100" id="batsMan" role="tabpanel" aria-labelledby="batsMan-tab" tabindex="0">
+                                    <div class="row h-100">
+                                        <div class="col-12 px-0">
+                                            <div class="playersOuter">
+                                                <div class="row mx-0">
+                                                    <div class="col-12 px-0">
+                                                        <div class="row mx-0 sticky-top">
+                                                            <div class="fs-12 bg-secondary py-1  text-white">Pick 3-6 Batsmen</div>
+                                                            <div class="row mx-0 py-2 one-edge-shadow bg-white">
+                                                                <div class="col">
+                                                                    <div class="fs-12 text-black">Player</div>
+                                                                </div>
+                                                                <div class="col-3">
+                                                                    <div class="fs-12 text-black text-end cursor" (click)="sortoptions('points','bats')">Points <img class="sortImg" *ngIf="imgPoint2" [src]="imgType == false?'assets/svg/icons/down-arrow.png':'assets/svg/icons/upArrow.png'" alt=""></div>
+                                                                </div>
+                                                                <div class="col-3">
+                                                                    <div class="fs-12 text-black text-end cursor" (click)="sortoptions('credits','bats')">Credits <img class="sortImg" *ngIf="imgcredit2" [src]="imgType2 == false?'assets/svg/icons/down-arrow.png':'assets/svg/icons/upArrow.png'" alt=""></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mx-0" *ngFor="let d of bats" (click)="onPlayer(d.players_key)" [ngStyle]="{'background-color' : d.isSelected ? '#C4FFDC' : '#F8F9FA'}" [ngClass]="{'disable' : d.disable}">
+                                                            <div class="col-12 player">
+                                                                <!-- <input class="form-check-input position-absolute" type="checkbox" value="" id="batPlayer1" hidden> -->
+                                                                <label class="row pt-2 border-bottom" for="batPlayer1">
+                                                                    <div class="col">
+                                                                        <div class="teamDetail d-flex align-items-end gap-2 position-relative">
+                                                                            <div class="imgOuter overflow-hidden" (click)="playerInfo(d.playerid)" data-bs-toggle="modal" data-bs-target="#playerInfo" onclick="event.stopPropagation()">
+                                                                                <img class="w-100 h-100" src={{d.image}} alt="">
+                                                                            </div>
+                                                                            <div class="teamName position-absolute fs-10 bg-dark px-2 rounded-pill text-white" *ngIf="d.team == 'team1'">{{d.team_short_name}}</div>
+                                                                            <div class="teamName position-absolute fs-10 bg-light px-2 rounded-pill" *ngIf="d.team == 'team2'">{{d.team_short_name}}</div>
+                                                                            <div class="pb-1">
+                                                                                <div class="teamName text-black fs-12 fw-bold">{{d.name}}</div>
+                                                                                <div class="teamName text-black fs-10">Sel by: {{d.player_selection_percentage}}%</div>
+                                                                                <!-- <div class="playingStatus play fs-10 d-flex align-items-center" *ngIf="d.playingstatus==1"><span class="p-1 rounded-circle me-1"></span>Playing</div> -->
+                                                                                <!-- <div class="playingStatus play fs-10 d-flex align-items-center" *ngIf="d.playingstatus==-1"><span class="p-1 rounded-circle me-1"></span>In Last playing</div> -->
+                                                                                <!-- <div class="playingStatus play fs-10 d-flex align-items-center" *ngIf="d.playingstatus==0"><span class="p-1 rounded-circle me-1"></span>Not Playing</div>  -->
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-2 justify-content-center align-items-center d-flex">
+                                                                        <div class="myRank fs-12">
+                                                                            {{d.totalpoints}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-3 align-items-center d-flex justify-content-end">
+                                                                        <div class="d-flex align-items-center justify-content-end gap-2">
+                                                                            <div class="winningAmount fs-12">{{d.credit}}</div>
+                                                                            <div class="select">
+                                                                                <span class="d-flex align-items-center justify-content-center rounded-circle" *ngIf="d.isSelected == false">+</span>
+                                                                                <span class="d-flex align-items-center justify-content-center rounded-circle" [ngClass]="'red'" *ngIf="d.isSelected == true">-</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade h-100" id="allRounder" role="tabpanel" aria-labelledby="allRounder-tab" tabindex="0">
+                                    <div class="row h-100">
+                                        <div class="col-12 px-0">
+                                            <div class="playersOuter">
+                                                <div class="row mx-0">
+                                                    <div class="col-12 px-0">
+                                                        <div class="row mx-0 sticky-top">
+                                                            <div class="fs-12 bg-secondary py-1 text-white">Pick 1-4 All-Rounders</div>
+                                                            <div class="row mx-0 py-2 one-edge-shadow bg-white">
+                                                                <div class="col">
+                                                                    <div class="fs-12 text-black">Player</div>
+                                                                </div>
+                                                                <div class="col-3">
+                                                                    <div class="fs-12 text-black text-end cursor" (click)="sortoptions('points','allRound')">Points <img class="sortImg" *ngIf="imgPoint3" [src]="imgType == false?'assets/svg/icons/down-arrow.png':'assets/svg/icons/upArrow.png'" alt=""></div>
+                                                                </div>
+                                                                <div class="col-3">
+                                                                    <div class="fs-12 text-black text-end cursor" (click)="sortoptions('credits','allRound')">Credits <img class="sortImg" *ngIf="imgcredit3" [src]="imgType2 == false?'assets/svg/icons/down-arrow.png':'assets/svg/icons/upArrow.png'" alt=""></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mx-0" *ngFor="let d of allRound" (click)="onPlayer(d.players_key)" [ngStyle]="{'background-color' : d.isSelected ? '#C4FFDC' : '#F8F9FA'}" [ngClass]="{'disable' : d.disable}">
+                                                            <div class="col-12 player" >
+                                                                <!-- <input class="form-check-input position-absolute" type="checkbox" value="" id="allPlayer1" hidden> -->
+                                                                <label class="row pt-2 border-bottom" for="allPlayer1">
+                                                                    <div class="col">
+                                                                        <div class="teamDetail d-flex align-items-end gap-2 position-relative">
+                                                                            <div class="imgOuter overflow-hidden" (click)="playerInfo(d.playerid)" data-bs-toggle="modal" data-bs-target="#playerInfo" onclick="event.stopPropagation()">
+                                                                                <img class="w-100 h-100" src={{d.image}} alt="">
+                                                                            </div>
+                                                                            <div class="teamName position-absolute fs-10 bg-dark px-2 rounded-pill text-white" *ngIf="d.team == 'team1'">{{d.team_short_name}}</div>
+                                                                            <div class="teamName position-absolute fs-10 bg-light px-2 rounded-pill" *ngIf="d.team == 'team2'">{{d.team_short_name}}</div>
+                                                                            <div class="pb-1">
+                                                                                <div class="teamName text-black fs-12 fw-bold">{{d.name}}</div>
+                                                                                <div class="teamName text-black fs-10">Sel by: {{d.player_selection_percentage}}%</div>
+                                                                                <!-- <div class="playingStatus play fs-10 d-flex align-items-center" *ngIf="d.playingstatus==1"><span class="p-1 rounded-circle me-1"></span>Playing</div>
+                                                                                <div class="playingStatus play fs-10 d-flex align-items-center" *ngIf="d.playingstatus==-1"><span class="p-1 rounded-circle me-1"></span>In Last playing</div>
+                                                                                <div class="playingStatus play fs-10 d-flex align-items-center" *ngIf="d.playingstatus==0"><span class="p-1 rounded-circle me-1"></span>Not Playing</div>   -->
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-2 justify-content-center align-items-center d-flex">
+                                                                        <div class="myRank fs-12">
+                                                                            {{d.totalpoints}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-3 align-items-center d-flex justify-content-end">
+                                                                        <div class="d-flex align-items-center justify-content-end gap-2">
+                                                                            <div class="winningAmount fs-12">{{d.credit}}</div>
+                                                                            <div class="select">
+                                                                                <span class="d-flex align-items-center justify-content-center rounded-circle" *ngIf="d.isSelected == false">+</span>
+                                                                                <span class="d-flex align-items-center justify-content-center rounded-circle" [ngClass]="'red'" *ngIf="d.isSelected == true">-</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade h-100" id="bowling" role="tabpanel" aria-labelledby="bowling-tab" tabindex="0">
+                                    <div class="row h-100">
+                                        <div class="col-12 px-0">
+                                            <div class="playersOuter">
+                                                <div class="row mx-0">
+                                                    <div class="col-12 px-0">
+                                                        <div class="row mx-0 sticky-top">
+                                                            <div class="fs-12 bg-secondary py-1 text-white">Pick 3-6 Bowlers</div>
+                                                            <div class="row mx-0 py-2 one-edge-shadow  bg-white">
+                                                                <div class="col">
+                                                                    <div class="fs-12 text-black">Player</div>
+                                                                </div>
+                                                                <div class="col-3">
+                                                                    <div class="fs-12 text-black text-end cursor" (click)="sortoptions('points','bowler')">Points <img class="sortImg" *ngIf="imgPoint4" [src]="imgType == false?'assets/svg/icons/down-arrow.png':'assets/svg/icons/upArrow.png'" alt=""></div>
+                                                                </div>
+                                                                <div class="col-3">
+                                                                    <div class="fs-12 text-black text-end cursor" (click)="sortoptions('credits','bowler')">Credits <img class="sortImg" *ngIf="imgcredit4" [src]="imgType2 == false?'assets/svg/icons/down-arrow.png':'assets/svg/icons/upArrow.png'" alt=""></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mx-0" *ngFor="let d of bowler" (click)="onPlayer(d.players_key)" [ngStyle]="{'background-color' : d.isSelected ? '#C4FFDC' : '#F8F9FA'}" [ngClass]="{'disable' : d.disable}">
+                                                            <div class="col-12 player">
+                                                                <!-- <input class="form-check-input position-absolute" type="checkbox" value="" id="bowlPlayer1" hidden> -->
+                                                                <label class="row pt-2 border-bottom" for="bowlPlayer1">
+                                                                    <div class="col">
+                                                                        <div class="teamDetail d-flex align-items-end gap-2 position-relative">
+                                                                            <div class="imgOuter overflow-hidden" (click)="playerInfo(d.playerid)" data-bs-toggle="modal" data-bs-target="#playerInfo" onclick="event.stopPropagation()">
+                                                                                <img class="w-100 h-100" src={{d.image}} alt="">
+                                                                            </div>
+                                                                            <div class="teamName position-absolute fs-10 bg-dark px-2 rounded-pill text-white" *ngIf="d.team == 'team1'">{{d.team_short_name}}</div>
+                                                                            <div class="teamName position-absolute fs-10 bg-light px-2 rounded-pill" *ngIf="d.team == 'team2'">{{d.team_short_name}}</div>
+                                                                            <div class="pb-1">
+                                                                                <div class="teamName text-black fs-12 fw-bold">{{d.name}}</div>
+                                                                                <div class="teamName text-black fs-10">Sel by: {{d.player_selection_percentage}}%</div>
+                                                                                <!-- <div class="playingStatus play fs-10 d-flex align-items-center" *ngIf="d.playingstatus==1"><span class="p-1 rounded-circle me-1"></span>Playing</div>
+                                                                                <div class="playingStatus play fs-10 d-flex align-items-center" *ngIf="d.playingstatus==-1"><span class="p-1 rounded-circle me-1"></span>In Last playing</div>
+                                                                                <div class="playingStatus play fs-10 d-flex align-items-center" *ngIf="d.playingstatus==0"><span class="p-1 rounded-circle me-1"></span>Not Playing</div> -->
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-2 justify-content-center align-items-center d-flex">
+                                                                        <div class="myRank fs-12">
+                                                                            {{d.totalpoints}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-3 align-items-center d-flex justify-content-end">
+                                                                        <div class="d-flex align-items-center justify-content-end gap-2">
+                                                                            <div class="winningAmount fs-12">{{d.credit}}</div>
+                                                                            <div class="select">
+                                                                                <span class="d-flex align-items-center justify-content-center rounded-circle" *ngIf="d.isSelected == false">+</span>
+                                                                                <span class="d-flex align-items-center justify-content-center rounded-circle" [ngClass]="'red'" *ngIf="d.isSelected == true">-</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 bg-transprient d-flex justify-content-around align-items-center bg-transparent text-center position-fixed bottomFixedBtn">
+                    <!-- <a href="teamView.html" class="createBtn createTeam rounded-3 fw-semibold bg-white text-decoration-none">Team Preview</a> -->
+                    <a role="button" class="createBtn createTeam rounded-3 fw-semibold bg-white text-decoration-none" data-bs-toggle="modal" data-bs-target="#selectedPlayerView">Team Preview</a>
+                    <button class="createBtn createTeam rounded-3 fw-semibold bg-white text-decoration-none" [ngClass]="{'continueFill': total_players.length==11 }"  [disabled]="total_players.length<11"  (click)="continueBtn()">Continue</button>
+                </div>
+            </div>
+        </div>
+          <!-- Modal -->
+          <div class="modal fade selectedPlayer p-0" id="selectedPlayerView" tabindex="-1" aria-labelledby="selectedPlayerViewLabel" aria-hidden="true">
+            <div class="modal-dialog h-100 m-0">
+            <div class="modal-content border-0 h-100">
+                <div class="modal-body p-0">
+                    <div class="row h-100 mainCenterPart mx-0">
+                        <div class="col-12 bgImg">
+                            <div class="row">
+                                <div class="col-12 d-flex align-items-center justify-content-between py-2 bg-dark bg-opacity-25">
+                                    <h1 class="modal-title fs-12 text-white" id="selectedPlayerViewLabel">{{userInfo.team}}</h1>
+                                    <div class="logo text-center">
+                                        <img src="assets/svg/img/img_logo.jpeg" alt="" height="30" width="30">
+                                    </div>
+                                    <button type="button" class="btn-close fs-12 text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row p-4 justify-content-around">
+                                        <div class="col-12">
+                                            <div class="fs-12 text-white text-center mb-2 mt-3">Wicket-Keeper</div>
+                                        </div>
+                                        <div class="col-auto" *ngFor="let d of wk"  (click)="playerInfo(d.playerid)">
+                                            <div class="plyerOuter position-relative text-center">
+                                                <div class="img mx-auto" >
+                                                    <img class="w-100" src={{d.image}} alt="">
+                                                </div>
+                                                <div class="player fs-12"><span class="name rounded-1 d-block"  [ngClass]="d.team == 'team1'?'bg-dark text-white':'bg-light text-black'">{{d.name}}</span><span class="text-white">{{d.credit}}Cr</span></div>
+                                                <!-- <a href="javascript:;" class="stretched-link"></a> -->
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row p-4 justify-content-around">
+                                        <div class="col-12">
+                                            <div class="fs-12 text-white text-center mb-2">Batsmen</div>
+                                        </div>
+                                        <div class="col-auto" *ngFor="let d of bat"  (click)="playerInfo(d.playerid)">
+                                            <div class="plyerOuter position-relative text-center">
+                                                <div class="img mx-auto">
+                                                    <img class="w-100" src={{d.image}} alt="">
+                                                </div>
+                                                <div class="player fs-12"><span class="name rounded-1 d-block"  [ngClass]="d.team == 'team1'?'bg-dark text-white':'bg-light text-black'">{{d.name}}</span><span class="text-white">{{d.credit}}Cr</span></div>
+                                                <!-- <a href="javascript:;" class="stretched-link"></a> -->
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row p-4 justify-content-around">
+                                        <div class="col-12">
+                                            <div class="fs-12 text-white text-center mb-2">All-Rounders</div>
+                                        </div>
+                                        <div class="col-auto" *ngFor="let d of ar"  (click)="playerInfo(d.playerid)">
+                                            <div class="plyerOuter position-relative text-center">
+                                                <div class="img mx-auto">
+                                                    <img class="w-100" src={{d.image}} alt="">
+                                                </div>
+                                                <div class="player fs-12"><span class="name rounded-1 d-block"  [ngClass]="d.team == 'team1'?'bg-dark text-white':'bg-light text-black'">{{d.name}}</span><span class="text-white">{{d.credit}}Cr</span></div>
+                                                <!-- <a href="javascript:;" class="stretched-link"></a> -->
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row p-4 justify-content-between">
+                                        <div class="col-12">
+                                            <div class="fs-12 text-white text-center mb-2">Bowlers</div>
+                                        </div>
+                                        <div class="col-auto" *ngFor="let d of bow"  (click)="playerInfo(d.playerid)">
+                                            <div class="plyerOuter position-relative text-center">
+                                                <div class="img mx-auto">
+                                                    <img class="w-100" src={{d.image}} alt="">
+                                                </div>
+                                                <div class="player fs-12"><span class="name rounded-1 d-block"  [ngClass]="d.team == 'team1'?'bg-dark text-white':'bg-light text-black'">{{d.name}}</span><span class="text-white">{{d.credit}}Cr</span></div>
+                                                <!-- <a href="javascript:;" class="stretched-link"></a> -->
+                                            </div>
+                                        </div>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+                </div> -->
+            </div>
+            </div>
+        </div>
+        <!-- <footer class="col-12 footer">footer</footer> -->
+
+        <!-- Player Info Modal -->
+        <div class="modal fade" id="playerInfo" role="dialog"  aria-labelledby="playerModal" aria-hidden="true">
+            <div class="modal-dialog modal-sm modal-dialog-scrollable modal-dialog-centered ">
+                <div class="modal-content border-0 ">
+                        <nav class="col-12 d-flex align-items-center px-0 bg-primary">
+                                <div class="row mx-0 align-items-center w-100">
+                                    <!-- <div class="col-auto notification"> -->
+                                        <!-- <button type="button" class="btn-close fs-12 text-white" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                                    <!-- </div> -->
+                                    <div class="col-10 text-center mt-1">
+                                        <div class="title text-white text-center ms-5">Player Info</div>
+                                        <!-- <div class="matchTime text-center text-white fw-semibold ">00h:50m:03s</div> -->
+                                    </div>
+                                    <div class="col-2 text-end text-white mt-1">
+                                        <!-- <div class="backBtn"></div> -->
+                                        <button type="button" class="btn-close fs-24 btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                </div>
+                            </nav>
+                    <div class="modal-body p-3">
+                        <div class="row mainInner">
+                            <!-- <nav class="col-12 header d-flex align-items-center px-0">
+                                <div class="row mx-0 innerheader align-items-center w-100">
+                                    <div class="col-auto notification">
+                                        <button type="button" class="btn-close fs-12 text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="col">
+                                        <div class="title text-white text-center">Player Info</div>
+                                        <div class="matchTime text-center text-white fw-semibold ">00h:50m:03s</div>
+                                    </div>
+                                    <div class="col-auto notification">
+                                        <div class="backBtn"></div>
+                                    </div>
+                                </div>
+                            </nav> -->
+                            <div class="col-12 px0 flex-fill h-100 overflow-y-auto" data-page-name="playerInformationTwoPage" data-scrollbar>
+                                <div class="row py3">
+                                    <div class="col-12 px-0">
+                                        <div class="card border-0 overflow-hidden rounded-0">
+                                            <div class="row h-100 mx-0">
+                                                <div class="col-12 pt2 px-0 pb-0 border-bottom border-1 border-dark">
+                                                <div class="row mx-0 align-items-center">
+                                                    <div class="col-7 d-flex justify-content-between align-items-center">
+                                                        <div class="imgouter mb-n3">
+                                                            <img src={{playerInfos.playerimage}} alt="error" class="w-100">
+                                                        </div>
+                                                        <div class="name fs-12 ps-3 pe-4"> <strong> {{playerInfos.playername}}</strong></div>
+                                                    </div>
+                                                    <div class="col-5 py-2">
+                                                        <div class="fs-12">Total Points: {{playerInfos.playerpoints}}</div>
+                                                        <div class="fs-12 mt-1">Credits: {{playerInfos.playercredit}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row py-2 border-bottom border-dark">
+                                                    <div class="col-6 border-end border-dark">
+                                                        <div class="fs-12 text-center text-uppercase">{{playerInfos.battingstyle ? playerInfos.battingstyle : 'BATS'}}</div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="fs-12 text-center text-uppercase">{{playerInfos.bowlingstyle ? playerInfos.bowlingstyle : 'BOWLS'}}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="row py-2 border-bottom border-dark">
+                                                    <div class="col-6 border-end border-dark">
+                                                        <div class="fs-12 text-center text-uppercase">{{playerInfos.playercountry ? playerInfos.playercountry : 'NATIONALITY'}}</div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="fs-12 text-center text-uppercase">{{playerInfos.playerdob ? playerInfos.playerdob : 'BIRTHDAY'}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row py-2 gap-3">
+                                                    <div class="col-12 heading text-center fs-14 fw-bold text-uppercase">Match Wise Fantasy Stats</div>
+                                                    <div class="col-12" *ngFor="let item of playerMatchesInfo">
+                                                        <div class="card shadow-sm">
+                                                            <div class="card-header p-2 py-1 border-0">
+                                                                <div class="fs-12">{{item.short_name}} &nbsp;&nbsp;{{item.matchdate}}</div>
+                                                            </div>
+                                                            <div class="card-body p-2"> 
+                                                                <div class="row">
+                                                                    <div class="col-auto">
+                                                                        <ul class="m-0 list-unstyled p-0 fs-12">
+                                                                            <li class="fw-bold">Player Type</li>
+                                                                            <li>{{playerInfos.playerrole}}</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="col text-center">
+                                                                        <ul class="m-0 list-unstyled p-0 fs-12">
+                                                                            <li class="fw-bold">Selection</li>
+                                                                            <li>{{item.selectper}}</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="col-auto text-end">
+                                                                        <ul class="m-0 list-unstyled p-0 fs-12">
+                                                                            <li class="fw-bold">Points</li>
+                                                                            <li>{{item.total_points}}</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <footer class="col-12 footer bottomBar d-flex align-items-center">
+                            <div class="row mx-0 align-items-center innerBar w-100">
+                                <div class="col px-0 bottombarTabs text-center"><a href="home.html" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/Home_Blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Home</span></a></div>
+                                <div class="col px-0 bottombarTabs text-center"><a href="myMatches.html" class="linkTab active text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/My_Matches_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">My Matches</span></a></div>
+                                 <div class="col px-0 bottombarTabs text-center"><a href="profile.html" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/Profile_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Profile</span></a></div>
+                                <div class="col px-0 bottombarTabs text-center"><a href="otherMenu.html" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/More_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">More</span></a></div>
+                            </div>
+                        </footer> -->
+                    </div>
+                </div>
+                <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+                </div> -->
+            </div>
+            </div>
+        </div>
+    </div>
+</main>

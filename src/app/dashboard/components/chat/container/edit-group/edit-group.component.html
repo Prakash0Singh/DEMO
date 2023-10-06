@@ -1,0 +1,79 @@
+ <main class="container-fluid editgroup">
+            <div class="row mainInner">
+                <nav class="col-12 header d-flex align-items-center px-0">
+                    <div class="row mx-0 innerheader align-items-center w-100">
+                        <div class="col-auto notification">
+                            <a (click)="api.onBack()" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/leftCricleArrow.png" class="w-100" alt="bell"></a>
+                            <!-- <a href="javascript:;" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/chatimages/closeIcon.svg" class="w-100" alt="close"></a> -->
+                        </div>
+                        <div class="col">
+                            <div class="title text-white text-center">Edit Group Info</div>
+                            <!-- <div class=""></div> -->
+                        </div>
+                        <div class="col-auto"><div class="backBtn"></div></div>
+                    </div>
+                </nav>
+                <div class="col-12 px-0 flex-fill" data-page-name="pointSystemPage" data-scrollbar>
+                    <div class="row mx-0 h-100 flex-column flex-nowrap pt-4">
+                        <form [formGroup]="editForm">
+                        <div class="col-12">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <div class="imgLabel position-relative mx-auto">
+                                        <div class="img w-100 h-100 rounded-circle overflow-hidden">
+                                            <!-- <img src={{userDetail.image}} alt="Profile"> -->
+                                            <!-- <img src="assets/svg/chat/contact.svg" alt="" class="w-100 h-100"> -->
+                                        <img [src]="image1 || 'assets/svg/chat/contact.svg'" class="h-100" alt="group image">
+
+                                        </div>
+                                        <label for="upload" class="form-label chooseLabel m-0 bg-black p-1 rounded-circle align-items-center d-flex justify-content-center position-absolute bottom-0 end-0">
+                                            <img class="w-100" src="assets/svg/icons/img_camera.png" alt="camera">
+                                        </label>
+                                        <!-- <input class="form-control" type="file" id="profileImg"  hidden=""> -->
+                                        <input type="file" id="upload" class="form-control shadow-none border-0 rounded-0 px-1 fw-semibold" formControlName="image" (change)="image($event)" hidden >
+
+                                    </div>
+                                </div>
+                                
+                                <div class="col">
+                                    <!-- <div class=""></div> -->
+                                    <div class="gropuName ">
+                                        <label for="groupName" class="groupnamelabel">Group Name</label>
+                                        <input #inputVal (input)="inputlength(inputVal.value)" maxlength="25" type="text" id="groupName" formControlName="groupName" class="form-control px-0 border-0 shadow-none groupnameInput" placeholder="Enter Group Name">
+                                    </div>
+                                <div class="optiontitle text-danger" *ngIf="fc.groupName.invalid && (fc.groupName.touched || fc.groupName.dirty) ">Name is required</div>
+
+                                    <div class="optiontitle text-end pt-1">
+                                        <span>{{maxInput}}</span>
+                                        <span>/</span>
+                                        <span>25</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 pt-5">
+                            <div>
+                                <!-- <label for="description"></label> -->
+                                <textarea #txt (input)="textlength(txt.value)" name="" id="" maxlength="256"  formControlName="description" class="form-control px-0 pb-0 bg-transparent rounded-0 shadow-none descriptionText" placeholder="Description"></textarea>
+                                <div class="optiontitle text-danger" *ngIf="fc.description.invalid && (fc.description.touched || fc.description.dirty) ">Description is required</div>
+                                <!-- <div class="d-flex align-items-center justify-content-between pt-1"> -->
+                                    <div class="optiontitle pt-1 text-end">
+                                        <span>{{textarea}}</span>
+                                        <span>/</span>
+                                        <span>256</span>
+                                    </div>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+                <footer class="col-12 footer bottomBar d-flex align-items-center">
+                    <div class="row mx-0 align-items-center innerBar w-100">
+                        <div class="col-12">
+                            <a (click)="creategroup()" class="addtoBtn bg-primary d-flex align-items-center justify-content-center rounded-1  btn border-0" style="color: white;" aria-disabled="true" >Save</a>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </main>

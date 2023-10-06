@@ -1,0 +1,70 @@
+@import "../../../../variables";
+
+
+         .depositForm {
+            & .labelHeading {
+                font-size: 14px;
+            }
+            & .form-control {
+                font-size: 14px;
+                border: 1.6px solid $theme2;
+                // padding: 0.7rem 0.5rem;
+            }
+        }
+         .addOffer {
+            background-color: lighten($theme1, 40);
+            & .dipositAmount,
+            & .diposituse {
+                font-size: 12px;
+            }
+            & .selecotr-item {
+                & .selector-item_radio {
+                    appearance: none;
+                    display: none;
+                }
+                & .selector-item_label {
+                    transition-duration: 0.5s;
+                    font-size: 12px;
+                    transform: none;
+                    cursor: pointer;
+                    background-color: lighten($success, 7);
+                }
+                // & .selector-item_radio:checked + .selector-item_label {
+                //     color: $white;
+                //     border-color: $theme1;
+                // }
+            }
+        }
+
+        .btnStyle1 {
+            background: linear-gradient(180deg, $theme1 30%, lighten($theme1, 20) 110%);
+          }
+          .loginGoogleBtn{
+            width: 32px;
+            height: 32px;
+          }
+          .backBtn {
+            width: 16px;
+            height: 16px;
+          }
+          .customFontBtn{
+            font-size: 12px;
+          }
+          .addCaseBtn {
+            font-size: 14px;
+            border: 1.6px solid $theme2;
+          }
+          .btnStyle2 {
+            background-color: $theme1;
+            transition: all ease-in-out 0.3s;
+            font-size: 14px;
+            &:hover{
+              background-color: rgba($theme1, 0.9) !important;
+            }
+          }
+          .btnSuccess {
+            background-color: lighten($success, 10);
+            border-radius: 8px;
+            padding: 4px 16px;
+            font-size: 14px;
+          }

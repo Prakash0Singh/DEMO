@@ -1,0 +1,60 @@
+<main class="container-fluid">
+    <div class="row mainInner">
+        <nav class="col-12 header d-flex align-items-center px-0">
+            <div class="row mx-0 innerheader align-items-center w-100">
+                <div class="col-auto notification">
+                    <a (click)="onBack()" style="cursor: pointer;" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/leftCricleArrow.png" class="w-100" alt="bell"></a>
+                </div>
+                <div class="col"><div class="title text-white text-center">Deposit Cash</div></div>
+                <div class="col-auto notification">
+                    <a [routerLink]="'/dashboard/wallet'" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/wallet_white_color.png" class="w-100" alt="bell"></a>
+                </div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill" data-page-name="depositCasePage" data-scrollbar>
+            <form action="" [formGroup]="addCash">
+                <div class="row mx-0 py-3 depositForm gap-4 border-bottom border-bottom-1 border-bottom-light">
+                    <div class="col-12">
+                        <label for="addcase" class="form-label labelHeading text-dark fw-bold">Add Cash</label>
+                        <input type="text" class="form-control shadow-none text-black fw-semibold py-2" id="addcase" (keypress)="keyPressNumbers($event)" formControlName="cash" placeholder="Enter Amount" [(ngModel)]="value">
+                        <div *ngIf="addCash.get('cash')?.touched && addCash.get('cash')?.errors?.['min']" class="otpverfication text-danger  mt-1 fw-bold">*minimum 100 </div>
+
+                    </div>
+                    <div class="col-12 px-0">
+                        <div class="row mx-0 align-items-center">
+                            <div class="col-auto fw-bold text-black labelHeading">Quick Add:</div>
+                            <div class="col-auto px-2"><button type="button" class="bg-white rounded-2 shadow-none addCaseBtn px-2 fw-semibold" (click)="onAdd(100)">+100</button></div>
+                            <div class="col-auto px-2"><button type="button" class="bg-white rounded-2 shadow-none addCaseBtn px-2 fw-semibold" (click)="onAdd(300)">+300</button></div>
+                            <div class="col-auto px-2"><button type="button" class="bg-white rounded-2 shadow-none addCaseBtn px-2 fw-semibold" (click)="onAdd(500)">+500</button></div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <input type="text" class="form-control shadow-none text-black fw-semibold py-2" id="promocode" placeholder="Apply Promo Code Here" formControlName="code">
+                    </div>
+                    <div class="col-12">
+                        <button type="button" class="btn btnStyle2 w-100 text--center py-2 text-uppercase fw-bold text-white" (click)="submitCash()">Add Cash</button>
+                    </div>
+                </div>
+                <div class="row mx-0 mt-4" *ngFor="let d of myOffers" style="cursor: pointer;" (click)="onCode(d)">
+                    <div class="col-12">
+                        <div class="row mx-0 border-0 rounded-2 shadow-none addOffer">
+                            <div class="col-9 p-0">
+                                <div class="h-100 p-2">
+                                    <div class="dipositAmount text-dark fw-semibold mb-3">{{d.title}}</div>
+                                    <div class="diposituse fw-semibold text-danger">Maximum Usage - {{d.user_time}} Times</div>
+                                </div>
+                            </div>
+                            <div class="col-3 p-0 rounded-2">
+                                <div class="form-check custom-check selecotr-item rounded-2 h-100 p-0 mb-0">
+                                    <!-- <input type="radio" id="radio1" name="selector" class="form-check-input selector-item_radio"> -->
+                                    <label for="radio1" class="selector-item_label text-center text-white fw-semibold d-flex flex-column justify-content-center rounded-2 w-100 h-100 p-3">Code <div class="">{{d.offer_code}}</div></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</main>

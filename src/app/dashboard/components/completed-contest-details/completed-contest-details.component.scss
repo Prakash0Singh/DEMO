@@ -1,0 +1,258 @@
+@import "../../../../variables";
+
+.cricketheader {
+    box-shadow: 0px 0px 6px rgba($black, 0.1) !important;
+    z-index: 1;
+    border-radius: 0;
+    & .navtab {
+        & .nav-item {
+            & .nav-link {
+                font-size: 12px;
+                font-weight: 600;
+                transition: all 0.3s;
+                & .gamesheading {
+                    line-height: 100%;
+                }
+                &.active{
+                    background: transparent;
+                    border-color:  $theme2;
+                    color: $theme2 !important;
+                }
+                &:hover{
+                    color: $theme2 !important;
+                }
+            }
+        }
+    }
+}
+.matchesCard {
+    box-shadow: 0px 0px 6px rgba($black, 0.08);
+    & .card-body {
+        & .teamHeadline {
+            & .matchteams, & .notificationOut {
+                font-size: 11px;
+            }
+            & .notificationOut {
+                color: lighten($info, 10);
+            }
+            & .lineupsImg {
+                width: 18px;
+            }
+        }
+        & .innerBody {
+            & .leftSideTeams {
+                & .teamLogo {
+                    &::before{
+                        left: -50%;
+                        transform: translate(0%, -50%);
+                        // background: rgba($warning, 0.3);
+                    }
+                }
+            }
+            & .rightSideTeams {
+                & .teamLogo {
+                    &::before{
+                        right: -50%;
+                        transform: translate(0%, -50%);
+                        // background: rgba($success, 0.3);
+                        
+                    }
+                }
+            }
+            & .numberOffContest{
+                font-size: 10px;
+                padding-top: 3px;
+                padding-bottom: 3px;
+                background-color: lighten($theme2, 48);
+            }
+            &.firstMatchBody {
+                & .leftSideTeams {
+                    & .teamLogo {
+                        &::before{
+                            background: rgba($warning, 0.3);
+                        }
+                    }
+                }
+                & .rightSideTeams {
+                    & .teamLogo {
+                        &::before{
+                            background: rgba($success, 0.3);
+                            
+                        }
+                    }
+                }
+            }
+            &.secondMatchBody {
+                & .leftSideTeams {
+                    & .teamLogo {
+                        &::before{
+                            background: rgba($success, 0.3);
+                        }
+                    }
+                }
+                & .rightSideTeams {
+                    & .teamLogo {
+                        &::before{
+                            background: rgba($info, 0.4);
+                        }
+                    }
+                }
+            }
+            &.threedMatchBody {
+                & .leftSideTeams {
+                    & .teamLogo {
+                        &::before{
+                            background: rgba($info, 0.4);
+                        }
+                    }
+                }
+                & .rightSideTeams {
+                    & .teamLogo {
+                        &::before{
+                            background: rgba($warning, 0.3);
+                        }
+                    }
+                }
+            }
+            & .firstTeamsName {
+                font-size: 12px;
+            }
+            & .team {
+                & .teamLogo {
+                    width: 40px;
+                    height: 40px;
+                    z-index: 0;
+                    &::before{
+                        content: "";
+                        height: 20px;
+                        width: 100%;
+                        position: absolute;
+                        top: 50%;
+                        z-index: -1;
+                    }
+                }
+                & .teamName {
+                    font-size: 10px;
+                }
+            }
+            & .matchTimer {
+                & .pichTime {
+                    font-size: 10px;
+                    color: $theme2;
+                }
+            }
+            & .imgOuter {
+                width: 20px;
+            }
+            & .progress{
+                height: 6px;
+                & .progress-bar {
+                    background-color: $theme1;
+                    border-radius: 0 50px 50px 0;
+                }
+            }
+            & .badges {
+                top: 0;
+                bottom: 0;
+                left: 8px;
+                margin: auto;
+                & .badge {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+}
+.chooseYourTeamMain {
+    & .card {
+        border-color: darken($info, 15) !important;
+        &.teams {
+            & .card-header {
+                & .buttons{
+                    & .viewTeam {
+                        width: 16px;
+                        height: 16px;
+                        // & img {
+                        // }
+                    }
+                }
+            }
+            & .card-body{
+                & .caption{
+                    background-color: darken($info, 15);
+                    border-radius: 0 4px 4px 0;
+                    padding: 2px 8px;
+                    width: 34px;
+                    &.vCaption {
+                        border-radius: 4px 0 0 4px;
+                    }
+                }
+                & .imgOuter {
+                    width: 46px;
+                    height: 46px;
+                }
+                & .teamDivide{
+                    border-color: darken($info, 15) !important;
+                }
+            }
+        }
+    }
+}
+
+table {
+    &.table {
+        & thead {
+            & tr {
+                & th {
+                    font-weight: normal;
+                    & .icon {
+                        width: 16px;
+                        height: 16px;
+                        & img {
+                            filter: invert(1);
+                        }
+                    }
+                }
+            }
+        }
+        & tbody {
+            vertical-align: baseline;
+            & tr {
+                & td {
+                    border: none;
+                }
+            }
+        }
+    }
+}
+.teamDetail {
+    & .imgOuter {
+        width: 32px;
+        height: 32px;
+        & img {
+            object-fit: cover;
+            object-position: center top;
+        }
+    }
+}
+.otherPart{
+    border-radius: 0 0 6px 6px;
+    margin-top: -1px;
+}
+.winStatus {
+    font-size: 12px;
+    border-radius: 0 0 6px 6px;
+    background-color: darken($info, 20);
+}
+.emptyState {
+    & .emptyStateOuter{
+        & .txt {
+            font-size: 12px;
+        }
+    }
+    & .imgOuter{
+        width: 120px;
+        margin: auto;
+    }
+}

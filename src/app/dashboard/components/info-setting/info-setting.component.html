@@ -1,0 +1,108 @@
+<main class="container-fluid">
+    <div class="row mainInner">
+        <nav class="col-12 header d-flex align-items-center px-0">
+            <div class="row mx-0 innerheader align-items-center w-100">
+                <div class="col-auto notification">
+                    <a [routerLink]="'/dashboard/home'" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/leftCricleArrow.png" class="w-100" alt="bell"></a>
+                </div>
+                <div class="col"><div class="title text-white text-center">My Info & Setting</div></div>
+                <div class="col-auto"><div class="backBtn"></div></div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 h-100 flex-fill" data-page-name="myInfoSettingPage" data-scrollbar>
+            <form action="" class="form border-0 row bgForm h-100 flex-column flex-nowrap" [formGroup]="update" (ngSubmit)="submit()">
+                <div class="col-12 h-100 flex-fill ">
+                    <div class="row mx-0 gap-3 mt-3">
+                        <div class="col-12">
+                            <div class="input-group position-relative">
+                                <input type="text" class="form-control shadow-none py-2" placeholder="Name"  aria-label="" aria-describedby="" formControlName="team" [readOnly]="userDetails.teamfreeze==1">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-group position-relative">
+                                <input type="email" class="form-control shadow-none py-2" placeholder="Email" aria-label="" aria-describedby="" formControlName="email" [readOnly]="userDetails.emailfreeze==1">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-group position-relative">
+                                <input type="tel" class="form-control shadow-none py-2" placeholder="Number" aria-label="" aria-describedby="" formControlName="mobile" [readOnly]="userDetails.mobilefreeze==1">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-group position-relative">
+                                <input type="tel" class="form-control shadow-none py-2" placeholder="Pin Code" aria-label="" aria-describedby=""  formControlName="pincode">
+                            </div>
+                        </div>
+                        <div class="col-12 px0">
+                            <div class="row mx-0">
+                                <div class="col-12 px-0"><label for="" class="w-100 selectlabel fw-semibold">Gender</label></div>
+                                <div class="col-6 form-check">
+                                    <input class="form-check-input shadow-none" type="radio" name="gender" id="flexRadioDefault1" formControlName="gender" value="Male">Male
+                                    <!-- <label class="form-check-label selectlabel" for="flexRadioDefault1" value="Male">Male</label> -->
+                                </div>
+                                <div class="col-6 form-check">
+                                    <input class="form-check-input shadow-none" type="radio" name="gender" id="flexRadioDefault2" formControlName="gender" value="Female">Female
+                                    <!-- <label class="form-check-label selectlabel" for="flexRadioDefault2" value="Female">Female</label> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-group position-relative">
+                                <input type="date" class="form-control shadow-none py-2" [max]="maxDate" aria-label="" aria-describedby="" (keydown)="onKey($event)"  formControlName="dob" [readOnly]="userDetails.dobfreeze==1">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-group position-relative">
+                                <label for="" class="w-100 selectlabel fw-semibold">State</label>
+                                <select class="form-select shadow-none py-2" aria-label="Default select example" formControlName="state">
+                                    <option disabled selected>Select State</option>
+                                    <option _ngcontent-c11="" value="PONDICHERRY">PONDICHERRY</option>
+                                    <option _ngcontent-c11="" value="BIHAR">BIHAR</option>
+                                    <option _ngcontent-c11="" value="CHHATTISGARH">CHHATTISGARH</option>
+                                    <option _ngcontent-c11="" value="DELHI">DELHI</option>
+                                    <option _ngcontent-c11="" value="GUJARAT">GUJARAT</option>
+                                    <option _ngcontent-c11="" value="DAMAN &amp; DIU">DAMAN &amp; DIU</option>
+                                    <option _ngcontent-c11="" value="DADRA &amp; NAGAR HAVELI">DADRA &amp; NAGAR HAVELI</option>
+                                    <option _ngcontent-c11="" value="HARYANA">HARYANA</option>
+                                    <option _ngcontent-c11="" value="HIMACHAL PRADESH">HIMACHAL PRADESH</option>
+                                    <option _ngcontent-c11="" value="JAMMU &amp; KASHMIR">JAMMU &amp; KASHMIR</option>
+                                    <option _ngcontent-c11="" value="JHARKHAND">JHARKHAND</option>
+                                    <option _ngcontent-c11="" value="KARNATAKA">KARNATAKA</option>
+                                    <option _ngcontent-c11="" value="KERALA">KERALA</option>
+                                    <option _ngcontent-c11="" value="LAKSHADWEEP">LAKSHADWEEP</option>
+                                    <option _ngcontent-c11="" value="MADHYA PRADESH">MADHYA PRADESH</option>
+                                    <option _ngcontent-c11="" value="MAHARASHTRA">MAHARASHTRA</option>
+                                    <option _ngcontent-c11="" value="GOA">GOA</option>
+                                    <option _ngcontent-c11="" value="MANIPUR">MANIPUR</option>
+                                    <option _ngcontent-c11="" value="MIZORAM">MIZORAM</option>
+                                    <option _ngcontent-c11="" value="TRIPURA">TRIPURA</option>
+                                    <option _ngcontent-c11="" value="ARUNACHAL PRADESH">ARUNACHAL PRADESH</option>
+                                    <option _ngcontent-c11="" value="MEGHALAYA">MEGHALAYA</option>
+                                    <option _ngcontent-c11="" value="PUNJAB">PUNJAB</option>
+                                    <option _ngcontent-c11="" value="CHANDIGARH">CHANDIGARH</option>
+                                    <option _ngcontent-c11="" value="RAJASTHAN">RAJASTHAN</option>
+                                    <option _ngcontent-c11="" value="TAMIL NADU">TAMIL NADU</option>
+                                    <option _ngcontent-c11="" value="UTTAR PRADESH">UTTAR PRADESH</option>
+                                    <option _ngcontent-c11="" value="UTTARAKHAND">UTTARAKHAND</option>
+                                    <option _ngcontent-c11="" value="WEST BENGAL">WEST BENGAL</option>
+                                    <option _ngcontent-c11="" value="ANDAMAN &amp; NICOBAR ISLANDS">ANDAMAN &amp; NICOBAR ISLANDS</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-group position-relative">
+                                <input type="text" class="form-control shadow-none py-2" placeholder="Address" aria-label="" aria-describedby="" formControlName="address">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <a [routerLink]="'/dashboard/change-password'" class="text-decoration-none fw-bold changepassword">Change Password</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 footer bottomBar d-flex align-items-center justify-content-center bg-theme1">
+                    <button type="submit" class="btn shadow-none border-0 rounded-3 bg-white fw-bold updateBtn">Update Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

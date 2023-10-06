@@ -1,0 +1,60 @@
+<main class="container-fluid">
+    <div class="row mainInner bg-white">
+        <nav class="col-12 header d-flex align-items-center px-0">
+            <div class="row mx-0 innerheader align-items-center w-100">
+                <div class="col-auto notification">
+                    <a (click)="api.onBack() " type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/leftCricleArrow.png" class="w-100" alt="bell"></a>
+                </div>
+                <div class="col"><div class="title text-white text-center">Withdraw</div></div>
+                <div class="col-auto notification">
+                    <a routerLink="/dashboard/wallet" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/wallet_white_color.png" class="w-100" alt="bell"></a>
+                </div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill withdrawPage" data-page-name="walletPage" data-scrollbar>
+            <div class="row mainCenterPart g-4 mx-0 py-4">
+                <div class="col-12 px-0">
+                    <div class="withdrawAmount card border-0 rounded-0 py-5">
+                        <a class="text-decoration-none balanceAmount text-center fw-semibold text-white">Available Winning Amount</a>
+                        <div class="balanceAmount text-center fs-16 fw-bold text-white">₹ {{userDetails.totalwon}}</div>
+                    </div>
+                    <div class="warningCard bg-white card border-0 rounded-5 mx-4 mt-n4 shadow-sm">
+                        <div class="card-body px-0">
+                            <div class="row mx-0 align-items-center gap-2">
+                                <div class="col-12 text-center">
+                                    <div class="balanceAmount fs-16 text-secondary fs-16 fw-bold ">Enter amount to withdraw</div>
+                                    </div>
+                                    <div class="col-12" [formGroup]="withdrawform">
+                                        <input type="text" class="form-control shadow-none border-0 rounded-0 fs-14 text-secondary text-center fw-semibold input" formControlName="amount" placeholder="Enter Amount" name="" id="">
+                                    </div>
+                                    <div class="col-12 paymentperDay fs-12 fw-bold text-black">Min.₹ 100 - Max ₹ 2,00,000 Per Day</div>
+                                    <div class="col-12 bg-light px-0">
+                                        <div class="row mx-0 py-3 align-items-center">
+                                            <div class="col">
+                                                <div class="text-secondary fw-bold fs-14">Your LInked Bank Account</div>
+                                                <div class="text-black fw-bold fs-14 my-1">{{bankInfo.bankname}}</div>
+                                                <div class="text-black fw-bold fs-14">Account no. -{{bankInfo.accno}}</div>
+                                            </div>
+                                            <div class="col-auto"><div class="mobileImg"><img src="assets/svg/icons/bank.png" class="w-100" alt=""></div></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 px-0-">
+                                        <div class="row mx-0 py-4 ">
+                                            <div class="col-12 fw-bold fs-14 text-black text-center mb-3">Trems and Conditions</div>
+                                            <div class="col-12 fs-12 text-secondary fw-semibold px-0">Only 1 Withdrawal/Transaction allowed per day. Minimum ₹ 100 & Maximum ₹ 2,00,000 Can be withdraw per
+                                                day, Please verify your bank account details before proceed for withdrawal, ImgFantasy is not liable for any
+                                                wrong details updated for bank account/kyc, Dual account/KYC Verification is not allowed, if found someone, 
+                                                account will be put on hold.</div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="withdrawAmount withdrawNow card border-0 rounded-4 pt-5 position-relative mx-4" style="cursor: pointer;" (click)="withdraw()">
+                        <a class="py-2 pb-3 text-decoration-none balanceAmount text-center fw-semibold text-white">Withdraw Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

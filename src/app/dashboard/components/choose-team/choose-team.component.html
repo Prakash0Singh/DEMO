@@ -1,0 +1,167 @@
+<main class="container-fluid">
+    <div class="row mainInner position-relative">
+        <nav class="col-12 header d-flex align-items-center px-0">
+            <div class="row mx-0 innerheader align-items-center w-100">
+                <div class="col-auto notification">
+                    <a (click)="api.onBack()" style="cursor:pointer" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/leftArrow.svg" class="w-75" alt="bell"></a>
+                </div>
+                <div class="col">
+                    <div class="title text-white text-center">Choose Your Team</div>
+                </div>
+                <div class="col-auto notification">
+                    <div class="notificationIcon"></div>
+                </div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill h-100 overflow-y-auto" data-page-name="chooseYourTeam" data-scrollbar>
+            <div class="row p-3 chooseYourTeamMain gap-3">
+                <div class="d-flex justify-content-between" *ngIf="teamID==null && this.selectedContest.multi_entry==1">
+                    <div class="fs-10 fw-bold">CHOOSE TEAM TO JOIN THIS CONTEST WITH</div>
+                    <div class="fs-10 fw-bold" style="cursor: pointer;" (click)='selectAll()'>{{allSelected?'DESELECT ALL':'SELECT ALL'}}</div>
+                </div>
+                <div class="col-12" *ngFor="let d of myTeams; index as i">
+                    <div class="card teams rounded-4 border border-opacity-100  bg-white overflow-hidden">
+                        <div class="card-header py-1 bg-white border-bottom">
+                            <div class="row align-items-center mx-0">
+                                <div class="col px-0">
+                                    <div class="fs-12">{{userInfo.team}} ({{d.teamnumber}})</div>
+                                </div>
+                                <div class="col-auto px-0">
+                                    <div class="buttons d-flex align-items-center gap-3">
+                                        <a (click)="viewTeam(d)" style="cursor: pointer;" class="viewTeam d-flex align-items-center"><img class="w-100" src="assets/svg/icons/visibilityBlue.png" alt=""></a>
+                                        <div class="form-check m-0 ps-0 d-flex align-items-center">
+                                            <input class="form-check-input shadow-none m-0 rounded-circle" [type]="teamID==null && this.selectedContest.multi_entry==1 ?'checkbox':'radio'" name="flexRadioDefault" id="team1" [disabled]="d.jointeamid == teamID || d.jointeamid == joinTeamid[i]" [checked]="d.jointeamid == teamID ||d.isSelected||d.alreadySelected"   (change)="radio(d)" >
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-0">
+                            <div class="row align-items-center">
+                                <div class="col-auto d-flex align-items-center">
+                                    <div class="caption text-center text-white fs-12">C</div>
+                                    <div class="imgOuter">
+                                        <img class="w-100" src={{d.captainimage}} alt="">
+                                    </div>
+                                </div>
+                                <div class="col text-center">
+                                    <div class="fs-10">{{match.team1name}}: {{newData[i].t1.length}}</div>
+                                    <div class="fs-10">{{match.team2name}}: {{newData[i].t2.length}}</div>
+                                </div>
+                                <div class="col-auto d-flex align-items-center">
+                                    <div class="caption vCaption text-center text-white fs-12 order-2">VC</div>
+                                    <div class="imgOuter order-1">
+                                        <img class="w-100" src={{d.vicecaptainimage}} alt="">
+                                    </div>
+                                </div>
+                                <div class="col-12 bg-secondary p-1 d-flex justify-content-between text-white">
+                                    <div class="captionName fs-12 px-4">{{d.captin_name}}</div>
+                                    <div class="captionName fs-12 px-4">{{d.viceCaptain_name}}</div>
+                                </div>
+                                <div class="col-12 py-2">
+                                    <div class="row mx-0">
+                                        <div class="col px-0 teamDivide text-center">
+                                            <div class="fs-10">Wicket Keeper</div>
+                                            <div class="fs-10">{{newData[i].wk.length}}</div>
+                                        </div>
+                                        <div class="col px-0 teamDivide border-start text-center">
+                                            <div class="fs-10">Batsman</div>
+                                            <div class="fs-10">{{newData[i].bat.length}}</div>
+                                        </div>
+                                        <div class="col px-0 teamDivide border-start text-center">
+                                            <div class="fs-10">All Rounder</div>
+                                            <div class="fs-10">{{newData[i].ar.length}}</div>
+                                        </div>
+                                        <div class="col px-0 teamDivide border-start text-center">
+                                            <div class="fs-10">Bowler</div>
+                                            <div class="fs-10">{{newData[i].bow.length}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="col-12 footer bottomBar d-flex align-items-center shadow-none">
+            <div class="row mx-0 align-items-center innerBar w-100">
+                <div class="col-12 px-0  d-flex justify-content-around align-items-center bottombarTabs text-center" *ngIf="!this.teamID">
+                    <button type="button" class="btn btn-primary border-0 btnPrimary text-white" (click)="createTeam()" >CREATE NEW TEAM</button>
+                    <button type="button" class="btn btn-success border-0 btnSuccess text-white ps-5 pe-5" (click)="join()" data-bs-toggle="modal" data-bs-target="#exampleModal" [disabled]="btnBool">&nbsp;JOIN&nbsp;</button>
+                </div>
+                <div class="col-12 px-0  d-flex justify-content-around align-items-center bottombarTabs text-center" *ngIf="this.teamID">
+                    <button type="button" class="btn btn-success border-0 btnSuccess text-white" (click)="switch()" [disabled]="btnBool">Rejoin Team</button>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Modal -->
+        <div class="modal fade bg-black confermationModal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 rounded-4">
+                <div class="modal-header border-0">
+                    <div class="modal-title" id="exampleModalLabel">
+                        <div class="confiramtionHeading fw-semibold text-black fs-6">CONFIRMATION</div>
+                        <div class="balance fw-semibold">Unutilized Balance + Winnings = ₹{{usableBalanceArr.usablebalance}}</div>
+                    </div>
+                    
+                    <button type="button" class="shadow-none border-0 bg-transparent p-0" data-bs-dismiss="modal" aria-label="Close"><img src="assets/svg/icons/close-_icon.svg" class="w-100" alt=""></button>
+                </div>
+                <div class="modal-body row mx-0">
+                    <div class="col-12 px-0 row mx-0 align-items-center">
+                        <div class="col leftEntery fw-semibold px-0">Entry</div>
+                        <div class="col-auto prich fw-semibold pe-0">₹ {{usableBalanceArr.entryfee}}</div>
+                    </div>
+                    <div class="col-12 px-0 row mx-0 align-items-center bonus pb-1">
+                        <div class="col leftEntery fw-semibold px-0">Usable Cash Bonus</div>
+                        <div class="col-auto prich fw-semibold pe-0">- ₹ {{usableBalanceArr.bonus}}</div>
+                    </div>
+                    <div class="col-12 px-0 row mx-0 align-items-center mt-3 mb-2 payAmount">
+                        <div class="col leftEntery fw-semibold px-0">To Pay</div>
+                        <div class="col-auto prich fw-semibold pe-0 text-success" *ngIf="teamID==null && this.selectedContest.multi_entry==1">₹ {{(usableBalanceArr.entryfee- usableBalanceArr.bonus)  * this.joinTeamId.length}}</div>
+                        <div class="col-auto prich fw-semibold pe-0 text-success" *ngIf="this.selectedContest.multi_entry==0">₹ {{usableBalanceArr.entryfee- usableBalanceArr.bonus}}</div>
+                    </div>
+                    <div class="col-12 joinAddress fw-semibold text-center">By joining this contest,you accept ImgFantasy's T&C and confirm that you are not a resident of Assam, Odhissa, Telangana, Nagaland & Sikkim.</div>
+                </div>
+                <div class="modal-footer border-0 justify-content-center">
+                    <button class="invite btn btn-success px-5 text-white btn-sm fs-6" data-bs-dismiss="modal" (click)="joincontest()">JOIN CONTEST</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <!-- <div class="modal fade bg-black confermationModal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 rounded-4">
+                <div class="modal-header border-0">
+                    <div class="modal-title" id="exampleModalLabel">
+                        <div class="confiramtionHeading fw-semibold text-black fs-6">CONFIRMATION</div>
+                        <div class="balance fw-semibold">Unutilized Balance + Winnings = ₹0.00</div>
+                    </div>
+                    <button type="button" class="shadow-none border-0 bg-transparent p-0" data-bs-dismiss="modal" aria-label="Close"><img src="assets/svg/icons/close-_icon.svg" class="w-100" alt=""></button>
+                </div>
+                <div class="modal-body row mx-0">
+                    <div class="col-12 px-0 row mx-0 align-items-center">
+                        <div class="col leftEntery fw-semibold px-0">Entry</div>
+                        <div class="col-auto prich fw-semibold pe-0">₹ 550.00</div>
+                    </div>
+                    <div class="col-12 px-0 row mx-0 align-items-center bonus pb-1">
+                        <div class="col leftEntery fw-semibold px-0">Usable Cash Bonus</div>
+                        <div class="col-auto prich fw-semibold pe-0">₹ 27.50</div>
+                    </div>
+                    <div class="col-12 px-0 row mx-0 align-items-center mt-3 mb-2 payAmount">
+                        <div class="col leftEntery fw-semibold px-0">To Pay</div>
+                        <div class="col-auto prich fw-semibold pe-0">₹ 522.5</div>
+                    </div>
+                    <div class="col-12 joinAddress fw-semibold text-center">By joining this contest,you accept MyGames11’s T&C and confirm that you are not a resident of Assam, Odhissa, Telangana, Nagaland & Sikkim.</div>
+                </div>
+                <div class="modal-footer border-0 justify-content-center">
+                   
+                    <button class="invite btn btn-success px-5 text-white btn-sm fs-6" (click)="joincontest()">JOIN CONTEST</button>
+                </div>
+            </div>
+            </div>
+        </div> -->
+    </div>
+</main>

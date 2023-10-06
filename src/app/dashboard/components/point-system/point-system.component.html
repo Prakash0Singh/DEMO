@@ -1,0 +1,1267 @@
+<main class="container-fluid">
+    <div class="row mainInner">
+        <nav class="col-12 header d-flex align-items-center px-0">
+            <div class="row mx-0 innerheader align-items-center w-100">
+                <div class="col-auto notification">
+                    <a (click)="onBack()" style="cursor: pointer;" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/leftCricleArrow.png" class="w-100" alt="bell"></a>
+                </div>
+                <div class="col"><div class="title text-white text-center">Fantasy Point System</div></div>
+                <div class="col-auto"><div class="backBtn"></div></div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill" data-page-name="pointSystemPage" data-scrollbar>
+            <div class="row mx-0 h-100 flex-column flex-nowrap">
+                <div class="col-12 px-0 cricketheader d-flex align-items-end justify-content-center">
+                    <ul class="nav row mx-0 nav-pills navtab w-100" id="pills-tab" role="tablist">
+                        <li class="nav-item col px-0 d-flex" role="presentation">
+                            <button class="nav-link rounded-0 text-white w-100 active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">T20</button>
+                        </li>
+                        <li class="nav-item col px-0 d-flex" role="presentation">
+                            <button class="nav-link rounded-0 text-white w-100" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">ODI</button>
+                        </li>
+                        <li class="nav-item col px-0 d-flex" role="presentation">
+                            <button class="nav-link rounded-0 text-white w-100" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">TEST</button>
+                        </li>
+                        <li class="nav-item col px-0 d-flex" role="presentation">
+                            <button class="nav-link rounded-0 text-white w-100" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false">T10</button>
+                        </li>
+                        <li class="nav-item col px-0 d-flex" role="presentation">
+                            <button class="nav-link rounded-0 text-white w-100" id="pills-hundred-tab" data-bs-toggle="pill" data-bs-target="#pills-hundred" type="button" role="tab" aria-controls="pills-hundred" aria-selected="false">The Hundred</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 p-0 flex-fill h-100 overflow-y-auto bg-light">
+                    <div class="tab-content tabContents" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                            <div class="row mx-0">
+                                <div class="col-12 text-dark fw-semibold topPointHeading text-center py-2 border-bottom border-bottom-1 border-bottom-light">Here is how your team earns points</div>
+                            </div>
+                            <div class="accordion accordion-flush pointAccirdion" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Batting.png" class="w-100" alt=""></div> Batting</button>
+                                        </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Run</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+1</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Boundary Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+1</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Six Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">30 run Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Half-century Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+18</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Century Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">16</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Dismissal for a duck</div><div class="subheading fw-bold">Batsman. Wicket-keeper & All-Rounder</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col-12 activitiHeading fw-bold">Important Point</div>
+                                                    <div class="col-12 subheading fw-bold mb-1"><span class="d-inline-flex fs-5">.</span> Any player scoring a century will only get points for the century. no points such as 30 run Bonus or Half-century Bonus will be awarded here. Additionally, no points are awarded for centuries in T10 matches.</div>
+                                                    <div class="col-12 subheading fw-bold"><span class="d-inline-flex fs-5">.</span> If any runs are scored on an overthrow, points for those runs will be credited to the batter on strike for that ball. However, if the overthrow goes for a boundary, the batter will not receive extra Boundary Bonus points.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingTwo">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Bowling.png" class="w-100" alt=""></div> bowling</button>
+                                        </h2>
+                                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Wicket</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+25</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Bonus (LBW / BOWLED)</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+8</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">3 Whicket haul</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">4 Wicket haul</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+8</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">5 Wicket haul</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+15</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Maiden Over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+12</div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingThree">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Fielding.png" class="w-100" alt=""></div> fielding</button>
+                                        </h2>
+                                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Catch</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+8</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">3 Catch Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Stumping</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+12</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Run Out (Direct hit)</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+12</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Run out (Not a direct hit)</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+8</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col-12 activitiHeading fw-bold">Important Point</div>
+                                                    <div class="col-12 subheading fw-bold mb-1"><span class="d-inline-flex fs-5">.</span> A direct hit is inflicted by the fielder, who is the only one to touch the ball after the batter faces the delivery. In all other cases, points will be awarded only to the last 2 fielders who touch the ball</div>
+                                                    <div class="col-12 subheading fw-bold"><span class="d-inline-flex fs-5">.</span> Players taking more than 3 catches will also get 4 points as 3 Catch Bonus. For example, if a player takes 6 catches, they will not get 8 points.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingFour">
+                                    <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Others.png" class="w-100" alt=""></div> others</button>
+                                    </h2>
+                                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Captain</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">2x</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Vice-Captain</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">1.5x</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">In announced lineups</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingFive">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/EconomyRate.png" class="w-100" alt=""></div> economy rate</button>
+                                        </h2>
+                                    <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Below 5 runs per over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+6</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 5-6.99 runs per over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 6-7 runs per over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 10-11 runs per over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 11.01-12 runs per over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Above 12 runs per over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-6</div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingSix">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/StrikeRate.png" class="w-100" alt=""></div> strike rate (except bowler)</button>
+                                        </h2>
+                                    <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Above 170 runs per 100 balls</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+6</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 150.01-170 runs per 100 balls</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 130-150 runs per 100 balls</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 60-70 runs per 100 balls</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 50-59.99 runs per 100 balls</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Below 50 runs per 100 balls</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-6</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col-12 activitiHeading fw-bold">Important Point</div>
+                                                    <div class="col-12 subheading fw-bold"><span class="d-inline-flex fs-5">.</span> Negative points for low batting Strike Rates are only applicable for individual Strike Rates of 70 runs per 100 balls or below.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mx-0 mt-4 mb-3">
+                                <div class="col-12 text-black fw-bold mb-3 peraHeading">Other Important Points</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> All the X-Factor substitutes will get 4 points for being announced and score points for anycontributions they make as per our Fantasy Point System.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> Concussion & COVID-19 Substitutes, if permitted as per the applicable rules andregulations of the tournament, will be awarded 4 points for making an appearance (only for T20s, ODs, Tests, TI0s and The Hundred) and will be awarded points for all the contributions they make as per the Fantasy Point System.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> Substitutes other than Concussion substitutes, COVID-19, or X-Factor substitutes will not beawarded points for any contribution they make.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> If a player gets replaced by an X-Factor substitute in the Big Bash League but later comesback on the field, he will get points for his contributions. However, if a player, who was not a any of his contributions (except Concussion and COVID-19 substitutes).</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> A player who has been transferred from one team to the other might still be available forselection for his older team until the next scheduled team update on ImgFantasy. However, no points will be attributed to the player in such a situation.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> If a player is announced in the starting eleven of a team but later is unable to start thematch, they will not score any points. However, the player who plays as the replacement willearn points for the match (including starting points).</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> No points will be awarded for any actions during a Super Over or a Super Five.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> No further adjustments will be made to the points awarded once a match has beenmarked as completed and winners have been declared. Points awarded for a LIVE game will be subject to change only when the match status is “In Progress” or “In Review”.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> More than 11 players from either team can play in Other OD/Other T20/Other Test matches.® There are no negative points for low Strike Rates in Test matches.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> No points will be awarded for Strike, economy, or Maidens in ‘The Hundred".</div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                            <div class="row mx-0">
+                                <div class="col-12 text-dark fw-semibold topPointHeading text-center py-2 border-bottom border-bottom-1 border-bottom-light">Here is how your team earns points</div>
+                            </div>
+                            <div class="accordion accordion-flush pointAccirdion" id="accordionFlushExample2">
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Batting.png" class="w-100" alt=""></div> Batting</button>
+                                        </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample2">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Run</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+1</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Boundary Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+1</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Six Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Half-century Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Century Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+8</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Dismissal for a duck</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-3</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col-12 activitiHeading fw-bold">Important Point</div>
+                                                    <div class="col-12 subheading fw-bold mb-1"><span class="d-inline-flex fs-5">.</span> Any player scoring a century will only get points for the century. No points will be awarded for their half-century. Additionally, no points are awarded for centuries in T10 matches.</div>
+                                                    <div class="col-12 subheading fw-bold"><span class="d-inline-flex fs-5">.</span> If any runs are scored on an overthrow, points will be credited to the batter on strike for that ball. However, if the overthrow goes for a boundary, the batter will not receive extra Boundary Bonus points.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingTwo">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Bowling.png" class="w-100" alt=""></div> bowling</button>
+                                        </h2>
+                                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample2">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Wicket</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+25</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Bonus (LBW / BOWLED)</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+8</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">4 Whicket haul Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">5 Wicket haul Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+8</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Maiden Over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingThree">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Fielding.png" class="w-100" alt=""></div> fielding</button>
+                                        </h2>
+                                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample2">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Catch</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+8</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">3 Catch Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Stumping</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+12</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Run Out (Direct hit)</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+12</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Run out (Not a direct hit)</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+6</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col-12 activitiHeading fw-bold">Important Point</div>
+                                                    <div class="col-12 subheading fw-bold mb-1"><span class="d-inline-flex fs-5">.</span> A direct hit is inflicted by the fielder, who is the only one to touch the ball after the batter faces the delivery. In all other cases, points will be awarded only to the last 2 fielders who touch the ball</div>
+                                                    <div class="col-12 subheading fw-bold"><span class="d-inline-flex fs-5">.</span> Players taking more than 3 catches will also get 4 points as 3 Catch Bonus. For example, if a player takes 6 catches, they will not get 8 points.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingFour">
+                                    <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Others.png" class="w-100" alt=""></div> others</button>
+                                    </h2>
+                                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample2">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Captain</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">2x</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Vice-Captain</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">1.5x</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">In announced lineups</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingFive">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/EconomyRate.png" class="w-100" alt=""></div> economy rate</button>
+                                        </h2>
+                                    <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample2">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Below 2.5 runs per over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+6</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 2.5-3.49 runs per over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 3.5-4.5 runs per over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 7-8 runs per over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 8.01.9 runs per over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Above 9 runs per over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-6</div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingSix">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/StrikeRate.png" class="w-100" alt=""></div> strike rate (except bowler)</button>
+                                        </h2>
+                                    <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample2">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Above 140 runs per 100 balls</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+6</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 120.01-140 runs per 100 balls</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 100-120 runs per 100 balls</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 40-50 runs per 100 balls</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 30-39.99 runs per 100 balls</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Below 30 runs per 100 balls</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-6</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col-12 activitiHeading fw-bold">Important Point</div>
+                                                    <div class="col-12 subheading fw-bold"><span class="d-inline-flex fs-5">.</span> Negative points for low batting Strike Rates are only applicable for individual Strike Rates of 50 runs per 100 balls or below.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mx-0 mt-4 mb-3">
+                                <div class="col-12 text-black fw-bold mb-3 peraHeading">Other Important Points</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> All the X-Factor substitutes will get 4 points for being announced and score points for anycontributions they make as per our Fantasy Point System.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> Concussion & COVID-19 Substitutes, if permitted as per the applicable rules andregulations of the tournament, will be awarded 4 points for making an appearance (only for T20s, ODs, Tests, TI0s and The Hundred) and will be awarded points for all the contributions they make as per the Fantasy Point System.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> Substitutes other than Concussion substitutes, COVID-19, or X-Factor substitutes will not beawarded points for any contribution they make.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> If a player gets replaced by an X-Factor substitute in the Big Bash League but later comesback on the field, he will get points for his contributions. However, if a player, who was not a any of his contributions (except Concussion and COVID-19 substitutes).</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> A player who has been transferred from one team to the other might still be available forselection for his older team until the next scheduled team update on ImgFantasy. However, no points will be attributed to the player in such a situation.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> If a player is announced in the starting eleven of a team but later is unable to start thematch, they will not score any points. However, the player who plays as the replacement willearn points for the match (including starting points).</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> No points will be awarded for any actions during a Super Over or a Super Five.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> No further adjustments will be made to the points awarded once a match has beenmarked as completed and winners have been declared. Points awarded for a LIVE game will be subject to change only when the match status is “In Progress” or “In Review”.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> More than 11 players from either team can play in Other OD/Other T20/Other Test matches.® There are no negative points for low Strike Rates in Test matches.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> No points will be awarded for Strike, economy, or Maidens in ‘The Hundred".</div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+                            <div class="row mx-0">
+                                <div class="col-12 text-dark fw-semibold topPointHeading text-center py-2 border-bottom border-bottom-1 border-bottom-light">Here is how your team earns points</div>
+                            </div>
+                            <div class="accordion accordion-flush pointAccirdion" id="accordionFlushExample3">
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Batting.png" class="w-100" alt=""></div> Batting</button>
+                                        </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample3">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Run</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+1</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Boundary Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+1</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Six Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Half-century Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Century Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+8</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Dismissal for a duck</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col-12 activitiHeading fw-bold">Important Point</div>
+                                                    <div class="col-12 subheading fw-bold mb-1"><span class="d-inline-flex fs-5">.</span> Any player scoring a century will only get points for the century. No points will be awarded for their half-century. Additionally, no points are awarded for centuries in T10 matches.</div>
+                                                    <div class="col-12 subheading fw-bold"><span class="d-inline-flex fs-5">.</span> If any runs are scored on an overthrow, points will be credited to the batter on strike for that ball. However, if the overthrow goes for a boundary, the batter will not receive extra Boundary Bonus points.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingTwo">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Bowling.png" class="w-100" alt=""></div> bowling</button>
+                                        </h2>
+                                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample3">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Wicket</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+16</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Bonus (LBW / BOWLED)</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+8</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">4 Whicket haul Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">5 Wicket haul Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+8</div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingThree">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Fielding.png" class="w-100" alt=""></div> fielding</button>
+                                        </h2>
+                                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample3">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Catch</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+8</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Stumping</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+12</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Run Out (Direct hit)</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+12</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Run out (Not a direct hit)</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+6</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col-12 activitiHeading fw-bold">Important Point</div>
+                                                    <div class="col-12 subheading fw-bold mb-1"><span class="d-inline-flex fs-5">.</span> A direct hit is inflicted by the fielder, who is the only one to touch the ball after the batter faces the delivery. In all other cases, points will be awarded only to the last 2 fielders who touch the ball</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingFour">
+                                    <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Others.png" class="w-100" alt=""></div> others</button>
+                                    </h2>
+                                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample3">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Captain</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">2x</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Vice-Captain</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">1.5x</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">In starting 11</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mx-0 mt-4 mb-3">
+                                <div class="col-12 text-black fw-bold mb-3 peraHeading">Other Important Points</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> All the X-Factor substitutes will get 4 points for being announced and score points for anycontributions they make as per our Fantasy Point System.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> Concussion & COVID-19 Substitutes, if permitted as per the applicable rules andregulations of the tournament, will be awarded 4 points for making an appearance (only for T20s, ODs, Tests, TI0s and The Hundred) and will be awarded points for all the contributions they make as per the Fantasy Point System.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> Substitutes other than Concussion substitutes, COVID-19, or X-Factor substitutes will not beawarded points for any contribution they make.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> If a player gets replaced by an X-Factor substitute in the Big Bash League but later comesback on the field, he will get points for his contributions. However, if a player, who was not a any of his contributions (except Concussion and COVID-19 substitutes).</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> A player who has been transferred from one team to the other might still be available forselection for his older team until the next scheduled team update on ImgFantasy. However, no points will be attributed to the player in such a situation.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> If a player is announced in the starting eleven of a team but later is unable to start thematch, they will not score any points. However, the player who plays as the replacement willearn points for the match (including starting points).</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> No points will be awarded for any actions during a Super Over or a Super Five.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> No further adjustments will be made to the points awarded once a match has beenmarked as completed and winners have been declared. Points awarded for a LIVE game will be subject to change only when the match status is “In Progress” or “In Review”.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> More than 11 players from either team can play in Other OD/Other T20/Other Test matches.® There are no negative points for low Strike Rates in Test matches.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> No points will be awarded for Strike, economy, or Maidens in ‘The Hundred".</div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">
+                            <div class="row mx-0">
+                                <div class="col-12 text-dark fw-semibold topPointHeading text-center py-2 border-bottom border-bottom-1 border-bottom-light">Here is how your team earns points</div>
+                            </div>
+                            <div class="accordion accordion-flush pointAccirdion" id="accordionFlushExample4">
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Batting.png" class="w-100" alt=""></div> Batting</button>
+                                        </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample4">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Run</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+1</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Boundary Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+1</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Six Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">30 run Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Half-century Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+16</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Dismissal for a duck</div><div class="subheading fw-bold">Batsman. Wicket-keeper & All-Rounder</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col-12 activitiHeading fw-bold">Important Point</div>
+                                                    <div class="col-12 subheading fw-bold mb-1"><span class="d-inline-flex fs-5">.</span> Any player scoring a century will only get points for the century. No points will be awarded for their half-century. Additionally, no points are awarded for centuries in T10 matches.</div>
+                                                    <div class="col-12 subheading fw-bold"><span class="d-inline-flex fs-5">.</span> If any runs are scored on an overthrow, points will be credited to the batter on strike for that ball. However, if the overthrow goes for a boundary, the batter will not receive extra Boundary Bonus points.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingTwo">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Bowling.png" class="w-100" alt=""></div> bowling</button>
+                                        </h2>
+                                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample4">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Wicket (Excluding Run Out)</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+25</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Bonus (LBW / BOWLED)</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+8</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">2 Whicket Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+8</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">3 Wicket Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+16</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Maiden Over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+16</div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingThree">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Fielding.png" class="w-100" alt=""></div> fielding</button>
+                                        </h2>
+                                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample4">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Catch</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+8</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">3 Catch Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Stumping</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+12</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Run Out (Direct hit)</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+12</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Run out (Not a direct hit)</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+6</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col-12 activitiHeading fw-bold">Important Point</div>
+                                                    <div class="col-12 subheading fw-bold mb-1"><span class="d-inline-flex fs-5">.</span> A direct hit is inflicted by the fielder, who is the only one to touch the ball after the batter faces the delivery. In all other cases, points will be awarded only to the last 2 fielders who touch the ball</div>
+                                                    <div class="col-12 subheading fw-bold"><span class="d-inline-flex fs-5">.</span> Players taking more than 3 catches will also get 4 points as 3 Catch Bonus. For example, if a player takes 6 catches, they will not get 8 points.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingFour">
+                                    <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Others.png" class="w-100" alt=""></div> others</button>
+                                    </h2>
+                                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample4">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Captain</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">2x</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Vice-Captain</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">1.5x</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">In announced lineups</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingFive">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/EconomyRate.png" class="w-100" alt=""></div> economy rate</button>
+                                        </h2>
+                                    <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample4">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Below 7 runs per over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+6</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 7-7.99 runs per over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 8-9 runs per over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 14-15 runs per over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 15.01-16 runs per over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Above 16 runs per over</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-6</div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingSix">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/StrikeRate.png" class="w-100" alt=""></div> strike rate (except bowler)</button>
+                                        </h2>
+                                    <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample4">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Over 190 runs per 100 balls</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+6</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 170.01-190 runs per 100 balls</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 150-170 runs per 100 balls</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 70-80 runs per 100 balls</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Between 60-69.99 runs per 100 balls</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Below 60 runs per 100 balls</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-6</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col-12 activitiHeading fw-bold">Important Point</div>
+                                                    <div class="col-12 subheading fw-bold"><span class="d-inline-flex fs-5">.</span> Negative points for low batting Strike Rates are only applicable for individual Strike Rates of 80 runs per 100 balls or below.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mx-0 mt-4 mb-3">
+                                <div class="col-12 text-black fw-bold mb-3 peraHeading">Other Important Points</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> All the X-Factor substitutes will get 4 points for being announced and score points for anycontributions they make as per our Fantasy Point System.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> Concussion & COVID-19 Substitutes, if permitted as per the applicable rules andregulations of the tournament, will be awarded 4 points for making an appearance (only for T20s, ODs, Tests, TI0s and The Hundred) and will be awarded points for all the contributions they make as per the Fantasy Point System.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> Substitutes other than Concussion substitutes, COVID-19, or X-Factor substitutes will not beawarded points for any contribution they make.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> If a player gets replaced by an X-Factor substitute in the Big Bash League but later comesback on the field, he will get points for his contributions. However, if a player, who was not a any of his contributions (except Concussion and COVID-19 substitutes).</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> A player who has been transferred from one team to the other might still be available forselection for his older team until the next scheduled team update on ImgFantasy. However, no points will be attributed to the player in such a situation.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> If a player is announced in the starting eleven of a team but later is unable to start thematch, they will not score any points. However, the player who plays as the replacement willearn points for the match (including starting points).</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> No points will be awarded for any actions during a Super Over or a Super Five.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> No further adjustments will be made to the points awarded once a match has beenmarked as completed and winners have been declared. Points awarded for a LIVE game will be subject to change only when the match status is “In Progress” or “In Review”.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> More than 11 players from either team can play in Other OD/Other T20/Other Test matches.® There are no negative points for low Strike Rates in Test matches.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> No points will be awarded for Strike, economy, or Maidens in ‘The Hundred".</div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-hundred" role="tabpanel" aria-labelledby="pills-hundred-tab" tabindex="0">
+                            <div class="row mx-0">
+                                <div class="col-12 text-dark fw-semibold topPointHeading text-center py-2 border-bottom border-bottom-1 border-bottom-light">Here is how your team earns points</div>
+                            </div>
+                            <div class="accordion accordion-flush pointAccirdion" id="accordionFlushExample5">
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Batting.png" class="w-100" alt=""></div> Batting</button>
+                                        </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample5">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Run</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+1</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Boundary Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+1</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Six Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">30 run Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Half-century Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+10</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Century Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+20</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Dismissal for a duck</div><div class="subheading fw-bold">Batsman. Wicket-keeper & All-Rounder</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold text-danger">-2</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col-12 activitiHeading fw-bold">Important Point</div>
+                                                    <div class="col-12 subheading fw-bold mb-1"><span class="d-inline-flex fs-5">.</span> Any player scoring a century will only get points for the century. No points will be  awarded as their 30 run Bonus or Half-century Bonus</div>
+                                                    <div class="col-12 subheading fw-bold"><span class="d-inline-flex fs-5">.</span> If any runs are scored on an overthrow, points will be credited to the batter on strike for that ball. However, if the overthrow goes for a boundary, the batter will not receive extra Boundary Bonus points.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingTwo">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Bowling.png" class="w-100" alt=""></div> bowling</button>
+                                        </h2>
+                                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample5">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Wicket (Excluding Run Out)</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+25</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Bonus (LBW / BOWLED)</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+8</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">2 Whicket Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+3</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">3 Wicket Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+5</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">4 Wicket Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">10</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">5 Wicket Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+20</div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingThree">
+                                        <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Fielding.png" class="w-100" alt=""></div> fielding</button>
+                                        </h2>
+                                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample5">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Catch</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+8</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">3 Catch Bonus</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Stumping</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+12</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Run Out (Direct hit)</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+12</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Run out (Not a direct hit)</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+6</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col-12 activitiHeading fw-bold">Important Point</div>
+                                                    <div class="col-12 subheading fw-bold mb-1"><span class="d-inline-flex fs-5">.</span> A direct hit is inflicted by the fielder, who is the only one to touch the ball after the batter faces the delivery. In all other cases, points will be awarded only to the last 2 fielders who touch the ball</div>
+                                                    <div class="col-12 subheading fw-bold"><span class="d-inline-flex fs-5">.</span> Players taking more than 3 catches will also get 4 points as 3 Catch Bonus. For example, if a player takes 6 catches, they will not get 8 points.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingFour">
+                                    <button class="accordion-button bg-white shadow-none text-dark fw-bold text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour"><div class="categoryIcone rounded-circle me-3"><img src="assets/svg/icons/Others.png" class="w-100" alt=""></div> others</button>
+                                    </h2>
+                                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample5">
+                                        <div class="accordion-body mx-0 row g-3">
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Captain</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">2x</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">Vice-Captain</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">1.5x</div></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row mx-0">
+                                                    <div class="col"><div class="activitiHeading fw-bold">In announced lineups</div></div>
+                                                    <div class="col-auto"><div class="activitiValue fw-bold">+4</div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mx-0 mt-4 mb-3">
+                                <div class="col-12 text-black fw-bold mb-3 peraHeading">Other Important Points</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> All the X-Factor substitutes will get 4 points for being announced and score points for anycontributions they make as per our Fantasy Point System.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> Concussion & COVID-19 Substitutes, if permitted as per the applicable rules andregulations of the tournament, will be awarded 4 points for making an appearance (only for T20s, ODs, Tests, TI0s and The Hundred) and will be awarded points for all the contributions they make as per the Fantasy Point System.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> Substitutes other than Concussion substitutes, COVID-19, or X-Factor substitutes will not beawarded points for any contribution they make.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> If a player gets replaced by an X-Factor substitute in the Big Bash League but later comesback on the field, he will get points for his contributions. However, if a player, who was not a any of his contributions (except Concussion and COVID-19 substitutes).</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> A player who has been transferred from one team to the other might still be available forselection for his older team until the next scheduled team update on ImgFantasy. However, no points will be attributed to the player in such a situation.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> If a player is announced in the starting eleven of a team but later is unable to start thematch, they will not score any points. However, the player who plays as the replacement willearn points for the match (including starting points).</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> No points will be awarded for any actions during a Super Over or a Super Five.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> No further adjustments will be made to the points awarded once a match has beenmarked as completed and winners have been declared. Points awarded for a LIVE game will be subject to change only when the match status is “In Progress” or “In Review”.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> More than 11 players from either team can play in Other OD/Other T20/Other Test matches.® There are no negative points for low Strike Rates in Test matches.</div>
+                                <div class="col-12 peraContent fw-bold"><span class="d-inline-flex fs-5">.</span> No points will be awarded for Strike, economy, or Maidens in ‘The Hundred".</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="col-12 footer bottomBar d-flex align-items-center">
+            <div class="row mx-0 align-items-center innerBar w-100">
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/home'" class="linkTab active text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/Home_Blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Home</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/myMatches'" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/My_Matches_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">My Matches</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/profile'" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/Profile_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Profile</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/more'" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/More_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">More</span></a></div>
+            </div>
+        </footer>
+    </div>
+</main>

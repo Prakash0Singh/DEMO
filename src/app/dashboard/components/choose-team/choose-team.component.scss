@@ -1,0 +1,71 @@
+@import "../../../../variables";
+
+         .chooseYourTeamMain {
+            & .card {
+                border-color: darken($info, 15) !important;
+                &.teams {
+                    & .card-header {
+                        & .buttons{
+                            & .viewTeam {
+                                width: 16px;
+                                height: 16px;
+                                // & img {
+                                // }
+                            }
+                            & .form-check{
+                                & .form-check-input {
+                                    cursor: pointer;
+                                    width: 18px;
+                                    height: 18px;
+                                    background-image: none;
+                                    position: relative;
+                                    &:before {
+                                        content: '';
+                                        display: block;
+                                        width: 5px;
+                                        height: 10px;
+                                        position: absolute;
+                                        border-bottom: 2px solid $white;
+                                        border-right: 2px solid $white;
+                                        opacity: 0;
+                                        transition: ease-in-out .3s;
+                                        right: 5px;
+                                        top: 2px;
+                                    }
+                                    &:checked {
+                                        &:before {
+                                            opacity: 1;
+                                            transform: rotate(45deg);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    & .card-body{
+                        & .caption{
+                            background-color: darken($info, 15);
+                            border-radius: 0 4px 4px 0;
+                            padding: 2px 8px;
+                            width: 34px;
+                            &.vCaption {
+                                border-radius: 4px 0 0 4px;
+                            }
+                        }
+                        & .imgOuter {
+                            width: 46px;
+                            height: 46px;
+                        }
+                        & .teamDivide{
+                            border-color: darken($info, 15) !important;
+                        }
+                    }
+                }
+            }
+        }
+
+
+    //  .modal-backdrop {
+    //     display: none !important;
+
+    // }

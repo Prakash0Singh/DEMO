@@ -1,0 +1,47 @@
+<main class="container-fluid">
+    <div class="row mainInner bg-white">
+        <nav class="col-12 header bg-theme1 py-3">
+            <div class="title text-white text-center">Login</div>
+        </nav>
+        <div class="col-12 px-0 flex-fill" data-page-name="loginPage" data-scrollbar>
+            <div class="row h-100 mainCenterPart">
+                <div class="col-12">
+                    <div class="topPart bg-theme1 text-center pt-4">
+                        <div class="imgOuter mx-auto">
+                            <img src="assets/svg/img/img_logo.jpeg" alt="" height="50" width="50">
+                        </div>
+                        <div class="title text-white text-center mt-2">Khelega India Jitega India</div>
+                    </div>
+                    <div class="formOuter bg-white p-3 pt-4 mx-4 shadow">
+                        <form action="" class="form border-0" [formGroup]="login">
+                            <div class="row gap-3">
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control shadow-none py-2" formControlName="details"  placeholder="Email or Mobile Number" aria-label="" aria-describedby="">
+                                    </div>
+                                    <!-- <div [style.color]="'red'" *ngIf="f['mobile'].touched && f['mobile'].errors?.['required']">*Mobile Number Required</div> -->
+                                    <span class="tagLine text-black">You will recieved a 4 digit verification code</span>
+                                </div>
+                                <div class="col-12 px-5 text-center">
+                                    <button  class="btn btn-theme1 border-0 btnStyle1 text-white w-100"  (click)="submit()">Submit</button>
+                                    <div class="dividarTxt my-2">OR</div>
+                                    <a  (click)="signInWithGoogle()" class="btn bg-transparent borer-0 p-0 shadow-none loginGoogleBtn">
+                                        <img class="w-100" src="assets/svg/icons/google_new.png" alt="">
+                                    </a>
+                                    <!-- <asl-google-signin-button type=’icon’ size=’medium’></asl-google-signin-button> -->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="col-12 footer py-3">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footerLink text-center">Not a Member? <a [routerLink]="'/auth/register'" class="text-theme2 text-decoration-underline">Register</a></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</main>

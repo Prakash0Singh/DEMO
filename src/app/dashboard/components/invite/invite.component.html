@@ -1,0 +1,92 @@
+<main class="container-fluid">
+    <div class="row mainInner bg-white">
+        <nav class="col-12 header py-3">
+            <div class="row align-items-center h-100">
+                <div class="col-auto"><a (click)="onBack()" style="cursor: pointer;" class="backBtn d-flex align-items-center justify-content-center"><img class="w-100" src="assets/svg/icons/leftCricleArrow.png" alt=""></a></div>
+                <div class="col"><div class="title text-white text-center">Invite Friends</div></div>
+                <div class="col-auto"><div class="backBtn"></div></div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill" data-page-name="referFriendPage" data-scrollbar>
+            <div class="row mainCenterPart gap-2 mx-0">
+                <div class="col-12 bg-white pb-4">
+                    <div class="referImg w-75 mx-auto mt-3 mb-2"><img src="assets/svg/img/InviteLogo.png" class="w-100" alt="Referrals"></div>
+                    <div class="text-uppercase text-muted fw-bold fs-6 text-center">Refer a friends</div>
+                </div>
+                <div class="col-12 text-center bg-white py-4">
+                    <div class="invite mb-2 text-muted fw-bold">Share Your Invite Code</div>
+                    <div class="refercode mb-2 fw-bold text-black fs-6">{{userDetails.refer_code}}</div>
+                    <div class=""><button class="invite btn btn-success px-5 text-white btn-lg" [cdkCopyToClipboard]="userDetails.refer_code" (click)="openSnackBar('Code Copied Successfully', '&nbsp;')">INVITE YOUR FRIEND</button></div>
+                </div>
+                <div class="col-12 referValue" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
+                    <div class="py-2 text-white fw-semibold" style="cursor: pointer;">My Referral: {{userDetails.totalrefers}}</div>
+                </div>
+            </div>
+            <!-- *** [ Offcanvas ] *** -->
+            <div class="offcanvas offcanvas-bottom referoffcanvas" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+                <div class="custom" *ngIf="refer.length>0;else other">
+                    <!-- <div class="row h-100 gap-2"> -->
+                        <!-- <div class="col-12 px-0 border-bottom border-1 border-dark"> -->
+                            <table class="table">
+                                <thead>
+                                    <tr *ngFor="let d of refer">
+                                        <th>
+                                            <div class="teamDetail d-flex align-items-center gap-2">
+                                                <div class="imgOuter rounded-circle overflow-hidden">
+                                                    <img class="w-100 h-100" src={{d.image}} alt="">
+                                                </div>
+                                                <div class="teamName text-black fs-12">{{d.username}}</div>
+                                            </div>
+                                        </th>
+                                        <!-- <th scope="col" class="text-center">Winning</th>
+                                        <th scope="col" class="text-center">Rank</th> -->
+                                    </tr>
+                                    </thead>
+                                <!-- <tbody>
+                                    <tr class="position-relative" *ngFor="let d of leaderboard" [ngStyle]="{'cursor' : d.team == userInfo.team ? 'pointer':''}" [ngClass]="{'bg-success' : d.team == userInfo.team,'bg-opacity-25' : d.team == userInfo.team}" (click)="onMyTeam(d)">
+                                    <td>
+                                        <div class="teamDetail d-flex align-items-center gap-2">
+                                            <div class="imgOuter rounded-circle overflow-hidden">
+                                                <img class="w-100 h-100" src={{d.image}} alt="">
+                                            </div>
+                                            <div class="teamName text-black fs-12">{{d.team}} ({{d.teamnumber}})</div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="winningAmount">-</div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="myRank" *ngIf="d.team == userInfo.team; else other" (click)="onSwitch(d)" onclick="event.stopPropagation()">
+                                            <div class="icon mx-auto">
+                                                <button class="btn p-0 border-0 bg-transparent"><img class="w-100" src="assets/svg/icons/exchange.png" alt=""></button>
+                                            </div>
+                                        </div>
+                                        <ng-template #other>
+                                            <div class="myRank">- -->
+                                                <!-- <div class="icon mx-auto">
+                                                    <button class="btn p-0 border-0 bg-transparent"><img class="w-100" src="assets/svg/icons/exchange.png" alt=""></button>
+                                                </div> -->
+                                            <!-- </div>
+                                        </ng-template>
+                                    </td>
+                                    <tr>
+                                </tbody> -->
+                            </table>
+                        <!-- </div> -->
+                    <!-- </div> -->
+                    <!-- <div class="offcanvas-title" id="offcanvasBottomLabel"></div>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+                    <!-- <div class="underline w-100 d-flex align-items-center justify-content-center">
+                        <span class="d-inline-flex my-2 mt-3" data-bs-dismiss="offcanvas" aria-label="Close" *ngFor="let d of refer">{{d.username}}</span>
+                    </div> -->
+                </div>
+               <ng-template #other>
+                <div class="offcanvas-body small">
+                    <div class="text-center fw-bold text-danger nodata">No Data</div>
+                </div>
+               </ng-template>
+            </div>
+            <!-- *** [ Offcanvas End ] *** -->
+        </div>
+    </div>
+</main>

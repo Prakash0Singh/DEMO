@@ -1,0 +1,98 @@
+<main class="container-fluid">
+    <div class="row mainInner  bg-white">
+        <nav class="col-12 header py-3">
+            <div class="row align-items-center h-100">
+                <div class="col">
+                    <div class="title text-white text-center">Create Profile</div>
+                </div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill" data-page-name="createProfilePage" data-scrollbar>
+            <div class="row h-100 mainCenterPart">
+                <div class="col-12">
+                    <div class="topPart text-center pt-4">
+                        <div class="imgOuter mx-auto">
+                            <img src="assets/svg/img/img_logo.jpeg" alt="" height="50" width="50">
+                        </div>
+                        <div class="title text-white text-center mt-2">Khelega India Jitega India</div>
+                    </div>
+                    <div class="formOuter bg-white p-3 pt-4 mx-4 shadow">
+                        <form action="" class="form border-0" [formGroup]="editProfile">
+                            <div class="row gap-3">
+                                <div class="col-12 d-flex flex-column gap-2">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control shadow-none py-2"  formControlName="team" placeholder="Team Name" [readonly]="userDetail.team!=''"
+                                            aria-label="" aria-describedby="">
+                                        </div>
+                                        <div class="otpverfication text-danger fw-bold" *ngIf="f['team'].touched && f['team'].errors?.['pattern']">*Name Should contain Alphabets And Numbers ,space not allowed</div>
+                                        <div class="otpverfication text-danger fw-bold" *ngIf="f['team'].touched && f['team'].errors?.['required']">*Team Name Required</div>
+                                    <div class="flatpickr">
+                                        <input type="text" name="commencement"  onfocus="(this.type='date')" id="commencement" formControlName="dob" autocomplete="off"
+                                            class="form-control form-date py-2 shadow-none" [max]="maxDate" placeholder="DOB">
+                                    </div>
+                                    <div class="otpverfication text-danger fw-bold" *ngIf="f['dob'].touched && f['dob'].errors?.['required']">*Date Of Birth Required</div>
+                                    <div class="input-group">
+                                        <select class="form-select shadow-none" aria-label="Default select example"   formControlName="state">
+                                            <option  disabled selected value="">select state</option>
+                                            <option _ngcontent-c11="" value="PONDICHERRY">PONDICHERRY</option>
+                                            <option _ngcontent-c11="" value="BIHAR">BIHAR</option>
+                                            <option _ngcontent-c11="" value="CHHATTISGARH">CHHATTISGARH</option>
+                                            <option _ngcontent-c11="" value="DELHI">DELHI</option>
+                                            <option _ngcontent-c11="" value="GUJARAT">GUJARAT</option>
+                                            <option _ngcontent-c11="" value="DAMAN &amp; DIU">DAMAN &amp; DIU</option>
+                                            <option _ngcontent-c11="" value="DADRA &amp; NAGAR HAVELI">DADRA &amp; NAGAR
+                                                HAVELI</option>
+                                            <option _ngcontent-c11="" value="HARYANA">HARYANA</option>
+                                            <option _ngcontent-c11="" value="HIMACHAL PRADESH">HIMACHAL PRADESH</option>
+                                            <option _ngcontent-c11="" value="JAMMU &amp; KASHMIR">JAMMU &amp; KASHMIR
+                                            </option>
+                                            <option _ngcontent-c11="" value="JHARKHAND">JHARKHAND</option>
+                                            <option _ngcontent-c11="" value="KARNATAKA">KARNATAKA</option>
+                                            <option _ngcontent-c11="" value="KERALA">KERALA</option>
+                                            <option _ngcontent-c11="" value="LAKSHADWEEP">LAKSHADWEEP</option>
+                                            <option _ngcontent-c11="" value="MADHYA PRADESH">MADHYA PRADESH</option>
+                                            <option _ngcontent-c11="" value="MAHARASHTRA">MAHARASHTRA</option>
+                                            <option _ngcontent-c11="" value="GOA">GOA</option>
+                                            <option _ngcontent-c11="" value="MANIPUR">MANIPUR</option>
+                                            <option _ngcontent-c11="" value="MIZORAM">MIZORAM</option>
+                                            <option _ngcontent-c11="" value="TRIPURA">TRIPURA</option>
+                                            <option _ngcontent-c11="" value="ARUNACHAL PRADESH">ARUNACHAL PRADESH
+                                            </option>
+                                            <option _ngcontent-c11="" value="MEGHALAYA">MEGHALAYA</option>
+                                            <option _ngcontent-c11="" value="PUNJAB">PUNJAB</option>
+                                            <option _ngcontent-c11="" value="CHANDIGARH">CHANDIGARH</option>
+                                            <option _ngcontent-c11="" value="RAJASTHAN">RAJASTHAN</option>
+                                            <option _ngcontent-c11="" value="TAMIL NADU">TAMIL NADU</option>
+                                            <option _ngcontent-c11="" value="UTTAR PRADESH">UTTAR PRADESH</option>
+                                            <option _ngcontent-c11="" value="UTTARAKHAND">UTTARAKHAND</option>
+                                            <option _ngcontent-c11="" value="WEST BENGAL">WEST BENGAL</option>
+                                            <option _ngcontent-c11="" value="ANDAMAN &amp; NICOBAR ISLANDS">ANDAMAN
+                                                &amp; NICOBAR ISLANDS</option>
+                                        </select>
+                                    </div>
+                                    <div class="otpverfication text-danger fw-bold" *ngIf="f['state'].touched && f['state'].errors?.['required']">*State Required</div>
+                                </div>
+                                <div class="col-12 px-5 text-center">
+                                    <button type="button"
+                                        class="btn btn-theme1 border-0 btnStyle1 text-white w-100" (click)="onSubmit()">Submit</button>
+                                    <div class="dividarTxt my-2">OR</div>
+                                    <button type="button"
+                                        class="btn bg-transparent borer-0 p-0 shadow-none loginGoogleBtn">
+                                        <img class="w-100" src="assets/svg/icons/google_new.png" alt="">
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="col-12 footer py-3">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <!-- <div class="footerLink text-center">Not a Member? <a  [routerLink]="'/auth/login'" class="text-theme2 text-decoration-underline" >Login</a></div> -->
+                </div>
+            </div>
+        </footer>
+    </div>
+</main>

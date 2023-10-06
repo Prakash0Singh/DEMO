@@ -1,0 +1,75 @@
+<main class="container-fluid">
+    <div class="row mainInner bg-white">
+        <nav class="col-12 header bg-theme1 py-3">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <a [routerLink]="'/auth/login'" class="backBtn d-flex align-items-center justify-content-center">
+                        <img class="w-100" src="assets/svg/icons/leftCricleArrow.png" alt="">
+                    </a>
+                </div>
+                <div class="col">
+                    <div class="title text-white text-center">Sign-up</div>
+                </div>
+                <div class="col-auto">
+                    <div class="backBtn"></div>
+                </div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill" data-page-name="registrationPage" data-scrollbar>
+            <div class="row h-100 mainCenterPart">
+                <div class="col-12">
+                    <div class="topPart bg-theme1 text-center pt-4">
+                        <div class="imgOuter mx-auto">
+                            <img src="assets/svg/img/img_logo.jpeg" alt="" height="50" width="50">
+                        </div>
+                        <div class="title text-white text-center mt-2">Khelega India Jitega India</div>
+                    </div>
+                    <div class="formOuter bg-white p-3 pt-4 mx-4 shadow">
+                        <form action="" class="form border-0" [formGroup]="register" (ngSubmit)="submit()">
+                            <div class="row gap-3">
+                                <div class="col-12 d-flex flex-column gap-2">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control shadow-none py-2" formControlName="refer" placeholder="Referral Code (optional)" aria-label="" aria-describedby="">
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="tel"  autocomplete="off"  class="form-control shadow-none py-2" formControlName="mobile"  (keypress)="keyPressNumbers($event)" maxlength="10" placeholder="Mobile Number" aria-label="" aria-describedby="">
+                                    </div>
+                                    <span class="otpverfication text-danger fw-bold" [style.color]="'red'" *ngIf="f['mobile'].touched && f['mobile'].errors?.['required']">*Mobile Number Required</span>
+                                    <span class="otpverfication text-danger fw-bold" [style.color]="'red'" *ngIf="f['mobile'].touched && f['mobile'].errors?.['minlength']">*Minimum 10 Digits Are Required</span>
+                                    <div class="input-group">
+                                        <input type="email" class="form-control shadow-none py-2" formControlName="email" placeholder="Login Email" aria-label="" aria-describedby="">
+                                    </div>
+                                    <span class="otpverfication text-danger fw-bold" [style.color]="'red'" *ngIf="f['email'].touched && f['email'].errors?.['required']">*Email Required</span>
+                                    <span class="otpverfication text-danger fw-bold" [style.color]="'red'" *ngIf="f['email'].touched && f['email'].errors?.['pattern']">*Invalid Email</span>
+                                    
+                                    <div class="input-group">
+                                        <input [type]="showPassword ? 'password' : 'text'" class="form-control shadow-none py-2" formControlName="password" placeholder="Password" aria-label="" aria-describedby="">
+                                        <span class="showPass position-absolute align-items-center d-flex justify-content-center"><img (click)="togglePasswordVisibility()" class="w-100" [src]="showPassword ?'assets/svg/icons/visibility.png':'assets/svg/icons/visibility-off.512x443.png'" alt=""></span>
+                                    </div>
+                                    <span class="otpverfication text-danger fw-bold" [style.color]="'red'" *ngIf="f['password'].touched && f['password'].errors?.['required']">*Password Required</span>
+                                    <span class="otpverfication text-danger fw-bold" [style.color]="'red'" *ngIf="f['password'].touched && f['password'].errors?.['minlength']">*Password must contain at least 8 characters</span>
+                                    <span class="otpverfication text-danger fw-bold" [style.color]="'red'" *ngIf="f['password'].touched && f['password'].errors?.['pattern']">*Space not allowed</span>
+
+                                </div>
+                                <div class="col-12 px-5 text-center">
+                                    <button type="submit" class="btn btn-theme1 border-0 btnStyle1 text-white w-100">Submit</button>
+                                    <div class="dividarTxt my-2">OR</div>
+                                    <button type="button" class="btn bg-transparent borer-0 p-0 shadow-none loginGoogleBtn">
+                                        <img class="w-100" src="assets/svg/icons/google_new.png" alt="">
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="col-12 footer py-3">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footerLink text-center">Already have an account ? <a [routerLink]="'/auth/login'" class="text-theme2 text-decoration-underline">Login</a></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</main>

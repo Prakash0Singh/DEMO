@@ -1,0 +1,39 @@
+@import "../../../../variables";
+
+        .mainCenterPart {
+            background-color: $gray-200;
+            & .rupees {
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
+                background-color: lighten($danger, 8);
+            }
+            & .balance {
+                font-size: 12px;
+            }
+            & .subbalance {
+                font-size: 10px;
+            }
+            & .balanceAmount {
+                font-size: 14px;
+                text-decoration: none;
+            }
+            & .warningCard {
+                z-index: 1;
+                &.addcase {
+                    background-color: $theme1;
+                }
+            }
+            & .warningImg {
+                width: 40px;
+                height: 40px;
+            }
+            & .winningAmount {
+                color: lighten($theme1,  15);
+            }
+            & .withdrawAmount {
+                margin-top: -28px;
+                background-color: lighten($success, 5);
+                border-radius: 0px 0px 1rem 1rem;
+            }
+        }

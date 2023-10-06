@@ -1,0 +1,36 @@
+@import "../../../../variables";
+
+.profileMain {
+    background-color: $theme1;
+    & .bannerSection {
+        height: 180px; 
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+        & .profileDetial {
+            & .imgOuter {
+                width: 60px;
+                height: 60px;
+                & img {
+                    object-position: center top;
+                    object-fit: cover;
+                }
+                & .form-label {
+                    cursor: pointer;
+                    width: 20px;
+                    height: 20px;
+                    & img {
+                        filter: invert(1);
+                    }
+                }
+            }
+        }
+    }
+    & .accountMain {
+        & .accountInner {
+            & .bonus {
+                color: lighten($warning, 5) !important;
+            }
+        }
+    }
+}

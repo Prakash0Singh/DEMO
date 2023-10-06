@@ -1,0 +1,259 @@
+
+<main class="container-fluid">
+    <div class="row mainInner position-relative">
+        <nav class="col-12 header d-flex align-items-center px-0">
+            <div class="row mx-0 innerheader align-items-center w-100">
+                <div class="col-auto notification">
+                    <a (click)="onBack()" style="cursor: pointer;" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/leftCricleArrow.png" class="w-100" alt="bell"></a>
+                </div>
+                <div class="col">
+                    <div class="title text-white text-center">{{match.team1name}} vs {{match.team2name}}</div>
+                    <div class="matchTime text-center text-white fw-semibold "><cd-timer *ngIf="finalDate>0" [countdown]="true" [startTime]="finalDate" [format]="'user'">[days]d : [hours]h : [minutes]m : [seconds]s</cd-timer></div>
+                </div>
+                <div class="col-auto notification">
+                    <a [routerLink]="'/dashboard/wallet'" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/wallet_white_color.png" class="w-100" alt="bell"></a>
+                </div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill" data-page-name="contestWinnerLeaderBoard" data-scrollbar>
+            <div class="row mx-0 h-100 flex-column flex-nowrap">
+                <div class="col-12 px-0 cricketheader bg-white z-2">
+                    <div class="card rounded-0 matchesCard overflow-hidden border-0 bg-white">
+                        <div class="card-body p-0">
+                            <div class="teamHeadline row align-items-center">
+                                <div class="col fw-semibold matchteams text-mutedb py-1 text-center border-bottom borderlight ">{{match.seriesname}}</div>
+                            </div>
+                            <div class="innerBody firstMatchBody">
+                                <div class="row align-items-center p-2">
+                                    <div class="col-auto leftSideTeams px-2">
+                                        <div class="team d-flex align-items-center mt-2">
+                                            <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center">
+                                                <span class="position-absolute teamCountryLogo" [style.backgroundColor]="match.team1color"></span>
+                                                <img src={{match.team1logo}} class="w-100" alt="">
+                                            </div>
+                                            <div class="teamName text-uppercase text-black fw-bold ms-2">{{match.team1name}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col px-0 matchTimer">
+                                        <div class="pichTime text-center fw-semibold "><cd-timer *ngIf="finalDate>0" [countdown]="true" [startTime]="finalDate" [format]="'user'">[days]d : [hours]h : [minutes]m : [seconds]s</cd-timer></div>
+                                    </div>
+                                    <div class="col-auto rightSideTeams px-2">
+                                        <div class="team d-flex align-items-center mt-2">
+                                            <div class="teamName text-uppercase text-black fw-bold me-2">{{match.team2name}}</div>
+                                            <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center">
+                                                <span class="position-absolute teamCountryLogo" [style.backgroundColor]="match.team2color"></span>
+                                                <img src={{match.team2logo}} class="w-100" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mx0 justify-content-between p-2 border-top">
+                                    <div class="col-4 leftSideTeams">
+                                        <div class="team">
+                                            <div class="teamName text-black fw-bold">Prize Pool</div>
+                                            <div class="teamName text-black fw-bold fs-12" *ngIf="contestDetails.gift_type=='amount'">{{contestDetails.win_amount==0?'Practice Contest':'₹'+contestDetails.win_amount}}</div>
+                                            <div class="text-black fw-bold" *ngIf="contestDetails.gift_type=='gift'"> <img style="width: 30%;" src={{contestDetails.gift_image}} alt=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 px-0 matchTimer">
+                                        <div class="pichTime text-center fw-bold text-black">Winners</div>
+                                        <div class="pichTime text-center fw-bold text-black">{{contestDetails.totalwinners}}</div>
+                                    </div>
+                                    <div class="col-4 text-end">
+                                        <button type="button" class="btn btn-success btnSuccess border-0 text-white fw-semibold position-relative z-1" (click)="onJoinContest()" *ngIf="contestDetails.isselected==false" onclick="event.stopPropagation()">{{contestDetails.entryfee==0?'Free':'₹'+contestDetails.entryfee}}</button>
+                                        <button type="button" class="btn btn-success btnSuccess border-0 text-white fw-semibold position-relative z-1" onclick="event.stopPropagation()" *ngIf="contestDetails.isselected==true">joined</button>
+                                        <button type="button" class="btn btn-success border-0 btnSuccess text-white" id="openModal" onclick="event.stopPropagation()" data-bs-toggle="modal" data-bs-target="#exampleModal" [hidden]="true">join</button>                                    
+                                    </div>
+                                </div>
+                                <div class="row mx-0">
+                                    <div class="col-12 px-0">
+                                        <div class="progress rounded-0 bg-light">
+                                            <div class="progress-bar" role="progressbar" aria-label="Basic example" [style.width]="value+'%'" aria-valuenow="0.10" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between px-2 p-1">
+                                            <div class="fs-12 text-danger fw-semibold">{{contestDetails.maximum_user - contestDetails.joinedusers}} teams left</div>
+                                            <div class="fs-12 fw-semibold">{{contestDetails.maximum_user}} Teams</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 px-0 position-relative py-2">
+                                        <div class="enteryType fw-bold text-center fs-12" *ngIf="contestDetails.multi_entry == 0">Single Entry</div>
+                                        <div class="enteryType fw-bold text-center fs-12"  *ngIf="contestDetails.multi_entry == 1">Upto {{contestDetails.team_limit}} Entries</div>
+                                        <div class="position-absolute badges fs-12 text-white align-items-center d-flex gap-2">
+                                            <span class="badge badge1 bg-success rounded-2 align-items-center d-flex justify-content-center" *ngIf="contestDetails.multi_entry == 0">S</span>
+                                            <span class="badge badge1 bg-danger rounded-2 align-items-center d-flex justify-content-center" *ngIf="contestDetails.confirmed_challenge == 1">C</span>
+                                            <span class="badge badge1 bg-success rounded-2 align-items-center d-flex justify-content-center" *ngIf="contestDetails.multi_entry == 1">M</span>
+                                            <div class=" d-flex align-items-center borderBage" *ngIf="contestDetails.is_bonus == 1">
+                                                <span class="badge badge1 rounded-0 align-items-center d-flex justify-content-center">B</span>
+                                                <span class="badge badge1 bg-white text-black rounded-0 rounded-end rounded-end-2 align-items-center d-flex justify-content-center px-3">{{contestDetails.bonus_percentage}}%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 px-0">
+                            <ul class="nav row mx-0 nav-pills navtab bg-theme1 bg-opacity-25" id="pills-tab" role="tablist">
+                                <li class="nav-item col px-0" role="presentation">
+                                    <button class="nav-link rounded-0 text-black w-100 border-0 py-3" id="prizeBreakup-tab" data-bs-toggle="pill" data-bs-target="#prizeBreakup" type="button" role="tab" aria-controls="prizeBreakup" aria-selected="true">
+                                        <span class="gamesheading pt1 d-flex justify-content-center">Prize Breakup</span>
+                                    </button>
+                                </li>
+                                <li class="nav-item col px-0" role="presentation">
+                                    <button class="nav-link rounded-0 text-black w-100 border-0 py-3 active" id="leaderBoard-tab" data-bs-toggle="pill" data-bs-target="#leaderBoard" type="button" role="tab" aria-controls="leaderBoard" aria-selected="false">
+                                        <span class="gamesheading pt1 d-flex justify-content-center">leaderBoard</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 flex-fill h-100 overflow-hidden-auto">
+                    <div class="row">
+                        <div class="tab-content tabContents h-100" id="pills-tabContent">
+                            <div class="tab-pane fade h-100" id="prizeBreakup" role="tabpanel" aria-labelledby="prizeBreakup-tab" tabindex="0">
+                                <div class="row h-100 gap-2">
+                                    <div class="col-12 px-0 border-bottom border-1 border-dark">
+                                        <table class="table border-0 m-0">
+                                            <thead class="bg-secondary bg-opacity-75 text-white fs-12">
+                                                <tr>
+                                                    <th scope="col" class="text-start">RANK</th>
+                                                    <th scope="col" class="text-end">Prize</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="" *ngFor="let d of price">
+                                                <td>
+                                                    <div class="teamDetail text-start">
+                                                        <div class="teamName text-black fs-12">Rank: {{d.start_position}}</div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-end">
+                                                    <div class="winningAmount" *ngIf="d.gift_type=='gift'">{{d.price}} &nbsp; <img style="width: 10%;" src={{d.image}} alt=""></div>
+                                                    <div class="winningAmount" *ngIf="d.gift_type=='amount'">₹ {{d.price}}</div>
+                                                </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-12 px-0">
+                                        <div class="dec fs-12 text-center">Note: The actual price money may be different than the prize money mentioned above if there is a tie for any of the winning position. Check FAQs for futher deatils. As per govrenment regulations, a tax of 31.2% will be deducted if an individual wins more than ₹ 10,000.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade h-100 show active" id="leaderBoard" role="tabpanel" aria-labelledby="leaderBoard-tab" tabindex="0">
+                                <div class="row h-100">
+                                    <div class="col-12 px-0">
+                                        <table class="table border-0">
+                                            <thead class="bg-secondary text-white fs-12 sticky-top">
+                                                <tr>
+                                                    <th scope="col" class="d-flex gap-2">Team Name <div class="icon"><img class="w-100" src="assets/svg/icons/downloadicon.png" alt=""></div></th>
+                                                    <th scope="col" class="text-center">Winning</th>
+                                                    <th scope="col" class="text-center">Rank</th>
+                                                </tr>
+                                                </thead>
+                                            <tbody>
+                                                <!-- <tr class="position-relative bg-success bg-opacity-25">
+                                                <td>
+                                                    <div class="teamDetail d-flex align-items-center gap-2">
+                                                        <div class="imgOuter rounded-circle overflow-hidden">
+                                                            <img class="w-100 h-100" src="assets/svg/img/avtar.jpg" alt="">
+                                                        </div>
+                                                        <div class="teamName text-black fs-12">My Team (1)</div>
+                                                        <a href="teamView.html" class="stretched-link"></a>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="winningAmount">-</div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="myRank">
+                                                        <div class="icon mx-auto position-relative z-1">
+                                                            <a href="chooseYourTeam.html" class="btn p-0 border-0 bg-transparent"><img class="w-100" src="assets/svg/icons/exchange.png" alt=""></a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                </tr> -->
+                                                <tr class="position-relative" *ngFor="let d of leaderboard" [ngStyle]="{'cursor' : d.team == userInfo.team ? 'pointer':''}" [ngClass]="{'bg-success' : d.team == userInfo.team,'bg-opacity-25' : d.team == userInfo.team}" (click)="onMyTeam(d)">
+                                                <td>
+                                                    <div class="teamDetail d-flex align-items-center gap-2">
+                                                        <div class="imgOuter rounded-circle overflow-hidden">
+                                                            <img class="w-100 h-100" src={{d.image}} alt="">
+                                                        </div>
+                                                        <div class="teamName text-black fs-12">{{d.team}} ({{d.teamnumber}})</div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="winningAmount">-</div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="myRank" *ngIf="d.team == userInfo.team; else other" (click)="onSwitch(d)" onclick="event.stopPropagation()">
+                                                        <div class="icon mx-auto">
+                                                            <button class="btn p-0 border-0 bg-transparent"><img class="w-100" src="assets/svg/icons/exchange.png" alt=""></button>
+                                                        </div>
+                                                    </div>
+                                                    <ng-template #other>
+                                                        <div class="myRank">-
+                                                            <!-- <div class="icon mx-auto">
+                                                                <button class="btn p-0 border-0 bg-transparent"><img class="w-100" src="assets/svg/icons/exchange.png" alt=""></button>
+                                                            </div> -->
+                                                        </div>
+                                                    </ng-template>
+                                                </td>
+                                                <tr>
+                                            </tbody>
+                                        </table>
+                                        <div *ngIf="dataCheck" class="text-center">
+                                            <button class="btn btn-primary btn-sm mt-2" (click)="loadMore()" >Load More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <footer class="col-12 footer bottomBar d-flex align-items-center">
+            <div class="row mx-0 align-items-center innerBar w-100">
+                <div class="col px-0 bottombarTabs text-center"><a href="home.html" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/Home_Blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Home</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a href="myMatches.html" class="linkTab active text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/My_Matches_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">My Matches</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a href="profile.html" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/Profile_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Profile</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a href="otherMenu.html" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/More_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">More</span></a></div>
+            </div>
+        </footer> -->
+        <div class="modal fade bg-black confermationModal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 rounded-4">
+                <div class="modal-header border-0">
+                    <div class="modal-title" id="exampleModalLabel">
+                        <div class="confiramtionHeading fw-semibold text-black fs-6">CONFIRMATION</div>
+                        <div class="balance fw-semibold">Unutilized Balance + Winnings = ₹{{usableBalanceArr.usablebalance}}</div>
+                    </div>
+                    
+                    <button type="button" class="shadow-none border-0 bg-transparent p-0" data-bs-dismiss="modal" aria-label="Close"><img src="assets/svg/icons/close-_icon.svg" class="w-100" alt=""></button>
+                </div>
+                <div class="modal-body row mx-0">
+                    <div class="col-12 px-0 row mx-0 align-items-center">
+                        <div class="col leftEntery fw-semibold px-0">Entry</div>
+                        <div class="col-auto prich fw-semibold pe-0">₹ {{usableBalanceArr.entryfee}}</div>
+                    </div>
+                    <div class="col-12 px-0 row mx-0 align-items-center bonus pb-1">
+                        <div class="col leftEntery fw-semibold px-0">Usable Cash Bonus</div>
+                        <div class="col-auto prich fw-semibold pe-0">- ₹ {{usableBalanceArr.bonus}}</div>
+                    </div>
+                    <div class="col-12 px-0 row mx-0 align-items-center mt-3 mb-2 payAmount">
+                        <div class="col leftEntery fw-semibold px-0">To Pay</div>
+                        <div class="col-auto prich fw-semibold pe-0">₹ {{usableBalanceArr.entryfee- usableBalanceArr.bonus}}</div>
+                    </div>
+                    <div class="col-12 joinAddress fw-semibold text-center">By joining this contest,you accept ImgFantasy's T&C and confirm that you are not a resident of Assam, Odhissa, Telangana, Nagaland & Sikkim.</div>
+                </div>
+                <div class="modal-footer border-0 justify-content-center">
+                    <button class="invite btn btn-success px-5 text-white btn-sm fs-6" (click)="joincontest()">JOIN CONTEST</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+</main>

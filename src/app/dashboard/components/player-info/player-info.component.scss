@@ -1,0 +1,48 @@
+@import "../../../../variables";
+
+
+        .card{
+            & .imgouter{
+                width: 40px;
+                height: 40px;
+            }
+            // & .name {
+            // }
+        }
+        table {
+            &.table {
+                & thead {
+                    & tr {
+                        & th {
+                            font-weight: normal;
+                            & .icon {
+                                width: 16px;
+                                height: 16px;
+                                & img {
+                                    filter: invert(1);
+                                }
+                            }
+                        }
+                    }
+                }
+                & tbody {
+                    vertical-align: baseline;
+                    & tr {
+                        & td {
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+        .teamDetail {
+            & .imgOuter {
+                width: 32px;
+                height: 32px;
+                & img {
+                    object-fit: cover;
+                    object-position: center top;
+                }
+            }
+        }
+    

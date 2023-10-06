@@ -1,0 +1,15 @@
+@import "../../../../variables";
+
+.mainCenterPart {
+    background-color: $gray-200;
+    & .notificationDay {
+        font-size: 14px;
+    }
+    & .notificationCard {
+        box-shadow: 0px 0px 6px rgba($black, 0.1);
+        border: 1.6px solid rgba($black, 0.3);
+        & .notificationDateTime {
+            font-size: 12px;
+        }
+    }
+}

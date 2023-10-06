@@ -1,0 +1,160 @@
+<main class="container-fluid">
+    <div class="row mainInner">
+        <nav class="col-12 header d-flex align-items-center px-0">
+            <div class="row mx-0 innerheader align-items-center w-100">
+                <div class="col-auto notification">
+                    <a (click)="api.onBack()" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/leftCricleArrow.png" class="w-100" alt="bell"></a>
+                </div>
+                <div class="col"><div class="title text-white text-center">Leaderboard</div></div>
+                <div class="col-auto notification">
+                    <a href="javascript:;" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"></a>
+                </div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill" data-page-name="Leaderboard" data-scrollbar>
+            <div class="row mx-0 h-100 flex-column flex-nowrap">
+                <div class="col-12 px-0">
+                    <form action="" class="border-0 row mx-0">
+                        <div class="col-12 px-0">
+                            <div>
+                                <!-- <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Indian Premier League 2021
+                                </button>
+                                <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="#">Lorem, ipsum.</a></li>
+                                  <li><a class="dropdown-item" href="#">Lorem, ipsum dolor.</a></li>
+                                  <li><a class="dropdown-item" href="#">Lorem, ipsum.</a></li>
+                                </ul> -->
+                                <select name="0" id="" class="dropdown customDropDown btn dropdown-toggle border-0" (change)="onChnage($event)">
+                                    <option [value]="d.id" class="dropdown-item" *ngFor="let d of series">{{d.name}}</option>
+                                </select>
+                              </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-12 bg-primary flex-fill overflow-hidden px-0 h-100">
+                    <div class="row mx-0 h-100">
+                        <div class="col-12 px-2 py-4">
+                            <div class="row mx-0 row-cols-3 g-4 text-center">
+                                <div class="col" *ngFor="let d of toppers">
+                                    <div class="userImg">
+                                        <div class="imgOuter">
+                                            <img src={{d.image}} class="w-100 h-100" alt="">
+                                        </div>
+                                        <span class="teamNumber">{{d.rank}}</span>
+                                    </div>
+                                    <div class="userName text-white">{{d.teamName |slice: 0:13}}</div>
+                                    <div class="teamPoints text-white">{{d.totalpoints}} <span>pts</span></div>
+                                </div>
+                                <!-- <div class="col">
+                                    <div class="userImg">
+                                        <div class="imgOuter">
+                                            <img src="assets/svg/img/avtar.jpg" class="w-100 h-100" alt="">
+                                        </div>
+                                        <span class="teamNumber">2</span>
+                                    </div>
+                                    <div class="userName text-white">Team Name</div>
+                                    <div class="teamPoints text-white">20175.50 <span>pts</span></div>
+                                </div>
+                                <div class="col">
+                                    <div class="userImg">
+                                        <div class="imgOuter">
+                                            <img src="assets/svg/img/playerImg.png" class="w-100 h-100" alt="">
+                                        </div>
+                                        <span class="teamNumber">3</span>
+                                    </div>
+                                    <div class="userName text-white">Team Name</div>
+                                    <div class="teamPoints text-white">20175.50 <span>pts</span></div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-12 px-0 bottomSection h-100 bg-white shadow-lg overflow-hidden">
+                            <div class="row mx-0 overflow-hidden-auto h-100 mb-5">
+                                <div class="col-12 px-0 mb-3">
+                                    <div class="row mx-0">
+                                        <!-- <a href="javascript:;" class="col-12 cardSection active">
+                                            <div class="row mx-0 align-items-center">
+                                                <div class="col-auto p-0">
+                                                    <div class="teamImg">
+                                                        <img src="assets/svg/img/avtar.jpg" class="w-100 h-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col px-3">
+                                                    <div class="teamName">Team Name</div>
+                                                </div>
+                                                <div class="col-auto px-0">
+                                                    <div class="row mx-auto flex-column justify-content-center align-items-center">
+                                                        <div class="col-auto px-0 rankText">#4</div>
+                                                        <div class="col-auto px-0 pointsText">1948.00 <span>pts</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a> -->
+                                        <a href="javascript:;" class="col-12 cardSection" *ngFor="let d of leaderboard" [ngClass]="this.userInfo.team==d.teamName?'active':''">
+                                            <div class="row mx-0 align-items-center">
+                                                <div class="col-auto p-0">
+                                                    <div class="teamImg">
+                                                        <img src={{d.image}} class="w-100 h-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col px-3">
+                                                    <div class="teamName">{{d.teamName}}</div>
+                                                </div>
+                                                <div class="col-auto px-0">
+                                                    <div class="row mx-auto flex-column justify-content-center align-items-center">
+                                                        <div class="col-auto px-0 rankText">#{{d.rank}}</div>
+                                                        <div class="col-auto px-0 pointsText">{{d.totalpoints}} <span>pts</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- *** [ Offcanvas ] *** -->
+            <div class="offcanvas offcanvas-bottom referoffcanvas referoffcanvas2" tabindex="-1" id="offcanvasBottom2" aria-labelledby="offcanvasBottomLabel2">
+                <div class="offcanvas-header p-0">
+                    <!-- <div class="offcanvas-title" id="offcanvasBottomLabel2"></div>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+                    <div class="underline w-100 d-flex align-items-center justify-content-center"><span class="d-inline-flex my-2" data-bs-dismiss="offcanvas" aria-label="Close"></span></div>
+                </div>
+                <div class="offcanvas-body small">
+                    <div class="row mx-0">
+                        <div class="text-center mt-2 mb-2 w-100 fw-bold h-100">Leaderboard Prize Breakup</div>
+                        <div class="col-12 px-0">
+                            <table class="customTable">
+                                <thead>
+                                    <tr>
+                                        <th class="text-start">Prize</th>
+                                        <th class="text-end">Rank</th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngIf="price.length>0; else other">
+                                    <tr *ngFor="let d of price">
+                                        <td class="text-start">₹ {{d.price}}</td>
+                                        <td class="text-end">{{d.start_position}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <ng-template #other>
+                        <div class=" col-12 noData text-secondary text-center fw-bold text-danger">No Data</div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+            <!-- *** [ Offcanvas End ] *** -->
+        </div>
+        <footer class="col-12 footer bottomBar d-flex align-items-center px-0">
+            <div class="row mx-0 align-items-center h-100 w-100">
+                <div class="col-12 p-0 h-100">
+                    <button class="btn btn-primary rounded-0 w-100 fw-bold h-100 shadow-none text-white" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom2">Leaderboard Prizes Breakup</button>
+                </div>
+            </div>
+        </footer>
+    </div>
+</main>

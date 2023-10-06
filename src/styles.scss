@@ -1,0 +1,1934 @@
+/* You can add global styles to this file, and also import other style files */
+@import "node_modules/bootstrap/dist/css/bootstrap"; 
+@import "variables";
+
+
+$mainOuterWidth: 450px;
+
+html, body { height: 100%; }
+* { margin: 0; font-family: "Nunito", sans-serif; }
+:root {
+    --topbar-height: 70px;
+    --startbar-width: 300px;
+    --endbar-width: 70px;
+  }
+
+  [href*="javascript"][target="_blank"] {
+    pointer-events: none;
+  }
+  a.active[href],
+  a.accordion-button:not(.collapsed) {
+    pointer-events: none;
+  }
+  // body {
+  //   position: fixed !important;
+  //   top: 0 !important;
+  //   left: 0 !important;
+  //   width: 100% !important;
+  //   height: 100% !important;
+  //   overflow-x: hidden !important;
+  //   overflow-y: auto !important;
+  //   outline: 0 !important;
+  //   display: block !important;
+  //   user-select: none !important;
+  //   background-image: url(../src/assets/svg/img/mainBg.jpg);
+  //   background-size: cover;
+  //   background-repeat: no-repeat;
+  //   background-position: top center;
+  // }
+  // body input,
+  // body textarea,
+  // body select {
+  //   user-select: auto;
+  // }
+  // body main {
+  //   width: 100vw !important;
+  //   max-width: none !important;
+  //   height: 100% !important;
+  //   margin: 0 !important;
+  //   position: relative !important;
+  //   overflow: hidden !important;
+  //   padding: 0px !important;
+  // }
+  // body main > .mainInner {
+  //   background-color: #fff;
+  //   height: 100% !important;
+  //   border: 0 !important;
+  //   position: relative !important;
+  //   display: flex !important;
+  //   flex-direction: column !important;
+  //   width: 100% !important;
+  //   max-width: 360px;
+  //   outline: 0 !important;
+  //   overflow: hidden !important;
+  //   margin: 0px !important;
+  //   flex-wrap: nowrap !important;
+  // }
+  // body main > .mainInner [data-scrollbar] {
+  //   height: 100%;
+  //   overflow: hidden auto;
+  // }
+  // body .overflow-hidden-auto {
+  //   overflow: hidden auto !important;
+  // }
+  // body .overflow-auto-hidden {
+  //   overflow: auto hidden !important;
+  // }
+
+  body {
+    // position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    outline: 0 !important;
+    display: block !important;
+    user-select: none !important;
+
+    & input,
+    & textarea,
+    & select {
+      user-select: auto;
+    }
+
+    & main {
+      width: 100vw !important;
+      max-width: none !important;
+      height: 100% !important;
+      margin: 0 !important;
+      position: relative !important;
+      overflow: hidden !important;
+      padding: 0px !important;
+      background-image: url("assets/svg/img/mainBg.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top center;
+      &>.mainInner {
+        background-color: $white;
+        height: 100% !important;
+        border: 0 !important;
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: $mainOuterWidth;
+        outline: 0 !important;
+        overflow: hidden !important;
+        margin: 0px !important;
+        flex-wrap: nowrap !important;
+        min-height: 500px;
+        transform: translate(0px, 0px);
+        & [data-scrollbar] {
+          height: 100%;
+          overflow: hidden auto;
+          
+        }
+
+      }
+    }
+
+    & .overflow-hidden-auto {
+      overflow: hidden auto !important;
+    }
+
+    & .overflow-auto-hidden {
+      overflow: auto hidden !important;
+    }
+  }
+
+  
+  * {
+    &>* {
+      scrollbar-width: thin !important;
+      scrollbar-color: lighten($theme1, 2) !important;
+
+      &::-webkit-scrollbar {
+        width: .3em;
+        height: .3em;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 50em;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: rgba($theme1, .0);
+        border-radius: 50em;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: rgba($theme1, .6);
+      }
+    }
+
+    &>* {
+      &>*:hover {
+        &::-webkit-scrollbar {
+          width: .3em;
+          height: .3em;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: rgba($theme1, .1);
+          border-radius: 50em;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+          background: rgba($theme1, .8);
+        }
+      }
+    }
+  } 
+  @media (min-width: 768px) {
+    * > * {
+      scrollbar-width: thin !important;
+      scrollbar-color: #fd0d0e !important;
+    }
+    * > *::-webkit-scrollbar {
+      width: 0.3em;
+      height: 0.3em;
+    }
+    * > *::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0);
+      border-radius: 50em;
+    }
+    * > *::-webkit-scrollbar-thumb {
+      background: rgba(173, 181, 189, 0);
+      border-radius: 50em;
+    }
+    * > *::-webkit-scrollbar-thumb:hover {
+      background: rgba(206, 212, 218, 0.6);
+    }
+    * > * > *:hover::-webkit-scrollbar {
+      width: 0.3em;
+      height: 0.3em;
+    }
+    * > * > *:hover::-webkit-scrollbar-thumb {
+      background: rgba(173, 181, 189, 0.1);
+      border-radius: 50em;
+    }
+    * > * > *:hover::-webkit-scrollbar-thumb:hover {
+      background: rgba(206, 212, 218, 0.8);
+    }
+  }
+
+// header design start 
+
+.header {
+  background-color: $theme1;
+  height: 60px;
+  & .innerheader {
+    & .profile {
+      & .userImage {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        & img {
+          object-fit: cover;
+        }
+      }
+    }
+    & .notification {
+      & .notificationIcon {
+        width: 20px;
+        & img {
+          transition: all 0.3s;
+        }
+        &:hover{
+          & img {
+            filter: opacity(0.8);
+          }
+        }
+      }
+    }
+    & .matchTime{
+      font-size: 10px;
+
+    }
+  }
+  .btn-close {
+    filter: invert(1);
+    opacity: 1;
+  }
+  .brand{
+      width: 100px;
+  }
+  .buttons {
+      & .btn-edit {
+          width: 16px;
+          height: 16px;
+      }
+    & .userprofilename {
+      & .userMailAdd, & .username {
+        font-size: 12px;
+      }
+    }
+  }
+  &.profileoffcanvasHeader {
+    height: 114px;
+    & .innerheader{
+      & .profile {
+        & .userImage {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+    & .upload {
+      right: -10%;
+        top: 50%;
+        width: 25px;
+        height: 25px;
+      & label {
+        cursor: pointer;
+        overflow: hidden;
+        transition: all ease 0.5s;
+        pointer-events: none;
+        & img {
+          filter: invert(1);
+        }
+      }
+      & .input-file {
+        opacity: 0;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+// header design end
+
+.mainCenterPart {
+  & .topPart{
+      height: 40%;
+      background-color: $theme1;
+      & .imgOuter{
+          width: 160px;
+      }
+      & .title {
+          font-size: 16px;
+          font-weight: 600;
+      }
+  }
+  & .formOuter {
+      border-radius: 26px;
+      margin-top: -112px;
+      & form {
+          &.form {
+              & .tagLine{
+                  font-size: 10px;
+              }
+              & .dividarTxt {
+                  font-size: 14px;
+                  font-weight: 600;
+              }
+          }
+      }
+  }
+}
+
+.footerLink {
+  font-size: 14px;
+  color: $gray-600;
+  font-weight: 700;
+  & a {
+      color: $theme2;
+  }
+}
+.header {
+  background-color: $theme1;
+  & .title {
+      font-size: 12px;
+  }
+}
+.fs-12 {
+  font-size: 12px !important;
+}
+.fs-10 {
+  font-size: 10px !important;
+}.fs-14 {
+  font-size: 14px !important;
+}
+
+//   buttons start
+  // .btnStyle1 {
+  //   background: linear-gradient(180deg, $theme1 30%, lighten($theme1, 20) 110%);
+  // }
+  // .loginGoogleBtn{
+  //   width: 32px;
+  //   height: 32px;
+  // }
+  // .backBtn {
+  //   width: 16px;
+  //   height: 16px;
+  // }
+//   buttons end
+
+
+// input design start
+// .form{
+//     & .form-control, & .form-select {
+//         font-size: 14px;
+//         border: 1px solid $gray-500 !important;
+//         height: 40px !important;
+//         &::placeholder {
+//             font-size: 14px;
+//             font-weight: 600;
+//         }
+//     }
+// }
+.bgImging{ 
+    // background-image: url("/assets/svg/img/teamBg.png");
+      background-image: url("./assets/svg/img/teamBg.png");
+}
+
+.profileMain .bannerSection { 
+      background-image: url("./assets/svg/img/profileBg.png");
+  }
+.form{
+  & .form-control, & .form-select {
+      font-size: 14px;
+      border: 1px solid $gray-500 !important;
+      height: 40px !important;
+      border-radius: 6px !important;
+      &::placeholder {
+          font-size: 14px;
+          font-weight: 600;
+      }
+  }
+  & .showPass{
+      width: 16px;
+      height: 16px;
+      top: 12px;
+      right: 12px;
+      cursor: pointer;
+      z-index: 10;
+      & img {
+          filter: opacity(0.5);
+      }
+  }
+  & .selectlabel {
+      font-size: 14px;
+  }
+  & .form-check {
+      & .form-check-input {
+          background-image: none;
+          position: relative;
+          background-color: unset;
+          border: 1.6px solid $black;
+          width: 18px;
+          height: 18px;
+          &::before{
+              content: "";
+              width: 12px;
+              height: 12px;
+              border-radius: 50%;
+              position: absolute;
+              inset: 0;
+              margin: auto;
+          }
+          &:checked{
+              &::before{
+                  background-color: $black;
+              }
+          }
+      }
+  }
+  &.bgForm {
+      & .form-control, & .form-select {
+          background-color: $gray-300;
+          color: $black;
+      }
+  }
+  & .changepassword {
+      font-size: 14px;
+      color: $theme1;
+  }
+}
+
+.btnStyle1 {
+  background: linear-gradient(180deg, $theme1 30%, lighten($theme1, 20) 110%);
+}
+.loginGoogleBtn {
+  width: 32px;
+  height: 32px;
+}
+.backBtn {
+  width: 16px;
+  height: 16px;
+}
+.customFontBtn {
+  font-size: 12px;
+}
+.addCaseBtn {
+  font-size: 14px;
+  border: 1.6px solid $theme2;
+}
+.btnStyle2 {
+  background-color: $theme1;
+  transition: all ease-in-out 0.3s;
+  font-size: 14px;
+  &:hover {
+    background-color: rgba($theme1, 0.9) !important;
+  }
+}
+.btnSuccess {
+  background-color: lighten($success, 5);
+  border-radius: 8px;
+  padding: 4px 16px;
+  font-size: 14px;
+}
+.btnPrimary {
+  background-color: $primary;
+  border-radius: 8px;
+  padding: 4px 16px;
+  font-size: 14px;
+  }
+  
+.btnIcon {
+  width: 40px;
+}
+.btnWarning {
+  background-color: darken($warning, 10);
+}
+.updateBtn {
+  font-size: 14px;
+  color: $theme1;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: darken($white, 10);
+    color: darken($theme1, 10);
+  }
+}
+.footerBtn {
+  font-size: 14px;
+}
+.bottomFixedBtn {
+  & .createBtn {
+    min-width: 124px;
+    z-index: 3;
+    font-size: 14px;
+    border: 1.6px solid rgba($black, 0.6);
+    padding: 0.25rem 1rem;
+    color: darken($theme1, 10);
+    &.createTeam {
+      border: 1.6px solid $theme1 !important;
+    }
+    &.continueFill {
+      background-color: lighten($success, 5) !important;
+      border-color: lighten($success, 5) !important;
+      color: $white !important;
+    }
+  }
+  bottom: 10px;
+}
+// @include media-breakpoint(basic) {
+  // .footer {
+  //   height: 60px;
+  //   .bottomBar {
+  //     box-shadow: 0px 0px 6px rgba($black, 0.1);
+  //      .innerBar {
+  //        .bottombarTabs {
+  //          .linkTab {
+  //           transition: all 0.3s;
+  //           filter: grayscale(1);
+  //            .gameImg {
+  //             height: 20px;
+  //              img {
+  //               transition: all 0.3s;
+  //             }
+  //           }
+  //            .gamesheading {
+  //             line-height: 100%;
+  //             font-size: 12px;
+  //             font-weight: 600;
+  //             transition: all 0.3s;
+  //           }
+  //           :hover {
+  //             filter: grayscale(0);
+  //              .gamesheading {
+  //               color: darken($primary, 10) !important;
+  //             }
+  //           }
+  //           .active {
+  //             filter: grayscale(0) !important;
+  //              .gameImg {
+  //                img {
+  //                 filter: grayscale(0) !important;
+  //                 transition: all 0.3s;
+  //               }
+  //             }
+  //              .gamesheading {
+  //               color: darken($primary, 10) !important;
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+  .footer {
+    height: 60px;
+    &.bottomBar {
+      box-shadow: 0px 0px 6px rgba($black, 0.1);
+      & .innerBar {
+        & .bottombarTabs {
+          & .linkTab {
+            transition: all 0.3s;
+            filter: grayscale(1);
+            & .gameImg {
+              height: 20px;
+              & img {
+                transition: all 0.3s;
+              }
+            }
+            & .gamesheading {
+              line-height: 100%;
+              font-size: 12px;
+              font-weight: 600;
+              transition: all 0.3s;
+            }
+            &:hover {
+              filter: grayscale(0);
+              & .gamesheading {
+                color: darken($primary, 10) !important;
+              }
+            }
+            &.active {
+              filter: grayscale(0) !important;
+              & .gameImg {
+                & img {
+                  filter: grayscale(0) !important;
+                  transition: all 0.3s;
+                }
+              }
+              & .gamesheading {
+                color: darken($primary, 10) !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+// }
+
+// @include media-breakpoint(basic) {
+  .header {
+    background-color: $theme1;
+    height: 60px;
+     .innerheader {
+       .profile {
+         .userImage {
+          width: 40px;
+          height: 40px;
+           img {
+            object-fit: cover;
+          }
+        }
+      }
+       .notification {
+         .notificationIcon {
+          width: 20px;
+           img {
+            transition: all 0.3s;
+          }
+          :hover{
+             img {
+              filter: opacity(0.8);
+            }
+          }
+        }
+      }
+       .matchTime{
+        font-size: 10px;
+
+      }
+    }
+  }
+// }
+
+.matchesCard {
+  & .card-body {
+      & .innerBody {
+          & .teamLogo {
+              & .teamCountryLogo {
+                  width: 45px;
+                  z-index: -1;
+                  height: 20px;
+              }
+          }
+          & .leftSideTeams {
+              & .teamLogo {
+                  & .teamCountryLogo {
+                      left: -20px;
+                  }
+              }
+          }
+          & .rightSideTeams {
+              & .teamLogo {
+                  & .teamCountryLogo {
+                      right: -20px;
+                  }
+              }
+          }
+      }
+  }
+}
+
+// [data-page-name=homePage] {
+//   @include media-breakpoint(basic) {
+      // & .cricketheader {
+      //     box-shadow: 0px 0px 6px rgba($black, 0.1) !important;
+      //     z-index: 1;
+      //     & .navtab {
+      //         & .nav-item {
+      //             & .nav-link {
+      //                 font-size: 12px;
+      //                 font-weight: 600;
+      //                 transition: all 0.3s;
+      //                 border-bottom: 2px solid transparent;
+      //                 & .gameImg {
+      //                     height: 20px;
+      //                     & img {
+      //                         filter: grayscale(1);
+      //                         transition: all 0.3s;
+      //                     }
+      //                 }
+      //                 & .gamesheading {
+      //                     line-height: 100%;
+      //                 }
+      //                 &.active{
+      //                     background: transparent;
+      //                     border-color:  $theme2;
+      //                     color: $theme2 !important;
+      //                     & .gameImg {
+      //                         & img {
+      //                             filter: grayscale(0);
+      //                         }
+      //                     }
+      //                 }
+      //                 &:hover{
+      //                     color: $theme2 !important;
+      //                     & .gameImg {
+      //                         & img {
+      //                             filter: grayscale(0);
+      //                         }
+      //                     }
+      //                 }
+      //             }
+      //         }
+      //     }
+      // }
+      
+//        .tabContents {
+//            .matchesCard {
+//               box-shadow: 0px 0px 6px rgba($black, 0.08);
+//                .card-body {
+//                    .teamHeadline {
+//                        .matchteams,  .notificationOut {
+//                           font-size: 11px;
+//                       }
+//                        .notificationOut {
+//                           color: lighten($success, 5);
+//                       }
+//                        .lineupsImg {
+//                           width: 18px;
+//                       }
+//                   }
+//                    .innerBody {
+//                        .leftSideTeams {
+//                            .teamLogo {
+//                               ::before{
+//                                   left: -50%;
+//                                   transform: translate(0%, -50%);
+//                                   // background: rgba($warning, 0.3);
+//                               }
+//                           }
+//                       }
+//                        .rightSideTeams {
+//                            .teamLogo {
+//                               ::before{
+//                                   right: -50%;
+//                                   transform: translate(0%, -50%);
+//                                   // background: rgba($success, 0.3);
+                                  
+//                               }
+//                           }
+//                       }
+//                       .firstMatchBody {
+//                            .leftSideTeams {
+//                                .teamLogo {
+//                                   ::before{
+//                                       background: rgba($warning, 0.3);
+//                                   }
+//                               }
+//                           }
+//                            .rightSideTeams {
+//                                .teamLogo {
+//                                   ::before{
+//                                       background: rgba($success, 0.3);
+                                      
+//                                   }
+//                               }
+//                           }
+//                       }
+//                       .secondMatchBody {
+//                            .leftSideTeams {
+//                                .teamLogo {
+//                                   ::before{
+//                                       background: rgba($success, 0.3);
+//                                   }
+//                               }
+//                           }
+//                            .rightSideTeams {
+//                                .teamLogo {
+//                                   ::before{
+//                                       background: rgba($info, 0.4);
+//                                   }
+//                               }
+//                           }
+//                       }
+//                       .threedMatchBody {
+//                            .leftSideTeams {
+//                                .teamLogo {
+//                                   ::before{
+//                                       background: rgba($info, 0.4);
+//                                   }
+//                               }
+//                           }
+//                            .rightSideTeams {
+//                                .teamLogo {
+//                                   ::before{
+//                                       background: rgba($warning, 0.3);
+//                                   }
+//                               }
+//                           }
+//                       }
+//                        .firstTeamsName {
+//                           font-size: 12px;
+//                       }
+//                        .team {
+//                            .teamLogo {
+//                               width: 40px;
+//                               height: 40px;
+//                               z-index: 0;
+//                               ::before{
+//                                   content: "";
+//                                   height: 20px;
+//                                   width: 100%;
+//                                   position: absolute;
+//                                   top: 50%;
+//                                   z-index: -1;
+//                               }
+//                           }
+//                            .teamName {
+//                               font-size: 10px;
+//                           }
+//                       }
+//                        .matchTimer {
+//                            .pichTime {
+//                               font-size: 10px;
+//                               color: $theme2;
+//                           }
+//                       }
+//                   }
+//               }
+//           }
+//   //     }
+//   // }
+
+//   // No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
+//   @include media-breakpoint-up(sm) {}
+
+//   @include media-breakpoint-up(md) {}
+
+//   @include media-breakpoint-up(lg) {}
+
+//   @include media-breakpoint-up(xl) {}
+
+//   @include media-breakpoint-up(xxl) {}
+
+
+//   @include media-breakpoint-down(xxl) {}
+
+//   @include media-breakpoint-down(xl) {}
+
+//   @include media-breakpoint-down(lg) {}
+
+//   @include media-breakpoint-down(md) {}
+
+//   @include media-breakpoint-down(sm) {}
+// }
+
+// input design end
+
+
+
+
+
+//   .header .innerheader .profile .userImage {
+//     width: 40px;
+//     height: 40px;
+//   }
+//   .header .innerheader .profile .userImage img {
+//     object-fit: cover;
+//   }
+//   .header .innerheader .notification .notificationIcon {
+//     width: 25px;
+//   }
+//   .header .innerheader .notification .notificationIcon img {
+//     transition: all 0.3s;
+//   }
+//   .header .innerheader .notification .notificationIcon:hover img {
+//     filter: opacity(0.8);
+//   }
+//   .footerLink {
+//     font-size: 14px;
+//     color: #6c757d;
+//     font-weight: 700;
+//   }
+//   .header .title {
+//     font-size: 14px;
+//   }
+//   [data-page-name="loginPage"] .mainCenterPart .topPart {
+//     background-color: $theme1;
+//     height: 40%;
+//   }
+//   [data-page-name="loginPage"] .mainCenterPart .topPart .imgOuter {
+//     width: 160px;
+//   }
+//   [data-page-name="loginPage"] .mainCenterPart .topPart .title {
+//     font-size: 16px;
+//     font-weight: 600;
+//   }
+//   [data-page-name="loginPage"] .mainCenterPart .formOuter {
+//     border-radius: 26px;
+//     margin-top: -112px;
+//   }
+//   [data-page-name="loginPage"] .mainCenterPart .formOuter form.form .tagLine {
+//     font-size: 10px;
+//   }
+//   [data-page-name="loginPage"] .mainCenterPart .formOuter form.form .dividarTxt {
+//     font-size: 14px;
+//     font-weight: 600;
+//   }
+//   [data-page-name="registrationPage"] .mainCenterPart .topPart {
+//     height: 40%;
+//   }
+//   [data-page-name="registrationPage"] .mainCenterPart .topPart .imgOuter {
+//     width: 160px;
+//   }
+//   [data-page-name="registrationPage"] .mainCenterPart .topPart .title {
+//     font-size: 16px;
+//     font-weight: 600;
+//   }
+//   [data-page-name="registrationPage"] .mainCenterPart .formOuter {
+//     border-radius: 26px;
+//     margin-top: -112px;
+//   }
+//   [data-page-name="registrationPage"]
+//     .mainCenterPart
+//     .formOuter
+//     form.form
+//     .tagLine {
+//     font-size: 10px;
+//   }
+//   [data-page-name="registrationPage"]
+//     .mainCenterPart
+//     .formOuter
+//     form.form
+//     .dividarTxt {
+//     font-size: 14px;
+//     font-weight: 600;
+//   }
+//   [data-page-name="otpVerifyPage"] .mainCenterPart .topPart {
+//     height: 40%;
+//   }
+//   [data-page-name="otpVerifyPage"] .mainCenterPart .topPart .imgOuter {
+//     width: 160px;
+//   }
+//   [data-page-name="otpVerifyPage"] .mainCenterPart .topPart .title {
+//     font-size: 16px;
+//     font-weight: 600;
+//   }
+//   [data-page-name="otpVerifyPage"] .mainCenterPart .formOuter {
+//     border-radius: 26px;
+//     margin-top: -112px;
+//   }
+//   [data-page-name="otpVerifyPage"] .mainCenterPart .formOuter form.form .otp {
+//     display: inline-block;
+//     width: 40px;
+//     height: 40px;
+//     text-align: center;
+//   }
+//   [data-page-name="otpVerifyPage"] .mainCenterPart .formOuter form.form .tagLine,
+//   [data-page-name="otpVerifyPage"]
+//     .mainCenterPart
+//     .formOuter
+//     form.form
+//     .resendOtp {
+//     font-size: 10px;
+//   }
+//   [data-page-name="otpVerifyPage"]
+//     .mainCenterPart
+//     .formOuter
+//     form.form
+//     .mobileNumber,
+//   [data-page-name="otpVerifyPage"]
+//     .mainCenterPart
+//     .formOuter
+//     form.form
+//     .bottomTitle {
+//     font-size: 14px;
+//   }
+//   [data-page-name="otpVerifyPage"]
+//     .mainCenterPart
+//     .formOuter
+//     form.form
+//     .dividarTxt {
+//     font-size: 14px;
+//     font-weight: 600;
+//   }
+//   [data-page-name="createProfilePage"] .mainCenterPart .topPart {
+//     height: 40%;
+//   }
+//   [data-page-name="createProfilePage"] .mainCenterPart .topPart .imgOuter {
+//     width: 160px;
+//   }
+//   [data-page-name="createProfilePage"] .mainCenterPart .topPart .title {
+//     font-size: 16px;
+//     font-weight: 600;
+//   }
+//   [data-page-name="createProfilePage"] .mainCenterPart .formOuter {
+//     border-radius: 26px;
+//     margin-top: -112px;
+//   }
+//   [data-page-name="createProfilePage"]
+//     .mainCenterPart
+//     .formOuter
+//     form.form
+//     .tagLine {
+//     font-size: 10px;
+//   }
+//   [data-page-name="createProfilePage"]
+//     .mainCenterPart
+//     .formOuter
+//     form.form
+//     .dividarTxt {
+//     font-size: 14px;
+//     font-weight: 600;
+//   }
+//   .btnStyle1 {
+//     background: linear-gradient(180deg, #097bff 30%, #6fb2ff 110%);
+//   }
+//   .loginGoogleBtn {
+//     width: 32px;
+//     height: 32px;
+//   }
+//   .backBtn {
+//     width: 16px;
+//     height: 16px;
+//   }
+//   [data-page-name="homePage"] .cricketheader .navtab {
+//     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+//   }
+//   [data-page-name="homePage"] .cricketheader .navtab .nav-item .nav-link {
+//     font-size: 14px;
+//     font-weight: 600;
+//   }
+//   [data-page-name="homePage"]
+//     .cricketheader
+//     .navtab
+//     .nav-item
+//     .nav-link
+//     .crickerImg {
+//     width: 20px;
+//   }
+//   [data-page-name="homePage"] .cricketheader .navtab .nav-item .nav-link.active {
+//     background: rgba(0, 0, 0, 0);
+//     border-bottom: 2px solid #fd0304;
+//     color: #cb0202 !important;
+//   }
+//   .form .form-control,
+//   .form .form-select {
+//     font-size: 14px;
+//     border: 1px solid #adb5bd !important;
+//     height: 40px !important;
+//   }
+//   .form .form-control::placeholder,
+//   .form .form-select::placeholder {
+//     font-size: 14px;
+//     font-weight: 600;
+//   } /*# sourceMappingURL=style.min.css.map */
+  
+.modal-backdrop {
+  display: none !important;
+}
+
+
+.backdrop{
+  background-color: #0000009e;
+}
+
+
+.otpInput{
+  &  .otp-input{
+      outline: none !important;
+   }
+}
+
+.cursor{
+  cursor: pointer;
+}
+
+
+.homenav{
+  a{
+    text-decoration: none !important;
+    color: black !important;
+    font-weight: bold;
+  }
+}
+
+
+
+@mixin media-breakpoint($name) {
+  @if $name == basic {
+    @content; 
+  }
+}
+
+@mixin dark-media-breakpoint($name) {
+  @if $name == basic {
+    @content; 
+  }
+}
+
+
+
+@mixin media-breakpoint-up($name) {
+  @if $name ==sm {
+    @media (min-width: 576px) {
+      @content;
+    }
+  }
+
+  @else if $name ==md {
+    @media (min-width: 768px) {
+      @content;
+    }
+  }
+
+  @else if $name ==lg {
+    @media (min-width: 992px) {
+      @content;
+    }
+  }
+
+  @else if $name ==xl {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+
+  @else if $name ==xxl {
+    @media (min-width: 1400px) {
+      @content;
+    }
+  }
+}
+
+@mixin media-breakpoint-down($name) {
+  @if $name ==sm {
+    @media (max-width: 575.98px) {
+      @content;
+    }
+  }
+
+  @else if $name ==md {
+    @media (max-width: 767.98px) {
+      @content;
+    }
+  }
+
+  @else if $name ==lg {
+    @media (max-width: 991.98px) {
+      @content;
+    }
+  }
+
+  @else if $name ==xl {
+    @media (max-width: 1199.98px) {
+      @content;
+    }
+  }
+
+  @else if $name ==xxl {
+    @media (max-width: 1399.98px) {
+      @content;
+    }
+  }
+}
+
+@mixin dark-media-breakpoint-up($name) {
+  @if $name ==sm {
+    @media (min-width: 576px) {
+      @content;
+    }
+  }
+
+  @else if $name ==md {
+    @media (min-width: 768px) {
+      @content;
+    }
+  }
+
+  @else if $name ==lg {
+    @media (min-width: 992px) {
+      @content;
+    }
+  }
+
+  @else if $name ==xl {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+
+  @else if $name ==xxl {
+    @media (min-width: 1400px) {
+      @content;
+    }
+  }
+}
+
+@mixin dark-media-breakpoint-down($name) {
+  @if $name ==sm {
+    @media (max-width: 575.98px) {
+      @content;
+    }
+  }
+
+  @else if $name ==md {
+    @media (max-width: 767.98px) {
+      @content;
+    }
+  }
+
+  @else if $name ==lg {
+    @media (max-width: 991.98px) {
+      @content;
+    }
+  }
+
+  @else if $name ==xl {
+    @media (max-width: 1199.98px) {
+      @content;
+    }
+  }
+
+  @else if $name ==xxl {
+    @media (max-width: 1399.98px) {
+      @content;
+    }
+  }
+}
+
+
+
+// ? @@@@@@@@@@@@@@@@@@@@@@[  signin start  ]@@@@@@@@@@@@@@@@@@@@@@
+@include media-breakpoint(basic) {
+    // checkBtn start
+    .switchBtn {
+      position: relative;
+      appearance: none;
+      width:32px !important;
+      height: 16px !important;
+      background: darken($light, 6) no-repeat;
+      // border-radius: 50px;
+      // box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition:all 0.4s ease-in-out;
+      &::after {
+        position: absolute;
+        content: "";
+        width: 17px;
+        height: 17px;
+        top: 50%;
+        left: 0;
+        background: darken($white, 15) no-repeat;
+        border-radius: 50%;
+        // box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        transform: translateY(-50%) scale(1.1);
+        transition: 0.4s;
+      }
+      &:checked {
+        background: lighten($success, 20) no-repeat;
+        &::after {
+          left: 50%;
+          background: $success no-repeat;
+        }
+        &:focus {
+          background: lighten($success, 20) no-repeat;
+        }
+      }
+      &:focus {
+        background: darken($light, 6) no-repeat;
+      }
+    }
+
+  
+
+    .groupsetting {
+      & .switchBtnMain {
+        background-color: $white;
+        & .sendlabel {
+          font-size: 14px;
+          color: $black;
+          font-weight: 600;
+          & .announcementImg {
+            height: 16px;
+            width: 22px;
+          }
+        }
+      }
+    }
+
+    // share link page start
+    .inviteFriend {
+      background-color: $light;
+      & .inviteimghead {
+        background: $white;
+        & .invitefriendImg {
+          height: 80px;
+          width: 80px;
+          background-color:darken($light, 10);
+        }
+        & .invitefriendHeading {
+          font-size: 14px;
+          color:lighten($black, 10) ;
+          font-weight: 500;
+        }
+      }
+      & .shareLinkMain {
+        background: $white;
+        & .ShareLinkTitle {
+          font-size: 14px;
+          color: lighten($black, 55);
+          font-weight: 500;
+        }
+        & .copyinviteLinkMain {
+          border: 1px dashed lighten($black, 80);
+          padding: 10px 8px;
+          & .copyLinkTitle {
+            font-size: 14px;
+            color: lighten($black, 50);
+            font-weight: 600;
+          }
+          & .copyIcon {
+            height: 25px;
+            width: 20px;
+          }
+        }
+      }
+      & .whatsappBtn {
+        font-size: 14px;
+        background: $success;
+        color: $white;
+        border-radius: 4px;
+        padding: 7px 0;
+        font-weight: 500;
+        line-height: normal;
+        & .whatsappicon {
+          height: 20px;
+          width: 19px;
+        }
+      }
+      & .MoreOptionBtn {
+        background: transparent;
+        border:1px solid lighten($black, 70);
+        color: $black;
+        font-size: 12px;
+        font-weight: 700;
+        & .moreOptionIcon {
+          height: 18px;
+          width: 18px;
+        }
+      }
+      & .Notetilte {
+        font-size: 12px;
+        color: lighten($black, 40);
+        line-height: normal;
+        font-weight: 500;
+      }
+    }
+    // share link page end
+
+    // add to friend page start
+    .addtogroup {
+      & .selectTtile {
+        font-size: 10px;
+        color: $white;
+
+      }
+      & .searchMain {
+        // border: 1px solid lighten($black, 40);
+        background: lighten($black, 90);
+        & .searchicon {
+          height: 14px;
+          width: 14px;
+        }
+        & .searchInput {
+          font-size: 13px;
+          color: $black;
+          font-weight: 600;
+        }
+      }
+      & .usertop {
+        // border-top: 1px solid darken($light, 5);
+        & .sorttitle {
+          font-size:14px;
+          font-weight: bolder;
+          color: $black;
+          top: -13px;
+          left: 8px;
+          background-color: $white;
+          padding: 0 8px;
+        }
+        & .borderline {
+          height: 1px ;
+          background: darken($light, 3);
+        }
+      }
+      & .contactLabel {
+        cursor: pointer;
+        &:hover {
+          background-color: $light;
+        }
+        & .contactIcon {
+          height:45px;
+          width: 45px;
+          & .callIcon {
+            height: 15px;
+            width: 15px;
+            left: 0;
+            top: -1px;
+            background: lighten($primary, 10);
+            padding: 3px;
+          }
+        }
+        & .contactContent {
+          & .contactUserName {
+            font-size: 13px;
+            color: $black;
+            font-weight: 700;
+          }
+          & .contactUsertitle {
+            font-size: 12px;
+            color: lighten($black, 24);
+            font-weight: 600;
+          }
+          & .contactCheck {
+            height: 16px;
+            width: 16px;
+            border: 1.4px solid lighten($black, 50);
+            &:checked {
+              background-color: $black;
+              border-color: $black;
+              background-image: url(./assets/svg/chat/right.svg) ;
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: 10px;
+            }
+          }
+          &::before {
+          position: absolute;
+          content:'';
+          bottom: 0;
+          right: 0;
+          height: 1.3px ;
+          width: 100%;
+          background: darken($light, 3);
+        }
+        }
+        
+      }
+      & .addtoBtn {
+        font-size: 14px;
+        color: $white;
+        font-weight: 800;
+        background: lighten($primary, 2);
+        padding: 6px 0;
+        &.disabled {
+          background: darken($light, 10);
+          color: lighten($black, 50);
+        }
+      }
+    }
+    // add to friend page end
+
+    // edit group info page start
+    .editgroup {
+      & .imgLabel {
+        height: 80px;
+        width: 80px;
+        & .chooseLabel {
+          height: 20px;
+          width: 20px;
+          cursor: pointer;
+          & img {
+            filter:invert(1);
+          }
+        }
+      }
+      & .gropuName {
+        border-bottom: 1.8px solid $black;
+        & .groupnamelabel {
+          font-size: 12px;
+          color: lighten($black, 40);
+          font-weight: 500;
+          // padding-left: 12px;
+        }
+        & .groupnameInput {
+          font-size: 13px;
+          color: lighten($black, 25);
+          font-weight:600;
+          &::placeholder {
+            font-size: 14px;
+            color: lighten($black, 25);
+            font-weight: 500;
+          }
+        }
+      }
+      & .descriptionText {
+        font-size: 13px;
+        color: lighten($black, 25);
+        font-weight: 600;
+        resize: none;
+        border: none;
+        border-bottom: 1.9px solid $black;
+        height: 22px;
+        &::placeholder {
+          font-size: 13px;
+          color: lighten($black, 25);
+          font-weight: 600;
+        }
+      }
+      & .optiontitle {
+        font-size: 12px;
+        color: lighten($black, 40);
+        font-weight: 500;
+      }
+    }
+    // edit group info page end
+
+    // chat screen page start
+    .chatscreen {
+      & .UserIcon {
+        height: 35px;
+        width: 35px;
+        & .usericonMenu {
+          height: 15px;
+          min-width: 15px;
+          padding: 2px;
+          background-color: $white;
+        }
+      }
+      & .dots {
+        height: 4px;
+        width:4px;
+        background-color: $black;
+      }
+      & .chatCard {
+        border: 1.4px solid lighten($black, 90);
+        padding: 14px 8px;
+        & .chatuserImg {
+          height: 35px;
+          width: 35px;
+        }
+        & .chatuserName {
+          font-size: 13px;
+          color: $black;
+          font-weight: 700;
+        }
+        & .chatusertitle {
+          font-size: 11px;
+          // padding-top: 3px;
+          color: $black;
+          font-weight: 600;
+          & span {
+            color: lighten($black, 35);
+          }
+        }
+        & .chatTime {
+          font-size: 10px;
+          color: lighten($black, 60);
+          font-weight: 600;
+        }
+        & .h2hTitle {
+          font-size: 11px;
+          color: lighten($black, 50);
+          font-weight: 600;
+          background: darken($light, 3);
+          margin-top: 10px;
+          border-radius: 10px;
+          & .vsIcon {
+            height: 20px;
+            width: 20px;
+          }
+        }
+      }
+      & .PlusIconMain {
+        height: 45px;
+        width: 45px;
+        right: 15px;
+        bottom: 73px;
+        background-color: $black;
+        & .plusIcon {
+          height: 20px;
+          width: 20px;
+        }
+      }
+    }
+    // chat screen page end
+
+     // group detail page start
+    .groupdetail{
+      background-color: $white;
+      width: 100%;
+      & .heading{
+        font-size: 14px;
+        color: $black;
+      }
+      & .labelInput{
+        cursor: pointer;
+      }
+      & .icon2{
+        width: 15px;
+        height: 15px;
+      }
+      & .icon3{
+        width: 20px;
+        height: 20px;
+        margin: 0 28px 0 6px;
+      }
+      & .icon{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        padding: 8px;
+        background-color: lighten($black,90);
+      }
+    }
+    .participant{
+      background-color: lighten($black,90);
+      width: 100%;
+      & .participantHeading{
+        font-size: 14px;
+        color: $black;
+        
+      }
+      & .participantSubHeading{
+        font-size: 12px;
+        color: lighten($black,70);
+      }
+    }
+    .hrLine{
+      position: relative;
+      &::before{
+          position: absolute;
+          content: '';
+          background-color: lighten($black,90);
+          width: 90%;
+          height: 1px;
+          right: -20px;
+          bottom: 0;
+      }
+    }
+    .userSection{
+      background-color: $white;
+      width: 100%;
+      & .userImg{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: lighten($black,90);
+      }
+      & .userheading{
+        font-size: 14px;
+        color: $black;
+      }
+      & .subheading{
+        font-size: 12px;
+        color: lighten($black,70);
+      }
+    }
+    .Hoverline {
+      padding: 12px 14px;
+      &:hover {
+        background-color:$light !important;
+      }
+    }
+    // group detail page start
+
+    // profile page start
+    .profileHeader{
+
+      & .innerHeaderSection{
+        & .profileicon{
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+        }
+        & .Profiletitle{
+          font-size: 14px;
+          color: $white;
+          line-height: 20px;
+          font-weight: 500;
+        }
+        & .ProfilesubTitle{
+          font-size: 12px;
+          color: $white;
+          line-height: 20px;
+        }
+      }
+    }
+    }
+    .Today{
+      background-color:lighten($info,40);
+      font-size: 10px;
+      color: $black;
+      padding: 6px;
+    }
+    .adminSection{
+      background-color:lighten($info,58) ;
+      font-size: 10px;
+      color: $black;
+      padding: 6px 0;
+    }
+    .welcomeImg{
+      border: 2px solid lighten($danger ,55);
+      background-color: lighten($red,80);
+      padding: 0 10px;
+      & .welcomeHeading{
+        font-size: 15px;
+        color: $red;
+      }
+      & .welcomepera{
+        font-size: 12px;
+        color: $black;
+        line-height: normal;
+      }
+      & .icon{
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+        border-radius: 50%;
+        border: 2px solid lighten($danger ,55);
+        background-color: $white;
+        
+      }
+      & .profileuser{
+        margin-top: -25px;
+      }
+      & .pera{
+        font-size: 13px;
+        color: lighten($black,50);
+        
+      }
+    }
+    .chatSection{
+      & .icon{
+        width: 35px;
+        height: 35px;
+      }
+      & .userNames{
+        font-size: 12px;
+        color: $black;
+        font-weight: 500;
+        line-height: normal;
+      }
+      & .ottercard{
+        background-color: $white;
+        & .message{
+          font-size: 12px;
+          color: $black;
+          font-weight: 600;
+          line-height: normal;
+        }
+        & .time{
+          font-size: 12px;
+          color: lighten($black,60);
+          line-height: normal;
+        }
+      }
+    }
+    .chatMesage{
+      & .outterCard{
+        width: 90px;
+        padding: 6px;
+        background-color:lighten($success ,4);
+        & .chattext{
+          font-size: 12px;
+          line-height: 20px;
+          color: $white;
+          line-height: normal;
+        }
+      }
+    }
+    .bottomfooter{
+      & .innerInput{
+        & .icon{
+          width: 12px;
+          height: 12px;
+        }
+        & .starBtn{
+          font-size: 9px;
+          color: $white;
+          background-color: $black;
+          color: $white;
+          font-weight: 500;
+        }
+        & .inputGroup{
+          height: 28px;
+          background-color: lighten($black,90);
+          & .formInput{
+            font-size: 10px;
+            color: lighten($black,60);
+            // padding: 5px;
+            height: 23px;
+            border-top-left-radius: 100px !important;
+            border-bottom-left-radius: 100px !important;
+            &::placeholder{
+              font-size: 10px;
+              color: lighten($black,60);
+            }
+          }
+          & .inputText{
+            height: 20px;
+            background-color: lighten($black,90);
+            font-size: 10px;
+            width: 20px;
+            &.inputText2{
+              border-top-right-radius: 100px !important;
+              border-bottom-right-radius: 100px !important;
+            }
+    
+          }
+        }
+        & .sendIcon{
+          min-width: 30px;
+          height: 30px;
+          // background-color: lighten($black,80);
+          background-color: $black;
+          padding: 8px;     
+          & img {
+            filter: invert(1);
+          } 
+          &.disabled {
+            background-color: lighten($black,80);
+          }
+        }
+      }
+    }
+    // profile page end
+
+
+    // edit group info offcanvas start
+    .profileoffcanvas{
+      min-height: 250px;
+      & .offcanvasHeader{
+        & .iconProfile{
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+        & .headinguser{
+          font-size: 14px;
+          color: $black;
+        }
+      }
+      & .offcanvasbody{
+        & .profileBtn{
+          font-size: 14px;
+          color: $black;
+          font-weight: 600;
+          border: 1px solid lighten($black,60);
+          transition: all 0.3s ease-in-out;
+          &:hover {
+            background-color: lighten($success, 10);
+            color: $white;
+          }
+        }
+      }
+    }
+    // edit group info offcanvas end
+
+
+
+
+
+// No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
+@include media-breakpoint-up(sm) {}
+
+@include media-breakpoint-up(md) {}
+
+@include media-breakpoint-up(lg) {}
+
+@include media-breakpoint-up(xl) {}
+
+@include media-breakpoint-up(xxl) {}
+
+
+@include media-breakpoint-down(xxl) {}
+
+@include media-breakpoint-down(xl) {}
+
+@include media-breakpoint-down(lg) {}
+
+@include media-breakpoint-down(md) {}
+
+@include media-breakpoint-down(sm) {}
+// [data-page-name=''] {
+// }
+
+[data-bs-theme=dark] {
+  & [data-page-name=''] {
+      @include dark-media-breakpoint(basic) {
+          
+      }
+
+      // No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
+      @include dark-media-breakpoint-up(sm) {
+      }
+      @include dark-media-breakpoint-up(md) {
+      }
+      @include dark-media-breakpoint-up(lg) {
+      }
+      @include dark-media-breakpoint-up(xl) {
+      }
+      @include dark-media-breakpoint-up(xxl) {
+      }
+  
+  
+      @include dark-media-breakpoint-down(xxl) {
+      }
+      @include dark-media-breakpoint-down(xl) {
+      }
+      @include dark-media-breakpoint-down(lg) {
+      }
+      @include dark-media-breakpoint-down(md) {
+      }
+      @include dark-media-breakpoint-down(sm) {
+      }
+  }
+}
+
+// ! @@@@@@@@@@@@@@@@@@@@@@[  signin start  ]@@@@@@@@@@@@@@@@@@@@@@
+
+
+

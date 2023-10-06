@@ -1,0 +1,39 @@
+<main class="container-fluid">
+    <div class="row mainInner">
+        <nav class="col-12 header d-flex align-items-center px-0">
+            <div class="row mx-0 innerheader align-items-center w-100">
+                <div class="col-auto notification">
+                    <a (click)="onBack()" style="cursor:pointer" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/leftCricleArrow.png" class="w-100" alt="bell"></a>
+                </div>
+                <div class="col"><div class="title text-white text-center">Your Notification</div></div>
+                <div class="col-auto"><div class="backBtn"></div></div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 h-100 flex-fill" data-page-name="notificationPage" data-scrollbar>
+            <div class="row mx-0 mainCenterPart gap-3">
+                <div class="col-12 px-0" *ngIf="today.length>0"> <!-- *ngIf="today.length>0"-->
+                    <div class="text-uppercase p-2 fw-semibold text-muted notificationDay">Today</div>
+                    <div class="bg-white p-2" *ngFor="let d of today">
+                        <div class="card notificationCard">
+                            <div class="card-body p-2">
+                                <div class="text-black-50 notificationDateTime fw-bold text-end mb-2">{{d.updatedAt | date : 'dd-MM-yyyy'}},  {{d.updatedAt | date : 'hh:mm a': 'IST' }}</div>
+                                <div class="text-muted notificationDateTime fw-bold">{{d.title}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 px-0">
+                    <div class="text-uppercase p-2 fw-semibold text-muted notificationDay">older</div>
+                    <div class="bg-white p-2" *ngFor="let d of older">
+                        <div class="card notificationCard">
+                            <div class="card-body p-2">
+                                <div class="text-black-50 notificationDateTime fw-bold text-end mb-2">{{d.updatedAt | date | date : 'dd-MM-yyyy'}},  {{d.updatedAt | date : 'hh:mm a': 'IST' }}</div>
+                                <div class="text-muted notificationDateTime fw-bold">{{d.title}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

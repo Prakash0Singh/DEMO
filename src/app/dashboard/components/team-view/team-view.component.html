@@ -1,0 +1,119 @@
+<main class="container-fluid">
+    <div class="row mainInner bg-white">
+        <nav class="col-12 header py-2 h-auto position-absolute top-0 start-0 w-100 bg-dark bg-opacity-25">
+            <div class="row align-items-center h-100">
+                <div class="col-auto">
+                    <div class="fs-6 text-white" *ngIf="myMatch!='team'">{{userInfo.team}}</div>
+                </div>
+                <div class="col text-center">
+                    <div class="brand mx-auto"><img src="assets/svg/img/img_logo.jpeg" alt="" height="30" width="30"></div>
+                </div>
+                <div class="col-auto">
+                    <div class="buttons d-flex gap-3">
+                        <button type="button" class="btn-edit border-0 p-0 bg-transparent shadow-none fs-12 shadow-none" [hidden]="myMatch=='team'" (click)="onEdit()"><img class="w-100" src="assets/svg/icons/White_Edit_Icon.png" alt=""></button>
+                        <a (click)="api.onBack()" style="cursor: pointer;" class="btn-close fs-12 shadow-none"></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill" data-page-name="teamViewPage" data-scrollbar>
+            <div class="row h-100 mainCenterPart mx-0 ">
+                <div class="col-12 px-0">
+                    <div class="row pt-4 bgImging mx-0">
+                        <div class="col-12">
+                            <div class="row p-4 justify-content-around">
+                                <div class="col-12">
+                                    <div class="fs-12 text-white text-center mb-2">Wicket-Keeper</div>
+                                </div>
+                                <div class="col-auto" *ngFor="let d of keeper">
+                                    <div class="plyerOuter position-relative text-center" [ngClass]="{'caption' : d.captain == 1, 'vCaption' : d.vicecaptain == 1}">
+                                        <div class="img mx-auto">
+                                            <img class="w-100" src={{d.image}} alt="">
+                                        </div>
+                                        <div class="player fs-12">
+                                            <span class="name text-white bg-dark rounded-1 d-block" *ngIf="d.team=='team1'">{{d.name}}</span>
+                                            <span class="name text-black bg-light rounded-1 d-block" *ngIf="d.team=='team2'">{{d.name}}</span>
+                                            <span class="text-white" *ngIf="!myMatch">{{d.credit}}Cr</span>
+                                            <span class="text-white" *ngIf="myMatch=='team'" >{{d.points}} PTS</span>
+                                        </div>
+                                        <a (click)="onplayerInfo(d.id)"   data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor:pointer" class="stretched-link"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row p-4 justify-content-around">
+                                <div class="col-12">
+                                    <div class="fs-12 text-white text-center mb-2">Batsmen</div>
+                                </div>
+                                <div class="col-auto" *ngFor="let d of bats">
+                                    <div class="plyerOuter position-relative text-center" [ngClass]="{'caption' : d.captain == 1, 'vCaption' : d.vicecaptain == 1}">
+                                        <div class="img mx-auto">
+                                            <img class="w-100" src={{d.image}} alt="">
+                                        </div>
+                                        <div class="player fs-12">
+                                            <span class="name text-white bg-dark rounded-1 d-block" *ngIf="d.team=='team1'">{{d.name}}</span>
+                                            <span class="name text-black bg-light rounded-1 d-block" *ngIf="d.team=='team2'">{{d.name}}</span>
+                                            <span class="text-white" *ngIf="!myMatch">{{d.credit}}Cr</span>
+                                            <span class="text-white" *ngIf="myMatch=='team'" >{{d.points}} PTS</span>
+                                        </div>
+                                        <a  (click)="onplayerInfo(d.id)" style="cursor:pointer" class="stretched-link"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row p-4 justify-content-around">
+                                <div class="col-12">
+                                    <div class="fs-12 text-white text-center mb-2">All-Rounders</div>
+                                </div>
+                                <div class="col-auto" *ngFor="let d of allRound">
+                                    <div class="plyerOuter position-relative text-center" [ngClass]="{'caption' : d.captain == 1, 'vCaption' : d.vicecaptain == 1}">
+                                        <div class="img mx-auto">
+                                            <img class="w-100" src={{d.image}} alt="">
+                                        </div>
+                                        <div class="player fs-12">
+                                            <span class="name text-white bg-dark rounded-1 d-block" *ngIf="d.team=='team1'">{{d.name}}</span>
+                                            <span class="name text-black bg-light rounded-1 d-block" *ngIf="d.team=='team2'">{{d.name}}</span>
+                                            <span class="text-white" *ngIf="!myMatch">{{d.credit}}Cr</span>
+                                            <span class="text-white" *ngIf="myMatch=='team'" >{{d.points}} PTS</span>
+                                        </div>
+                                        <a  (click)="onplayerInfo(d.id)" style="cursor:pointer" class="stretched-link"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row p-4 justify-content-between">
+                                <div class="col-12">
+                                    <div class="fs-12 text-white text-center mb-2">Bowlers</div>
+                                </div>
+                                <div class="col-auto" *ngFor="let d of bowler">
+                                    <div class="plyerOuter position-relative text-center" [ngClass]="{'caption' : d.captain == 1, 'vCaption' : d.vicecaptain == 1}">
+                                        <div class="img mx-auto">
+                                            <img class="w-100" src={{d.image}} alt="">
+                                        </div>
+                                        <div class="player fs-12">
+                                            <span class="name text-white bg-dark rounded-1 d-block" *ngIf="d.team=='team1'">{{d.name}}</span>
+                                            <span class="name text-black bg-light rounded-1 d-block" *ngIf="d.team=='team2'">{{d.name}}</span>
+                                            <span class="text-white" *ngIf="!myMatch">{{d.credit}}Cr</span>
+                                            <span class="text-white" *ngIf="myMatch=='team'" >{{d.points}} PTS</span>
+                                        </div>
+                                        <a  (click)="onplayerInfo(d.id)" style="cursor:pointer" class="stretched-link"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <footer class="col-12 footer py-3">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="footerLink text-center">Not a Member? <a href="registerPage.html" class="text-decoration-underline">Register</a></div>
+                </div>
+            </div>
+        </footer> -->
+    </div>
+</main>

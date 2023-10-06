@@ -1,0 +1,595 @@
+<main class="container-fluid">
+    <div class="row mainInner bg-white">
+        <nav class="col-12 header py-3">
+            <div class="row align-items-center h-100">
+                <div class="col-auto"><a (click)="onBack()" style="cursor: pointer;" class="backBtn d-flex align-items-center justify-content-center"><img class="w-100" src="assets/svg/icons/leftCricleArrow.png" alt=""></a></div>
+                <div class="col"><div class="title text-white text-center">Verify Your Account</div></div>
+                <div class="col-auto"><div class="backBtn"></div></div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill" data-page-name="verifyAccountPage" data-scrollbar>
+            <div class="row mainCenterPart mx-0 pb-4 h-100 flex-column flex-nowrap">
+                    <div class="col-12 px-0 bg-white verifyNav py-1">
+                        <ul class="nav nav-pills navTabs row mx-0" id="pills-tab" role="tablist">
+                            <li class="nav-item col px-0" role="presentation" (click)="close()" ><button class="nav-link rounded-0 bg-white text-muted w-100 fw-semibold active px-1" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Mobile & Email</button></li>
+                            <li class="nav-item col px-0" role="presentation" (click)="close()" ><button class="nav-link rounded-0 bg-white text-muted w-100 fw-semibold px-1" id="pills-aadhaar-tab" data-bs-toggle="pill" data-bs-target="#pills-aadhaar" type="button" role="tab" aria-controls="pills-aadhaar" aria-selected="true">Aadhaar Card</button></li>
+                            <li class="nav-item col px-0" role="presentation"  (click)="close()"><button class="nav-link rounded-0 bg-white text-muted w-100 fw-semibold px-1" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">PAN Card</button></li>
+                            <li class="nav-item col px-0" role="presentation"  (click)="close()"><button class="nav-link rounded-0 bg-white text-muted w-100 fw-semibold px-1" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Bank</button></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 flex-fill h-100 overflow-y-auto">
+                        <div class="tab-content navContent" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                                <div class="row mx-0 pt-3 g-3">
+
+                                    <!-- * [ Mobile Number Verfication ] -->
+                                    <div class="col-12 px-0"  *ngIf="userDetails.mobile_verify==0">
+                                        <div class="card border-0 mobileCard">
+                                            <form class="card-body row mx-0 px-2 g-2" [formGroup]="mobVerify">
+                                                <div class="col-12 d-flex align-items-center gap-2">
+                                                    <div class="mobileImg"><img src="assets/svg/icons/telephone_icon.svg" class="w-100" alt=""></div>
+                                                    <div class="verifyMobile fw-bold text-danger">Verify Your Mobile</div>
+                                                </div>
+                                                <div class="col-12 text-muted fw-semibold mobileLabel">Mobile</div>
+                                                <div class="col-12"><input type="tel" class="form-control shadow-none border-0 rounded-0 px-0 fw-semibold" formControlName="mobile" placeholder="Mobile" maxlength="10" (keypress)="keyPressNumbers($event)" ></div>
+                                                <div class="col-12 text-danger fw-semibold otpverfication" *ngIf="f2['mobile'].touched && f2['mobile'].errors?.['required']">Mobile Required</div>
+                                                <div class="col-12 text-muted fw-semibold otpverfication">We will send you a 4 digit OTP for verfication.</div>
+                                                <!-- <div class="col-12 text-muted fw-semibold otpverfication">We will send you a 4 digit OTP for verfication.</div> -->
+                                                <div class="col-12"><button type="submit" class="btn btn-success btn-sm otpBtn rounded-0 w-100 text-white fw-semibold text-center" (click)="submitMob()">Send OTP</button></div>
+                                                <div class="col-12"><button type="button" class="btn btn-success btn-sm otpBtn rounded-0 w-100 text-white fw-semibold text-center" id="#openmodal" [hidden]="true" data-bs-toggle="modal" data-bs-target="#exampleModal">Send OTP</button></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 px-0"  *ngIf="userDetails.mobile_verify==1">
+                                        <div class="verifyEmail mobileCard bg-white card shadow-none rounded-pill border-2 border-success">
+                                            <div class="card-body row mx-0 px-1 py-2 align-items-center">
+                                                <div class="col-auto"><div class="mobileImg"><img src="assets/svg/icons/mobileVerify_icon.svg" class="w-100" alt=""></div></div>
+                                                <div class="col ps-0">
+                                                    <div class="text-muted fw-bold mobileLabel">Your Mobile number is verified</div>
+                                                    <div class="text-success fw-bold mobileLabel">{{userDetails.mobile}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- * [ Mobile Number Verfication End ] -->
+
+                                    <!-- * [ Email Id Verfication ] -->
+                                    <div class="col-12 px-0" *ngIf="userDetails.email_verify==1">
+                                        <div class="verifyEmail mobileCard bg-white card shadow-none rounded-pill border-2 border-success">
+                                            <div class="card-body row mx-0 px-1 py-2 align-items-center">
+                                                <div class="col-auto"><div class="mobileImg"><img src="assets/svg/icons/mobileVerify_icon.svg" class="w-100" alt=""></div></div>
+                                                <div class="col ps-0">
+                                                    <div class="text-muted fw-bold mobileLabel">Your Email is verified</div>
+                                                    <div class="text-success fw-bold mobileLabel">{{userDetails.email}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 px-0"  *ngIf="userDetails.email_verify==0">
+                                        <div class="card border-0 mobileCard">
+                                            <form class="card-body row mx-0 px-2 g-2" [formGroup]="emailVerify">
+                                                <div class="col-12 d-flex align-items-center gap-2">
+                                                    <div class="mobileImg"><img src="assets/svg/icons/email_icon.svg" class="w-100" alt=""></div>
+                                                    <div class="verifyMobile fw-bold text-danger">Verify Your Email</div>
+                                                </div>
+                                                <div class="col-12 text-muted fw-semibold mobileLabel">Email ID</div>
+                                                <div class="col-12"><input type="email" class="form-control shadow-none border-0 rounded-0 px-0 fw-semibold" formControlName="email" placeholder="Email"></div>
+                                                <div class="col-12 text-danger fw-semibold otpverfication" *ngIf="f['email'].touched && f['email'].errors?.['required']">Email Required</div>
+                                                <div class="col-12 text-danger fw-semibold otpverfication" *ngIf="f['email'].touched && f['email'].errors?.['pattern']">Invalid Email</div>
+                                                <div class="col-12 text-muted fw-semibold otpverfication">We will send you a 4 digit OTP for verfication.</div>
+                                                <div class="col-12"><button type="submit" class="btn btn-success btn-sm otpBtn rounded-0 w-100 text-white fw-semibold text-center" (click)="submitEmail()">Send OTP</button></div>
+                                                <div class="col-12"><button type="button" class="btn btn-success btn-sm otpBtn rounded-0 w-100 text-white fw-semibold text-center" id="#openmodal"  [hidden]="true" data-bs-toggle="modal" data-bs-target="#exampleModal">Send OTP</button></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- * [ Email Id Verfication End ] -->
+
+                                </div>
+                            </div>
+<!-- aadhaar start -->
+<div class="tab-pane fade" id="pills-aadhaar" role="tabpanel" aria-labelledby="pills-aadhaar-tab" tabindex="0">
+    <div class="row mx-0 pt-3 g-3">
+        <div class="col-12 px-0" *ngIf="userDetails.mobile_verify==0 || userDetails.email_verify==0">
+            <div class="card border-0 mobileCard">
+                <form class="card-body row mx-0 px-2 g-2">
+                    <div class="col-12 d-flex align-items-center gap-2">
+                        <div class="mobileImg"><img src="assets/svg/icons/pancard_icon.svg" class="w-100" alt=""></div>
+                        <div class="verifyMobile verifyPanDetails fw-bold">Verify Your Aadhaar Details</div>
+                    </div>
+                    <div class="col-12 text-black fw-semibold mobileLabel">To update your details please complete the steps metionde below:</div>
+                    <div class="col-12">
+                        <ul class="fw-semibold mobileLabel text-black">
+                            <li>Verify your mobile number.</li>
+                            <li>Verify your Email.</li>
+                            <li>Complete Your Profile.</li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- * [ Verified aadhaar Card Form ] -->
+        <div class="col-12 px-0" *ngIf="(userDetails.aadhar_verify == -1 || userDetails.aadhar_verify == 2)&& (userDetails.mobile_verify==1 && userDetails.email_verify==1) " >
+            <div class="card border-0 mobileCard verifyPanCard">
+                <form class="card-body row mx-0 px-2 g-2" [formGroup]="aadhaarCardUpload">
+                    <div class="col-12 d-flex align-items-center gap-2">
+                        <div class="mobileImg"><img src="assets/svg/icons/pancard_icon.svg" class="w-100" alt=""></div>
+                        <div class="verifyMobile verifyPanDetails fw-bold">Verify Your Aadhaar Details</div>
+                    </div>
+                    <div class="col-6">
+                        <div class="col-12 text-center mb-2"><div class="idCard d-inline-block"><img [src]="front || 'assets/svg/img/ID_Card.png'" class="h-100" alt="ID Card"></div></div>
+                        <label for="front" class="btn btn-warning btn-sm otpBtn rounded-0 w-100 text-white fw-semibold text-center">Upload Aadhaar Front Image</label>
+                        <input type="file" id="front" class="form-control shadow-none border-0 rounded-0 px-1 fw-semibold" formControlName="front" (change)="frontUpload($event)"  hidden>
+                        <div *ngIf="ac['front'].touched && ac['front'].errors?.['required']" class="otpverfication text-danger  mt-1 fw-bold">*Image Required</div>
+                        <div class="text-muted fw-semibold mobileLabel text-center">Image size up to 4mb*</div>
+                    </div>
+                    <div class="col-6">
+                        <div class="col-12 text-center mb-2"><div class="idCard d-inline-block"><img [src]="back || 'assets/svg/img/ID_Card.png'" class="h-100" alt="ID Card"></div></div>
+                        <label for="back" class="btn btn-warning btn-sm otpBtn rounded-0 w-100 text-white fw-semibold text-center">Upload Aadhaar Back Image</label>
+                        <input type="file" id="back" class="form-control shadow-none border-0 rounded-0 px-1 fw-semibold" formControlName="back" (change)="backUpload($event)"  hidden>
+                        <div *ngIf="ac['back'].touched && ac['back'].errors?.['required']" class="otpverfication text-danger  mt-1 fw-bold">*Image Required</div>
+                        <div class="text-muted fw-semibold mobileLabel text-center">Image size up to 4mb*</div>
+                    </div>
+                    <div class="col-12">
+                        <input type="text" formControlName="aadharname" class="form-control shadow-none border-0 rounded-0 px-1 fw-semibold" placeholder="Name*">
+                        <div *ngIf="ac['aadharname'].touched && ac['aadharname'].errors?.['required']" class="otpverfication text-danger  mt-1 fw-bold">*Name Required</div>
+                        <div class="otpverfication text-muted mt-1 fw-bold">As on aadhaar card</div>
+                    </div>
+                    <div class="col-12">
+                        <input type="text" formControlName="aadharnumber" class="form-control shadow-none border-0 rounded-0 px-1 fw-semibold" placeholder="Aadhaar Number*" (keypress)="keyPressNumbers($event)" maxlength="12">
+                        <div *ngIf="ac['aadharnumber'].touched && ac['aadharnumber'].errors?.['required']" class="otpverfication text-danger  mt-1 fw-bold">*Aadhaar Number Required</div>
+                        <div class="otpverfication text-muted mt-1 fw-bold">Your 12 digit aadhaar number</div>
+                    </div>
+                    <div class="col-12">
+                        <select class="form-control form-select rounded-0 shadow-none py-2 border-0 px-1 fw-semibold text-muted" aria-label="Default select example" formControlName="state">
+                            <option value=""  selected >Select State*</option>
+                            <option  value="PONDICHERRY">PONDICHERRY</option>
+                            <option  value="BIHAR">BIHAR</option>
+                            <option  value="CHHATTISGARH">CHHATTISGARH</option>
+                            <option  value="DELHI">DELHI</option>
+                            <option  value="GUJARAT">GUJARAT</option>
+                            <option  value="DAMAN &amp; DIU">DAMAN &amp; DIU</option>
+                            <option  value="DADRA &amp; NAGAR HAVELI">DADRA &amp; NAGARHAVELI</option>
+                            <option  value="HARYANA">HARYANA</option>
+                            <option  value="HIMACHAL PRADESH">HIMACHAL PRADESH</option>
+                            <option  value="JAMMU &amp; KASHMIR">JAMMU &amp; KASHMIR</option>
+                            <option  value="JHARKHAND">JHARKHAND</option>
+                            <option  value="KARNATAKA">KARNATAKA</option>
+                            <option  value="KERALA">KERALA</option>
+                            <option  value="LAKSHADWEEP">LAKSHADWEEP</option>
+                            <option  value="MADHYA PRADESH">MADHYA PRADESH</option>
+                            <option  value="MAHARASHTRA">MAHARASHTRA</option>
+                            <option  value="GOA">GOA</option>
+                            <option  value="MANIPUR">MANIPUR</option>
+                            <option  value="MIZORAM">MIZORAM</option>
+                            <option  value="TRIPURA">TRIPURA</option>
+                            <option  value="ARUNACHAL PRADESH">ARUNACHAL PRADESH</option>
+                            <option  value="MEGHALAYA">MEGHALAYA</option>
+                            <option  value="PUNJAB">PUNJAB</option>
+                            <option  value="CHANDIGARH">CHANDIGARH</option>
+                            <option  value="RAJASTHAN">RAJASTHAN</option>
+                            <option  value="TAMIL NADU">TAMIL NADU</option>
+                            <option  value="UTTAR PRADESH">UTTAR PRADESH</option>
+                            <option  value="UTTARAKHAND">UTTARAKHAND</option>
+                            <option  value="WEST BENGAL">WEST BENGAL</option>
+                            <option  value="ANDAMAN &amp; NICOBAR ISLANDS">ANDAMAN &amp; NICOBAR ISLANDS</option>
+                        </select>
+                        <div *ngIf="ac['state'].touched && ac['state'].errors?.['required']" class="otpverfication text-danger  mt-1 fw-bold">*State Required</div>
+                    </div>
+                    <div class="mobileLabel text-muted fw-bold text-center">*All fields are mandaory</div>
+                    <div class="col-12"><button type="submit" class="btn btnStyle2 btn-sm otpBtn rounded-0 w-100 text-white fw-semibold text-center" (click)="submitAadhaar()">Submit for Verification</button></div>
+                </form>
+            </div>
+        </div>
+        <!-- * [ Verified aadhaar Card Form End ] -->
+
+        <!-- * [ veryfied aadhaar ] -->
+<div class="col-12 px-0" *ngIf="(userDetails.aadhar_verify==1 || userDetails.aadhar_verify==0 || userDetails.aadhar_verify==2)  &&( userDetails.mobile_verify == 1 && userDetails.email_verify== 1 )">            <div class="card border-0 mobileCard">
+                <form class="card-body pb-0 row mx-0 px-0 gap-2" *ngIf="aadhaar">
+                    <div class="col-12 fs-6 text-warning fw-bold">Aadhaar Card</div>
+                    <div class="col-12 pb-2 px-0 border-bottom border-bottom-1 border-bottom-light">
+                        <div class="row mx-0 align-items-center" >
+                            <div class="col-5 text-muted fw-bold verifyMobile">Name</div>
+                            <div class="col-7 text-muted fw-bold verifyMobile">{{aadhaar.aadharname}}</div>
+                        </div>
+                    </div>
+                    <div class="col-12 pb-2 px-0 border-bottom border-bottom-1 border-bottom-light">
+                        <div class="row mx-0 align-items-center">
+                            <div class="col-5 text-muted fw-bold verifyMobile">Aadhaar Number</div>
+                            <div class="col-7 text-muted fw-bold verifyMobile">{{aadhaar.aadharnumber}}</div>
+                        </div>
+                    </div>
+                    <div class="col-12 pb-2 px-0">
+                        <div class="row mx-0 align-items-center">
+                            <div class="col-5 text-muted fw-bold verifyMobile">State</div>
+                            <div class="col-7 text-muted fw-bold verifyMobile">{{aadhaar.state}}</div>
+                        </div>
+                    </div>
+                    <div class="col-12"><div class="w-50 mx-auto"><img src={{aadhaar.frontimage}}  style="max-width:100%;cursor:pointer" (click)="onClick($event)" data-bs-toggle="modal" data-bs-target="#myModal" class="w-100" alt=""></div></div>
+                    <div class="col-12"><div class="w-50 mx-auto"><img src={{aadhaar.backimage}}  style="max-width:100%;cursor:pointer" (click)="onClick($event)" data-bs-toggle="modal" data-bs-target="#myModal" class="w-100" alt=""></div></div>
+                    <div class="col-12 text-end text-black fw-semibold otpverfication">Click on image to view full size image.</div>
+                </form>
+            </div>
+        </div>
+        <!-- * [ veryfied aadhaar End ] -->
+        <!-- ? verify aadhaar card -->
+       <div class="col-12 px-0" *ngIf="userDetails.aadhar_verify==0  && (userDetails.mobile_verify == 1  && userDetails.email_verify== 1) ">
+            <div class="card border-0 mobileCard">
+                <form class="card-body row mx-0 px-2 g-2">
+                    <div class="col-12 d-flex align-items-center gap-3">
+                        <div class="mobileImg"><img src="assets/svg/icons/verifyed_pan.svg" class="w-100" alt=""></div>
+                        <div class="fs-6 text-warning fw-bold">Verifying Your Aadhaar Details</div>
+                    </div>
+                    <div class="col-12 mobileLabel text-warning fw-bold">Your Aadhaar details are sent for verfication</div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-12 px-0" *ngIf="userDetails.aadhar_verify==2">
+            <div class="card border-0 mobileCard">
+                <form class="card-body row mx-0 px-2 g-2">
+                    <div class="col-12 d-flex align-items-center gap-3">
+                        <div class="mobileImg"><img src="assets/svg/icons/verifyed_pan.svg" class="w-100" alt=""></div>
+                        <div class="fs-6 text-danger fw-bold">Your Verification has been cancelled</div>
+                    </div>
+                    <div class="col-12 mobileLabel text-warning fw-bold">Please verify again</div>
+                </form>
+            </div>
+        </div>
+        <!-- ? verify aadhaar card End -->
+    </div>
+</div>
+<!-- aadhaar end -->
+
+                            
+                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                                <div class="row mx-0 pt-3 g-3">
+                                    <div class="col-12 px-0" *ngIf="userDetails.mobile_verify==0 || userDetails.email_verify==0  ||  userDetails.aadhar_verify== -1">
+                                        <div class="card border-0 mobileCard">
+                                            <form class="card-body row mx-0 px-2 g-2">
+                                                <div class="col-12 d-flex align-items-center gap-2">
+                                                    <div class="mobileImg"><img src="assets/svg/icons/pancard_icon.svg" class="w-100" alt=""></div>
+                                                    <div class="verifyMobile verifyPanDetails fw-bold">Verify Your PAN Details</div>
+                                                </div>
+                                                <div class="col-12 text-black fw-semibold mobileLabel">To update your details please complete the steps metionde below:</div>
+                                                <div class="col-12">
+                                                    <ul class="fw-semibold mobileLabel text-black">
+                                                        <li>Verify your mobile number.</li>
+                                                        <li>Verify your Email.</li>
+                                                        <li>Verify your Aadhaar.</li>
+                                                        <li>Complete Your Profile.</li>
+                                                    </ul>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- * [ Verified Pan Card Form ] -->
+                                    <div class="col-12 px-0" *ngIf="((userDetails.pan_verify == -1 || userDetails.pan_verify == 2) &&( userDetails.aadhar_verify==0 || userDetails.aadhar_verify==1) )">
+                                        <div class="card border-0 mobileCard verifyPanCard">
+                                            <form class="card-body row mx-0 px-2 g-2" [formGroup]="panCardUpload">
+                                                <div class="col-12 d-flex align-items-center gap-2">
+                                                    <div class="mobileImg"><img src="assets/svg/icons/pancard_icon.svg" class="w-100" alt=""></div>
+                                                    <div class="verifyMobile verifyPanDetails fw-bold">Verify Your PAN Details</div>
+                                                </div>
+                                                <div class="col-12 text-center"><div class="idCard d-inline-block"><img [src]="image1 || 'assets/svg/img/ID_Card.png'" class="h-100" alt="ID Card"></div></div>
+                                                <div class="col-12">
+                                                    <label for="upload" class="btn btn-warning btn-sm otpBtn rounded-0 w-100 text-white fw-semibold text-center">Upload PAN CARD Image</label>
+                                                    <input type="file" id="upload" class="form-control shadow-none border-0 rounded-0 px-1 fw-semibold" formControlName="image" (change)="panUpload($event)"  hidden>
+                                                    <div *ngIf="f3['image'].touched && f3['image'].errors?.['required']" class="otpverfication text-danger  mt-1 fw-bold">*Image Required</div>
+                                                    <div class="text-muted fw-semibold mobileLabel text-center">Image size up to 4mb*</div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="email" formControlName="panname" class="form-control shadow-none border-0 rounded-0 px-1 fw-semibold" placeholder="Name*">
+                                                    <div *ngIf="f3['panname'].touched && f3['panname'].errors?.['required']" class="otpverfication text-danger  mt-1 fw-bold">*Name Required</div>
+                                                    <div class="otpverfication text-muted mt-1 fw-bold">As on PAN CARD</div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="email" formControlName="pannumber" oninput="this.value = this.value.toUpperCase()" class="form-control shadow-none border-0 rounded-0 px-1 fw-semibold" placeholder="PAN number*" maxlength="10">
+                                                    <div *ngIf="f3['pannumber'].touched && f3['pannumber'].errors?.['required']" class="otpverfication text-danger  mt-1 fw-bold">*PAN Number Required</div>
+                                                    <div class="otpverfication text-muted mt-1 fw-bold">Your 10 digit PAN Number</div>
+                                                    <div class="col-12 text-danger fw-semibold otpverfication" *ngIf="f3['pannumber'].touched && f3['pannumber'].errors?.['pattern']">Invalid PAN Number</div>
+
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="date" [max]="maxDate" formControlName="dob" class="form-control shadow-none border-0 rounded-0 px-1 fw-semibold" >
+                                                    <div *ngIf="f3['dob'].touched && f3['dob'].errors?.['required']" class="otpverfication text-danger  mt-1 fw-bold">*Date Of Birth Required</div>
+                                                </div>
+                                                <div class="mobileLabel text-muted fw-bold text-center">*All fields are mandatory</div>
+                                                <div class="col-12"><button type="submit" class="btn btnStyle2 btn-sm otpBtn rounded-0 w-100 text-white fw-semibold text-center" (click)="submitPan()">Submit for Verification</button></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- * [ Verified Pan Card Form End ] -->
+
+                                    <!-- * [ veryfied Pan ] -->
+                                    <div class="col-12 px-0" *ngIf="(userDetails.pan_verify == 1 || userDetails.pan_verify==0 || userDetails.pan_verify == 2) ">
+                                        <div class="card border-0 mobileCard">
+                                            <form class="card-body pb-0 row mx-0 px-0 gap-2">
+                                                <div class="col-12 fs-6 text-warning fw-bold">PAN Card</div>
+                                                <div class="col-12 pb-2 px-0 border-bottom border-bottom-1 border-bottom-light">
+                                                    <div class="row mx-0 align-items-center">
+                                                        <div class="col-5 text-muted fw-bold verifyMobile">Name</div>
+                                                        <div class="col-7 text-muted fw-bold verifyMobile">{{pan.panname}}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 pb-2 px-0 border-bottom border-bottom-1 border-bottom-light">
+                                                    <div class="row mx-0 align-items-center">
+                                                        <div class="col-5 text-muted fw-bold verifyMobile">PAN Number</div>
+                                                        <div class="col-7 text-muted fw-bold verifyMobile">{{pan.pannumber}}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 pb-2 px-0">
+                                                    <div class="row mx-0 align-items-center">
+                                                        <div class="col-5 text-muted fw-bold verifyMobile">DOB</div>
+                                                        <div class="col-7 text-muted fw-bold verifyMobile">{{pan.pandob}}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12"><div class="w-50 mx-auto"><img src={{pan.image}}  style="max-width:100%;cursor:pointer" (click)="onClick($event)" data-bs-toggle="modal" data-bs-target="#myModal" class="w-100" alt=""></div></div>
+                                                <div class="col-12 text-end text-black fw-semibold otpverfication">Click on image to view full size image.</div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- * [ veryfied Pan End ] -->
+                                    <!-- ? verify pan card -->
+                                    <div class="col-12 px-0" *ngIf="userDetails.pan_verify==0">
+                                        <div class="card border-0 mobileCard">
+                                            <form class="card-body row mx-0 px-2 g-2">
+                                                <div class="col-12 d-flex align-items-center gap-3">
+                                                    <div class="mobileImg"><img src="assets/svg/icons/verifyed_pan.svg" class="w-100" alt=""></div>
+                                                    <div class="fs-6 text-warning fw-bold">Verifying Your PAN Details</div>
+                                                </div>
+                                                <div class="col-12 mobileLabel text-warning fw-bold">Your PAN details are sent for verfication</div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 px-0" *ngIf="userDetails.pan_verify==2">
+                                        <div class="card border-0 mobileCard">
+                                            <form class="card-body row mx-0 px-2 g-2">
+                                                <div class="col-12 d-flex align-items-center gap-3">
+                                                    <div class="mobileImg"><img src="assets/svg/icons/verifyed_pan.svg" class="w-100" alt=""></div>
+                                                    <div class="fs-6 text-danger fw-bold">Your Verification has been cancelled</div>
+                                                </div>
+                                                <div class="col-12 mobileLabel text-warning fw-bold">Please verify again</div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- ? verify pan card End -->
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+                                <div class="row mx-0 pt-3 g-3">
+                                    <div class="col-12 px-0">
+                                        <div class="card border-0 mobileCard" 
+                                        *ngIf=" (userDetails.mobile_verify==0 || userDetails.email_verify==0 )||( userDetails.pan_verify==-1||  userDetails.aadhar_verify==-1 )">
+                                            <form class="card-body row mx-0 px-2 g-2">
+                                                <div class="col-12 d-flex align-items-center gap-2">
+                                                    <div class="mobileImg"><img src="assets/svg/icons/Bank_unverified.png" class="w-100" alt=""></div>
+                                                    <div class="verifyMobile verifyPanDetails fw-bold">Verify Your Bank Details</div>
+                                                </div>
+                                                <div class="col-12 text-black fw-semibold mobileLabel">To update your bank details please complete the steps metionde below:</div>
+                                                <div class="col-12">
+                                                    <ul class="fw-semibold mobileLabel text-black">
+                                                        <li>Verify your mobile number.</li>
+                                                        <li>Verify your Email.</li>
+                                                        <li>Verify your Aadhaar card</li>
+                                                        <li>Verify your PAN card</li>
+                                                    </ul>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- * [ Account Number Verify Form ] -->
+                                    <div class="col-12 px-0" *ngIf="(userDetails.bank_verify==2 || userDetails.bank_verify==-1)  && (userDetails.pan_verify==0 ||userDetails.pan_verify==1 )">
+                                        <div class="card border-0 mobileCard verifyPanCard">
+                                            <form class="card-body row mx-0 px-2 g-2" [formGroup]="bankUpload">
+                                                <div class="col-12 d-flex align-items-center gap-2">
+                                                    <div class="mobileImg"><img src="assets/svg/icons/bank.png" class="w-100" alt=""></div>
+                                                    <div class="verifyMobile verifyPanDetails fw-bold">Verify Your BANK Details</div>
+                                                </div>
+                                                <div class="col-12 text-center"><div class="idCard d-inline-block"><img [src]="image2 || 'assets/svg/img/Bank_Details.png'" class="h-100" alt="ID Card"></div></div>
+                                                <div class="col-12">
+                                                    <label for="upload" class="btn btn-warning btn-sm otpBtn rounded-0 w-100 text-white fw-semibold text-center">Upload Bank account Proof</label>
+                                                    <input type="file" id="upload" formControlName="image" (change)="bank($event)" class="form-control shadow-none border-0 rounded-0 px-1 fw-semibold"  hidden>
+                                                    <div *ngIf="f4['image'].touched && f4['image'].errors?.['required']" class="otpverfication text-danger  mt-1 fw-bold">*Image Required</div>
+                                                    <div class="text-muted fw-semibold mobileLabel text-center">Image size up to 4mb*</div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="text" (keypress)="AlphaOnly($event)"  formControlName="accName" class="form-control shadow-none border-0 rounded-0 px-1 fw-semibold" placeholder="Account Holder Name*">
+                                                    <div *ngIf="f4['accName'].touched && f4['accName'].errors?.['required']" class="otpverfication text-danger  mt-1 fw-bold">*Account Holder Name Required</div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="password" (keypress)="keyPressNumbers($event)" formControlName="accNumber" class="form-control shadow-none border-0 rounded-0 px-1 fw-semibold" placeholder="Account Number*">
+                                                    <div *ngIf="f4['accNumber'].touched && f4['accNumber'].errors?.['required']" class="otpverfication text-danger  mt-1 fw-bold">*Account Number Required</div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="text" (keypress)="keyPressNumbers($event)" formControlName="accNumber2" class="form-control shadow-none border-0 rounded-0 px-1 fw-semibold" placeholder="Verify Account Number*">
+                                                    <div *ngIf="f4['accNumber2'].touched && f4['accNumber2'].errors?.['required']" class="otpverfication text-danger  mt-1 fw-bold">*Verify Account Number Required</div>
+                                                    <div  class="otpverfication text-danger  mt-1 fw-bold" *ngIf="f4['accNumber2'].errors?.['confirmedValidator'] && f4['accNumber2'].touched">*Account Number Does Not Match</div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="text" (keypress)="AlphaOnly($event)" formControlName="bank" class="form-control shadow-none border-0 rounded-0 px-1 fw-semibold" placeholder="Bank Name*">
+                                                    <div *ngIf="f4['bank'].touched && f4['bank'].errors?.['required']" class="otpverfication text-danger  mt-1 fw-bold">*Bank Name Required</div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="text" (keypress)="AlphaOnly($event)"  formControlName="branch" class="form-control shadow-none border-0 rounded-0 px-1 fw-semibold" placeholder="Branch Name*">
+                                                    <div *ngIf="f4['branch'].touched && f4['branch'].errors?.['required']" class="otpverfication text-danger  mt-1 fw-bold">*Branch Name Required</div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="text" formControlName="IFSC"  oninput="this.value = this.value.toUpperCase()"  class="form-control shadow-none border-0 rounded-0 px-1 fw-semibold" placeholder="IFSC Code*" maxlength="11">
+                                                    <div *ngIf="f4['IFSC'].touched && f4['IFSC'].errors?.['required']" class="otpverfication text-danger  mt-1 fw-bold">*IFSC Code Required</div>
+                                                    <div class="col-12 text-danger fw-semibold otpverfication" *ngIf="f4['IFSC'].touched && f4['IFSC'].errors?.['pattern']">Invalid IFSC Code</div>
+
+                                                </div>
+                                                <div class="col-12">
+                                                    <select class="form-select shadow-none py-2 border-0 px-2 fw-semibold text-muted" aria-label="Default select example" formControlName="state">
+                                                        <option disabled [selected]="true" value="">select state</option>
+                                                        <option  value="PONDICHERRY">PONDICHERRY</option>
+                                                        <option  value="BIHAR">BIHAR</option>
+                                                        <option  value="CHHATTISGARH">CHHATTISGARH</option>
+                                                        <option  value="DELHI">DELHI</option>
+                                                        <option  value="GUJARAT">GUJARAT</option>
+                                                        <option  value="DAMAN &amp; DIU">DAMAN &amp; DIU</option>
+                                                        <option  value="DADRA &amp; NAGAR HAVELI">DADRA &amp; NAGARHAVELI</option>
+                                                        <option  value="HARYANA">HARYANA</option>
+                                                        <option  value="HIMACHAL PRADESH">HIMACHAL PRADESH</option>
+                                                        <option  value="JAMMU &amp; KASHMIR">JAMMU &amp; KASHMIR</option>
+                                                        <option  value="JHARKHAND">JHARKHAND</option>
+                                                        <option  value="KARNATAKA">KARNATAKA</option>
+                                                        <option  value="KERALA">KERALA</option>
+                                                        <option  value="LAKSHADWEEP">LAKSHADWEEP</option>
+                                                        <option  value="MADHYA PRADESH">MADHYA PRADESH</option>
+                                                        <option  value="MAHARASHTRA">MAHARASHTRA</option>
+                                                        <option  value="GOA">GOA</option>
+                                                        <option  value="MANIPUR">MANIPUR</option>
+                                                        <option  value="MIZORAM">MIZORAM</option>
+                                                        <option  value="TRIPURA">TRIPURA</option>
+                                                        <option  value="ARUNACHAL PRADESH">ARUNACHAL PRADESH</option>
+                                                        <option  value="MEGHALAYA">MEGHALAYA</option>
+                                                        <option  value="PUNJAB">PUNJAB</option>
+                                                        <option  value="CHANDIGARH">CHANDIGARH</option>
+                                                        <option  value="RAJASTHAN">RAJASTHAN</option>
+                                                        <option  value="TAMIL NADU">TAMIL NADU</option>
+                                                        <option  value="UTTAR PRADESH">UTTAR PRADESH</option>
+                                                        <option  value="UTTARAKHAND">UTTARAKHAND</option>
+                                                        <option  value="WEST BENGAL">WEST BENGAL</option>
+                                                        <option  value="ANDAMAN &amp; NICOBAR ISLANDS">ANDAMAN &amp; NICOBAR ISLANDS</option>
+                                                    </select>
+                                                    <div *ngIf="f4['state'].touched && f4['state'].errors?.['required']" class="otpverfication text-danger  mt-1 fw-bold">*State Required</div>
+                                                </div>
+                                                <div class="mobileLabel text-muted fw-bold text-center">*All fields are mandaory</div>
+                                                <div class="col-12"><button type="submit" class="btn btnStyle2 btn-sm otpBtn rounded-0 w-100 text-white fw-semibold text-center" (click)="onBankUpload()">Submit for Verification</button></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- * [ Account Number Verify Form End ] -->
+
+                                    <!-- * [ Account Number Verified ] -->
+                                    <div class="col-12 px-0" *ngIf="(userDetails.bank_verify==1 || userDetails.bank_verify==0 ||userDetails.bank_verify==2)">
+                                        <div class="card border-0 mobileCard">
+                                            <form class="card-body pb-0 row mx-0 px-0 gap-2">
+                                                <div class="col-12 fs-6 text-warning fw-bold">Bank Document</div>
+                                                <div class="col-12 pb-2 px-0 border-bottom border-bottom-1 border-bottom-light">
+                                                    <div class="row mx-0 align-items-center">
+                                                        <div class="col-5 text-muted fw-bold verifyMobile">Account Holder</div>
+                                                        <div class="col-7 text-muted fw-bold verifyMobile">{{bankInfo.accountholdername}}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 pb-2 px-0 border-bottom border-bottom-1 border-bottom-light">
+                                                    <div class="row mx-0 align-items-center">
+                                                        <div class="col-5 text-muted fw-bold verifyMobile">Account No.</div>
+                                                        <div class="col-7 text-muted fw-bold verifyMobile">{{bankInfo.accno}}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 pb-2 px-0 border-bottom border-bottom-1 border-bottom-light">
+                                                    <div class="row mx-0 align-items-center">
+                                                        <div class="col-5 text-muted fw-bold verifyMobile">IFSC Code</div>
+                                                        <div class="col-7 text-muted fw-bold verifyMobile">{{bankInfo.ifsc}}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 pb-2 px-0 border-bottom border-bottom-1 border-bottom-light">
+                                                    <div class="row mx-0 align-items-center">
+                                                        <div class="col-5 text-muted fw-bold verifyMobile">Bank Name</div>
+                                                        <div class="col-7 text-muted fw-bold verifyMobile">{{bankInfo.bankname}}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 pb-2 px-0 border-bottom border-bottom-1 border-bottom-light">
+                                                    <div class="row mx-0 align-items-center">
+                                                        <div class="col-5 text-muted fw-bold verifyMobile">Branch</div>
+                                                        <div class="col-7 text-muted fw-bold verifyMobile">{{bankInfo.bankbranch}}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 pb-2 px-0">
+                                                    <div class="row mx-0 align-items-center">
+                                                        <div class="col-5 text-muted fw-bold verifyMobile">State</div>
+                                                        <div class="col-7 text-muted fw-bold verifyMobile">{{bankInfo.state}}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12"><div class="w-50 mx-auto"><img src={{bankInfo.image}}  style="max-width:100%;cursor:pointer" (click)="onClick($event)" data-bs-toggle="modal" data-bs-target="#myModal" class="w-100" alt=""></div></div>
+                                                <div class="col-12 text-end text-black fw-semibold otpverfication">Click on image to view full size image.</div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- * [ Account Number Verified End ] -->
+                                    <!-- ? verify pan card -->
+                                    <div class="col-12 px-0" *ngIf="userDetails.bank_verify==0 && userDetails.aadhar_verify == 1 && userDetails.aadhar_verify == 1" >
+                                        <div class="card border-0 mobileCard">
+                                            <form class="card-body row mx-0 px-2 g-2">
+                                                <div class="col-12 d-flex align-items-center gap-3">
+                                                    <div class="mobileImg"><img src="assets/svg/icons/bank.png" class="w-100" alt=""></div>
+                                                    <div class="fs-6 text-warning fw-bold">Verifying Your BANK Details</div>
+                                                </div>
+                                                <div class="col-12 mobileLabel text-warning fw-bold">Your Bank details are sent for verfication</div>
+                                                <!-- <div class="col-12 text-black fw-semibold mobileLabel">To update your details please complete the steps metionde below:</div> -->
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 px-0" *ngIf="userDetails.bank_verify==2">
+                                        <div class="card border-0 mobileCard">
+                                            <form class="card-body row mx-0 px-2 g-2">
+                                                <div class="col-12 d-flex align-items-center gap-3">
+                                                    <div class="mobileImg"><img src="assets/svg/icons/bank.png" class="w-100" alt=""></div>
+                                                    <div class="fs-6 text-danger fw-bold">Your verification has been cancelled</div>
+                                                </div>
+                                                <div class="col-12 mobileLabel text-warning fw-bold">Please verify again</div>
+                                                <!-- <div class="col-12 text-black fw-semibold mobileLabel">To update your details please complete the steps metionde below:</div> -->
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- ? verify pan card End -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <!--* OTP Modal* -->
+        <div class="modal fade otpModal" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered innerModal">
+                <div class="modal-content border-0 rounded-3">
+                <div class="modal-body p-0 rounded-3">
+                    <form action="" class="card rounded-3">
+                        <div class="card-body row mx-0 gap-3 justify-content-center">
+                            <div class="col-10 ps-5 text-center fw-bold text-black enterCode">Enter the code</div>
+                            <div class="col-1"> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                            <div class="col-12 text-center px-0 otpInput">
+                                <!-- <div class="row mx-0"> -->
+                                    <!-- <div class="col"><input type="text" class="form-control border-0 px-0 rounded-0 shadow-none text-center fw-bold text-muted" placeholder="*"></div>
+                                    <div class="col"><input type="text" class="form-control border-0 px-0 rounded-0 shadow-none text-center fw-bold text-muted" placeholder="*"></div>
+                                    <div class="col"><input type="text" class="form-control border-0 px-0 rounded-0 shadow-none text-center fw-bold text-muted" placeholder="*"></div>
+                                    <div class="col"><input type="text" class="form-control border-0 px-0 rounded-0 shadow-none text-center fw-bold text-muted" placeholder="*"></div> -->
+                                    <ng-otp-input [config]="configuration" (onInputChange)="otpIn($event)"></ng-otp-input>
+                                <!-- </div> -->
+                            </div>
+                            <div class="col-12 text-center"><button type="button" class="btn btn-sm px-4 border-0 btnStyle2 otpBtn d-flex mx-auto bw-bold text-white" (click)="verifyOTP()">VERIFY OTP</button></div>
+                        </div>
+                    </form>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div> -->
+                </div>
+            </div>
+        </div>
+        <!--* OTP Modal End* -->
+
+        <!-- Image View Modal -->
+        <div class="modal fade"  id="myModal" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="text-end p-2">
+                  <button type="button" #closeBtn class="btn btn-primary rounded-circle close"  data-bs-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body text-center">
+                <img
+                src="{{imgSrc}}"
+                style="max-width:100%;cursor:pointer"
+                class="modal-hover-opacity"
+              /> 
+                </div>
+              </div>
+            </div>
+            </div>
+    </div>
+</main>

@@ -1,0 +1,60 @@
+@import "../../../../variables";
+
+
+        .cricketheader {
+            box-shadow: 0px 0px 6px rgba($black, 0.1) !important;
+            min-height: 54px;
+            background-color: $theme1;
+            z-index: 1;
+        }
+         .topPointHeading {
+            font-size: 12px;
+        }
+         .pointAccirdion {
+            & .accordion-item {
+                & .accordion-header {
+                    & .accordion-button {
+                        font-size: 12px;
+                        & .categoryIcone {
+                            width: 30px;
+                            height: 30px;
+                        }
+                        &::after {
+                            background-image: url("/assets/svg/icons/downArrowAccordion.svg");
+                            background-position: center;
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            width: 12px;
+                            height: 12px;
+                        }
+                    }
+                }
+                & .accordion-body {
+                    background-color: $gray-300;
+                    & .activitiValue,
+                    & .activitiHeading {
+                        font-size: 12px;
+                    }
+                    & .subheading {
+                        font-size: 10px;
+                        & span {
+                            line-height: 100%;
+                        }
+                    }
+                    & .activitiValue {
+                        color: darken($success, 0);
+                    }
+                }
+            }
+        }
+         .peraHeading {
+            font-size: 14px;
+            line-height: 100%;
+        }
+         .peraContent {
+            font-size: 11px;
+            line-height: 100%;
+            & span {
+                line-height: 75%;
+            }
+        }

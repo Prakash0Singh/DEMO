@@ -1,0 +1,596 @@
+<main class="container-fluid">
+    <div class="row mainInner">
+        <nav class="col-12 header d-flex align-items-center px-0">
+            <div class="row mx-0 innerheader align-items-center w-100">
+                <div class="col-auto notification">
+                    <a (click)="onBack()" style="cursor: pointer;" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/leftCricleArrow.png" class="w-100" alt="bell"></a>
+                </div>
+                <div class="col"><div class="title text-white text-center">My Matches</div></div>
+                <div class="col-auto notification">
+                    <a [routerLink]="'/dashboard/notification'" type="button" class="notificationIcon shadow-none bg-transparent p-0 border-0"><img src="assets/svg/icons/bell_whire_color.png" class="w-100" alt="bell"></a>
+                </div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill" data-page-name="myMatchesPage" data-scrollbar>
+            <div class="row mx-0 h-100 flex-column flex-nowrap">
+                <!-- <div class="col-12 px-0 cricketheader bg-white z-2">
+                    <ul class="nav row mx-0 nav-pills navtab " id="pills-tab" role="tablist">
+                        <li class="nav-item col px-0" role="presentation">
+                            <button class="nav-link rounded-0 text-black w-100 active" id="cricketMatches-tab" data-bs-toggle="pill" data-bs-target="#cricketMatches" type="button" role="tab" aria-controls="cricketMatches" aria-selected="true"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/icon_cricket.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt1 d-flex justify-content-center">Cricket</span></button>
+                        </li>
+                        <li class="nav-item col px-0" role="presentation">
+                            <button class="nav-link rounded-0 text-black w-100" id="oversMatches-tab" data-bs-toggle="pill" data-bs-target="#oversMatches" type="button" role="tab" aria-controls="oversMatches" aria-selected="false"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/OverFantasyIconColor.png" class="h-100" alt="Overs"></div> <span class="gamesheading pt1 d-flex justify-content-center">Overs</span></button>
+                        </li>
+                        <li class="nav-item col px-0" role="presentation">
+                            <button class="nav-link rounded-0 text-black w-100" id="footballMatches-tab" data-bs-toggle="pill" data-bs-target="#footballMatches" type="button" role="tab" aria-controls="footballMatches" aria-selected="false"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/icon_football.png" class="h-100" alt="Football"></div> <span class="gamesheading pt1 d-flex justify-content-center">Football</span></button>
+                        </li>
+                        <li class="nav-item col px-0" role="presentation">
+                            <button class="nav-link rounded-0 text-black w-100" id="basketballMatches-tab" data-bs-toggle="pill" data-bs-target="#basketballMatches" type="button" role="tab" aria-controls="basketballMatches" aria-selected="false"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/icon_basketball.png" class="h-100" alt="Basketball"></div> <span class="gamesheading pt1 d-flex justify-content-center">Basketball</span></button>
+                        </li>
+                    </ul>
+                </div> -->
+                <div class="col-12 px-0 flex-fill h-100 overflow-hidden bg-light">
+                    <div class="tab-content h-100 tabContents" id="pills-tabContent">
+                        <div class="tab-pane h-100 fade show active" id="cricketMatches" role="tabpanel" aria-labelledby="cricketMatches-tab" tabindex="0">
+                            <div class="row mx-0 h-100 flex-column flex-nowrap cardslider mb-4">
+                                <div class="col-12 px-0 cricketheader bg-white py-2 z-1">
+                                    <ul class="nav row mx-0 nav-pills navtab " id="pills-tab" role="tablist">
+                                        <li class="nav-item col px-0" role="presentation">
+                                            <button class="nav-link rounded-0 text-black w-100 border-0" (click)="changeTab('tab1')" [ngClass]="tabMy=='tab1'?'active':''" id="cricketUpcoming-tab" data-bs-toggle="pill" data-bs-target="#cricketUpcoming" type="button" role="tab" aria-controls="cricketUpcoming" aria-selected="true">
+                                                <span class="gamesheading pt1 d-flex justify-content-center">Upcoming</span>
+                                            </button>
+                                        </li>
+                                        <li class="nav-item col px-0" role="presentation">
+                                            <button class="nav-link rounded-0 text-black w-100 border-0" (click)="changeTab('tab2')" [ngClass]="tabMy=='tab2'?'active':''" id="cricketLive-tab" data-bs-toggle="pill" data-bs-target="#cricketLive" type="button" role="tab" aria-controls="cricketLive" aria-selected="false">
+                                                <span class="gamesheading pt1 d-flex justify-content-center">Live</span>
+                                            </button>
+                                        </li>
+                                        <li class="nav-item col px-0" role="presentation">
+                                            <button class="nav-link rounded-0 text-black w-100 border-0" (click)="changeTab('tab3')" [ngClass]="tabMy=='tab3'?'active':''" id="cricketCompleted-tab" data-bs-toggle="pill" data-bs-target="#cricketCompleted" type="button" role="tab" aria-controls="cricketCompleted" aria-selected="false">
+                                                <span class="gamesheading pt1 d-flex justify-content-center">Completed</span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-12 flex-fill h-100 overflow-hidden-auto py-3">
+                                    <div class="tab-content tabContents h-100" id="pills-tabContent">
+                                        <div class="tab-pane fade h-100" [ngClass]="tabMy=='tab1'?' show active':''" id="cricketUpcoming" role="tabpanel" aria-labelledby="cricketUpcoming-tab" tabindex="0">
+                                            <div class="row h-100">
+                                                <div class="col-12 upcomingMatches" *ngIf="upcoming.length>0; else up">
+                                                    <div class="row gap-3">
+                                                        <div class="col-12 mb-3" *ngFor="let d of upcoming;index as i">
+                                                            <div style="cursor: pointer;" class="card matchesCard position-relative overflow-hidden border border-1 border-light bg-white">
+                                                                <div class="card-body p-0">
+                                                                    <div class="teamHeadline row mx-0 border-bottom border-bottom-1 border-bottom-light py-1 align-items-center">
+                                                                        <div class="col fw-semibold matchteams text-muted px-2">{{d.series_name}}</div>
+                                                                    </div>
+                                                                    <div class="innerBody firstMatchBody pt-2">
+                                                                        <div class="row mx-0 align-items-center">
+                                                                            <div class="col-auto leftSideTeams px-2">
+                                                                                <div class="firstTeamsName text-black fw-bold">{{d.team1fullname}}</div>
+                                                                                <div class="team d-flex align-items-center mt-2">
+                                                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center">
+                                                                                        <span class="position-absolute teamCountryLogo" [style.backgroundColor]="d.team1color"></span>
+                                                                                        <img src={{d.team1logo}} class="w-100" alt="">
+                                                                                    </div>
+                                                                                    <div class="teamName text-uppercase text-black fw-bold ms-2">{{d.team1ShortName}}</div>
+                                                                                </div>
+                                                                                <a class="stretched-link" (click)="joinedContestDetails(d.matchkey)"></a>
+                                                                            </div>
+                                                                            <div class="col px-0 matchTimer">
+                                                                                <div class="pichTime text-center fw-semibold "><cd-timer *ngIf="finalDate[i]>0" [countdown]="true" [startTime]="finalDate[i]" [format]="'user'">[days]d : [hours]h : [minutes]m : [seconds]s</cd-timer></div>
+                                                                            </div>
+                                                                            <div class="col-auto rightSideTeams px-2">
+                                                                                <div class="firstTeamsName text-black text-end fw-bold">{{d.team2fullname}}</div>
+                                                                                <div class="team d-flex align-items-center mt-2">
+                                                                                    <div class="teamName text-uppercase text-black fw-bold me-2">{{d.team2ShortName}}</div>
+                                                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center">
+                                                                                        <span class="position-absolute teamCountryLogo" [style.backgroundColor]="d.team2color"></span>
+                                                                                        <img src={{d.team2logo}} class="w-100" alt="">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-12 numberOffContest mt-3 text-black">{{d.joinedcontest}} Contest Joined</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ng-template #up>
+                                                    <div class="col-12 emptyState h-100 align-items-center d-flex justify-content-center">
+                                                        <div class="emptyStateOuter p-4 text-center">
+                                                            <div class="row gap-2">
+                                                                <div class="col-12">
+                                                                    <div class="txt">You haven't joined any upcoming contests</div>
+                                                                    <div class="imgOuter my-2">
+                                                                        <img class="w-100" src="assets/svg/img/emptyStateImg1.png" alt="">
+                                                                    </div>
+                                                                    <div class="txt">Join contests for any of the upcoming matches</div>
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <a [routerLink]="'/dashboard/home'" class="btn customFontBtn btn-success text-uppercase w-100 text-white">View Upcoming Matches</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </ng-template>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade h-100" [ngClass]="tabMy=='tab2'?' show active':''" id="cricketLive" role="tabpanel" aria-labelledby="cricketLive-tab" tabindex="0">
+                                            <div class="row h-100">
+                                                <div class="col-12 upcomingMatches" *ngIf="live.length>0; else li">
+                                                    <div class="row gap-3">
+                                                        <div class="col-12 mb-3" *ngFor="let d of live;index as i">
+                                                            <div class="card matchesCard position-relative overflow-hidden border border-1 border-light bg-white">
+                                                                <div class="card-body p-0">
+                                                                    <div class="teamHeadline row mx-0 border-bottom border-bottom-1 border-bottom-light py-1 align-items-center">
+                                                                        <div class="col fw-semibold matchteams text-muted px-2">{{d.series_name}}</div>
+                                                                        <div class="col-auto row mx-0 px-0 align-items-center">
+                                                                            <div class="col-auto px-2 fw-bold  notificationOut" *ngIf="d.final_status == 'pending'">In Progress</div>
+                                                                            <div class="col-auto px-2 fw-bold  notificationOut" *ngIf="d.final_status == 'IsReviewed'">Under Review</div>
+                                                                        </div>
+                                                                    </div>
+                                                                   <div class="innerBody firstMatchBody pt-2">
+                                                                        <div class="row mx-0 align-items-center">
+                                                                            <div class="col-auto leftSideTeams px-2">
+                                                                                <div class="firstTeamsName text-black fw-bold">{{d.team1fullname}}</div>
+                                                                                <div class="team d-flex align-items-center mt-2">
+                                                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center">
+                                                                                        <span class="position-absolute teamCountryLogo" [style.backgroundColor]="d.team1color"></span>
+                                                                                        <img src={{d.team1logo}} class="w-100" alt="">
+                                                                                    </div>
+                                                                                    <div class="teamName text-uppercase text-black fw-bold ms-2">{{d.team1ShortName}}</div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col px-0">
+                                                                                <div class="imgOuter mx-auto">
+                                                                                    <img class="w-100" src="assets/svg/img/vs_icon.png" alt="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-auto rightSideTeams px-2">
+                                                                                <div class="firstTeamsName text-black text-end fw-bold">{{d.team2fullname}}</div>
+                                                                                <div class="team d-flex align-items-center mt-2">
+                                                                                    <div class="teamName text-uppercase text-black fw-bold me-2">{{d.team2ShortName}}</div>
+                                                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center">
+                                                                                        <span class="position-absolute teamCountryLogo" [style.backgroundColor]="d.team2color"></span>
+                                                                                        <img src={{d.team2logo}} class="w-100" alt="">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-12 numberOffContest mt-3 text-black">{{d.joinedcontest}} Contest Joined</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <a class="stretched-link" style="cursor: pointer;" (click)="liveContestDetails(d.matchkey)" ></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ng-template #li>
+                                                    <div class="col-12 emptyState h-100 align-items-center d-flex justify-content-center">
+                                                        <div class="emptyStateOuter p-4 text-center">
+                                                            <div class="row gap-2">
+                                                                <div class="col-12">
+                                                                    <div class="txt">You haven't joined any upcoming contests</div>
+                                                                    <div class="imgOuter my-2">
+                                                                        <img class="w-100" src="assets/svg/img/emptyStateImg1.png" alt="">
+                                                                    </div>
+                                                                    <div class="txt">Join contests for any of the upcoming matches</div>
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <a [routerLink]="'/dashboard/home'" class="btn customFontBtn btn-success text-uppercase w-100 text-white">View Upcoming Matches</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </ng-template>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade h-100" [ngClass]="tabMy=='tab3'?' show active':''" id="cricketCompleted" role="tabpanel" aria-labelledby="cricketCompleted-tab" tabindex="0">
+                                            <div class="row h-100">
+                                                <div class="col-12 upcomingMatches" *ngIf="completed.length>0; else comp" >
+                                                    <div class="row gap-3">
+                                                        <div class="col-12 mb-3" *ngFor="let d of completed;index as i">
+                                                            <div class="card matchesCard position-relative overflow-hidden border border-1 border-light bg-white">
+                                                                <div class="card-body p-0">
+                                                                    <div class="teamHeadline row mx-0 border-bottom border-bottom-1 border-bottom-light py-1 align-items-center">
+                                                                        <div class="col fw-semibold matchteams text-muted px-2">{{d.series_name}}</div>
+                                                                        <div class="col-auto row mx-0 px-0 align-items-center">
+                                                                            <div class="col-auto px-2 fw-bold  notificationOut" *ngIf="d.final_status == 'winnerdeclared'">Completed</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="innerBody firstMatchBody pt-2">
+                                                                        <div class="row mx-0 align-items-center">
+                                                                            <div class="col-auto leftSideTeams px-2">
+                                                                                <div class="firstTeamsName text-black fw-bold">{{d.team1fullname}}</div>
+                                                                                <div class="team d-flex align-items-center mt-2">
+                                                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center">
+                                                                                        <span class="position-absolute teamCountryLogo" [style.backgroundColor]="d.team1color"></span>
+                                                                                        <img src={{d.team1logo}} class="w-100" alt="">
+                                                                                    </div>
+                                                                                    <div class="teamName text-uppercase text-black fw-bold ms-2">{{d.team1ShortName}}</div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col px-0">
+                                                                                <div class="imgOuter mx-auto">
+                                                                                    <img class="w-100" src="assets/svg/img/vs_icon.png" alt="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-auto rightSideTeams px-2">
+                                                                                <div class="firstTeamsName text-black text-end fw-bold">{{d.team2fullname}}</div>
+                                                                                <div class="team d-flex align-items-center mt-2">
+                                                                                    <div class="teamName text-uppercase text-black fw-bold me-2">{{d.team2ShortName}}</div>
+                                                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center">
+                                                                                        <span class="position-absolute teamCountryLogo" [style.backgroundColor]="d.team2color"></span>
+                                                                                        <img src={{d.team2logo}} class="w-100" alt="">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-12 numberOffContest mt-3 text-black">{{d.joinedcontest}} Contest Joined</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <a style="cursor: pointer;" (click)="completedContestDetails(d.matchkey)" class="stretched-link"></a>
+                                                            </div>
+                                                            <div class="winStatus text-white p-1 text-center mx-4">{{d.winning_status}}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ng-template #comp>
+                                                    <div class="col-12 emptyState h-100 align-items-center d-flex justify-content-center">
+                                                        <div class="emptyStateOuter p-4 text-center">
+                                                            <div class="row gap-2">
+                                                                <div class="col-12">
+                                                                    <div class="txt">You haven't joined any upcoming contests</div>
+                                                                    <div class="imgOuter my-2">
+                                                                        <img class="w-100" src="assets/svg/img/emptyStateImg1.png" alt="">
+                                                                    </div>
+                                                                    <div class="txt">Join contests for any of the upcoming matches</div>
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <a [routerLink]="'/dashboard/home'" class="btn customFontBtn btn-success text-uppercase w-100 text-white">View Upcoming Matches</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </ng-template>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane h-100 fade" id="oversMatches" role="tabpanel" aria-labelledby="oversMatches-tab" tabindex="0">
+                            <div class="row mx-0 h-100 flex-column flex-nowrap cardslider mb-4">
+                                <div class="col-12 px-0 cricketheader bg-white py-2 z-1">
+                                    <ul class="nav row mx-0 nav-pills navtab " id="pills-tab" role="tablist">
+                                        <li class="nav-item col px-0" role="presentation">
+                                            <button class="nav-link rounded-0 text-black w-100 border-0 active" id="oversUpcoming-tab" data-bs-toggle="pill" data-bs-target="#oversUpcoming" type="button" role="tab" aria-controls="oversUpcoming" aria-selected="true">
+                                                <span class="gamesheading pt1 d-flex justify-content-center">Upcoming</span>
+                                            </button>
+                                        </li>
+                                        <li class="nav-item col px-0" role="presentation">
+                                            <button class="nav-link rounded-0 text-black w-100 border-0" id="oversLive-tab" data-bs-toggle="pill" data-bs-target="#oversLive" type="button" role="tab" aria-controls="oversLive" aria-selected="false">
+                                                <span class="gamesheading pt1 d-flex justify-content-center">Live</span>
+                                            </button>
+                                        </li>
+                                        <li class="nav-item col px-0" role="presentation">
+                                            <button class="nav-link rounded-0 text-black w-100 border-0" id="oversCompleted-tab" data-bs-toggle="pill" data-bs-target="#oversCompleted" type="button" role="tab" aria-controls="oversCompleted" aria-selected="false">
+                                                <span class="gamesheading pt1 d-flex justify-content-center">Completed</span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-12 flex-fill h-100 overflow-y-auto py-3">
+                                    <div class="tab-content tabContents h-100" id="pills-tabContent">
+                                        <div class="tab-pane fade h-100 show active" id="oversUpcoming" role="tabpanel" aria-labelledby="oversUpcoming-tab" tabindex="0">
+                                            <div class="row h-100">
+                                                <!-- <div class="col-12 upcomingMatches">
+                                                    <div class="row gap-3">
+                                                        <div class="col-12">
+                                                            <div class="card matchesCard overflow-hidden border border-1 border-light bg-white">
+                                                                <div class="card-body p-0">
+                                                                    <div class="teamHeadline row mx-0 border-bottom border-bottom-1 border-bottom-light py-1 align-items-center">
+                                                                        <div class="col fw-semibold matchteams text-muted px-2">European Cricket League  T10</div>
+                                                                    </div>
+                                                                    <div class="innerBody firstMatchBody pt-2">
+                                                                        <div class="row mx-0 align-items-center">
+                                                                            <div class="col-auto leftSideTeams px-2">
+                                                                                <div class="firstTeamsName text-black fw-bold">CIYMS</div>
+                                                                                <div class="team d-flex align-items-center mt-2">
+                                                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center"><img src="assets/svg/img/team1.png" class="w-100" alt=""></div>
+                                                                                    <div class="teamName text-uppercase text-black fw-bold ms-2">CYS</div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col px-0 matchTimer">
+                                                                                <div class="pichTime text-center fw-semibold ">00h:50m:03s</div>
+                                                                            </div>
+                                                                            <div class="col-auto rightSideTeams px-2">
+                                                                                <div class="firstTeamsName text-black text-end fw-bold">Ariana AKIF</div>
+                                                                                <div class="team d-flex align-items-center mt-2">
+                                                                                    <div class="teamName text-uppercase text-black fw-bold me-2">CYS</div>
+                                                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center"><img src="assets/svg/img/team2.png" class="w-100" alt=""></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-12 numberOffContest mt-3 text-black">1 Contest Joined</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="card matchesCard overflow-hidden border border-1 border-light bg-white">
+                                                                <div class="card-body p-0">
+                                                                    <div class="teamHeadline row mx-0 border-bottom border-bottom-1 border-bottom-light py-1 align-items-center">
+                                                                        <div class="col fw-semibold matchteams text-muted px-2">European Cricket League  T10</div>
+                                                                    </div>
+                                                                    <div class="innerBody firstMatchBody pt-2">
+                                                                        <div class="row mx-0 align-items-center">
+                                                                            <div class="col-auto leftSideTeams px-2">
+                                                                                <div class="firstTeamsName text-black fw-bold">CIYMS</div>
+                                                                                <div class="team d-flex align-items-center mt-2">
+                                                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center"><img src="assets/svg/img/team1.png" class="w-100" alt=""></div>
+                                                                                    <div class="teamName text-uppercase text-black fw-bold ms-2">CYS</div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col px-0 matchTimer">
+                                                                                <div class="pichTime text-center fw-semibold ">00h:50m:03s</div>
+                                                                            </div>
+                                                                            <div class="col-auto rightSideTeams px-2">
+                                                                                <div class="firstTeamsName text-black text-end fw-bold">Ariana AKIF</div>
+                                                                                <div class="team d-flex align-items-center mt-2">
+                                                                                    <div class="teamName text-uppercase text-black fw-bold me-2">CYS</div>
+                                                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center"><img src="assets/svg/img/team2.png" class="w-100" alt=""></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-12 numberOffContest mt-3 text-black">1 Contest Joined</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                                <div class="col-12 emptyState h-100 align-items-center d-flex justify-content-center">
+                                                    <div class="emptyStateOuter p-4 text-center">
+                                                        <div class="row gap-2">
+                                                            <div class="col-12">
+                                                                <div class="txt">You haven't joined any upcoming contests</div>
+                                                                <div class="imgOuter my-2">
+                                                                    <img class="w-100" src="assets/svg/img/emptyStateImg1.png" alt="">
+                                                                </div>
+                                                                <div class="txt">Join contests for any of the upcoming matches</div>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <a [routerLink]="'/dashboard/home'" class="btn customFontBtn btn-success text-uppercase w-100 text-white">View Upcoming Matches</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade h-100" id="oversLive" role="tabpanel" aria-labelledby="oversLive-tab" tabindex="0">
+                                            <div class="row h-100">
+                                                <!-- <div class="col-12 upcomingMatches">
+                                                    <div class="row gap-3">
+                                                        <div class="col-12">
+                                                            <div class="card matchesCard overflow-hidden border border-1 border-light bg-white">
+                                                                <div class="card-body p-0">
+                                                                    <div class="teamHeadline row mx-0 border-bottom border-bottom-1 border-bottom-light py-1 align-items-center">
+                                                                        <div class="col fw-semibold matchteams text-muted px-2">European Cricket League  T10</div>
+                                                                        <div class="col-auto row mx-0 px-0 align-items-center">
+                                                                            <div class="col-auto px-2 fw-bold  notificationOut">Under Review</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="innerBody firstMatchBody pt-2">
+                                                                        <div class="row mx-0 align-items-center">
+                                                                            <div class="col-auto leftSideTeams px-2">
+                                                                                <div class="firstTeamsName text-black fw-bold">CIYMS</div>
+                                                                                <div class="team d-flex align-items-center mt-2">
+                                                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center"><img src="assets/svg/img/team1.png" class="w-100" alt=""></div>
+                                                                                    <div class="teamName text-uppercase text-black fw-bold ms-2">CYS</div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col px-0">
+                                                                                <div class="imgOuter mx-auto">
+                                                                                    <img class="w-100" src="assets/svg/img/vs_icon.png" alt="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-auto rightSideTeams px-2">
+                                                                                <div class="firstTeamsName text-black text-end fw-bold">Ariana AKIF</div>
+                                                                                <div class="team d-flex align-items-center mt-2">
+                                                                                    <div class="teamName text-uppercase text-black fw-bold me-2">CYS</div>
+                                                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center"><img src="assets/svg/img/team2.png" class="w-100" alt=""></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-12 numberOffContest mt-3 text-black">1 Contest Joined</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="card matchesCard overflow-hidden border border-1 border-light bg-white">
+                                                                <div class="card-body p-0">
+                                                                    <div class="teamHeadline row mx-0 border-bottom border-bottom-1 border-bottom-light py-1 align-items-center">
+                                                                        <div class="col fw-semibold matchteams text-muted px-2">European Cricket League  T10</div>
+                                                                        <div class="col-auto row mx-0 px-0 align-items-center">
+                                                                            <div class="col-auto px-2 fw-bold  notificationOut">Under Review</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="innerBody firstMatchBody pt-2">
+                                                                        <div class="row mx-0 align-items-center">
+                                                                            <div class="col-auto leftSideTeams px-2">
+                                                                                <div class="firstTeamsName text-black fw-bold">CIYMS</div>
+                                                                                <div class="team d-flex align-items-center mt-2">
+                                                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center"><img src="assets/svg/img/team1.png" class="w-100" alt=""></div>
+                                                                                    <div class="teamName text-uppercase text-black fw-bold ms-2">CYS</div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col px-0">
+                                                                                <div class="imgOuter mx-auto">
+                                                                                    <img class="w-100" src="assets/svg/img/vs_icon.png" alt="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-auto rightSideTeams px-2">
+                                                                                <div class="firstTeamsName text-black text-end fw-bold">Ariana AKIF</div>
+                                                                                <div class="team d-flex align-items-center mt-2">
+                                                                                    <div class="teamName text-uppercase text-black fw-bold me-2">CYS</div>
+                                                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center"><img src="assets/svg/img/team2.png" class="w-100" alt=""></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-12 numberOffContest mt-3 text-black">1 Contest Joined</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                                <div class="col-12 emptyState h-100 align-items-center d-flex justify-content-center">
+                                                    <div class="emptyStateOuter p-4 text-center">
+                                                        <div class="row gap-2">
+                                                            <div class="col-12">
+                                                                <div class="txt">You haven't joined any upcoming contests</div>
+                                                                <div class="imgOuter my-2">
+                                                                    <img class="w-100" src="assets/svg/img/emptyStateImg1.png" alt="">
+                                                                </div>
+                                                                <div class="txt">Join contests for any of the upcoming matches</div>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <a [routerLink]="'/dashboard/home'" class="btn customFontBtn btn-success text-uppercase w-100 text-white">View Upcoming Matches</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade h-100" id="oversCompleted" role="tabpanel" aria-labelledby="oversCompleted-tab" tabindex="0">
+                                            <div class="row h-100">
+                                                <!-- <div class="col-12 upcomingMatches">
+                                                    <div class="row gap-3">
+                                                        <div class="col-12">
+                                                            <div class="card matchesCard overflow-hidden border border-1 border-light bg-white">
+                                                                <div class="card-body p-0">
+                                                                    <div class="teamHeadline row mx-0 border-bottom border-bottom-1 border-bottom-light py-1 align-items-center">
+                                                                        <div class="col fw-semibold matchteams text-muted px-2">European Cricket League  T10</div>
+                                                                        <div class="col-auto row mx-0 px-0 align-items-center">
+                                                                            <div class="col-auto px-2 fw-bold  notificationOut">Completed</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="innerBody firstMatchBody pt-2">
+                                                                        <div class="row mx-0 align-items-center">
+                                                                            <div class="col-auto leftSideTeams px-2">
+                                                                                <div class="firstTeamsName text-black fw-bold">CIYMS</div>
+                                                                                <div class="team d-flex align-items-center mt-2">
+                                                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center"><img src="assets/svg/img/team1.png" class="w-100" alt=""></div>
+                                                                                    <div class="teamName text-uppercase text-black fw-bold ms-2">CYS</div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col px-0">
+                                                                                <div class="imgOuter mx-auto">
+                                                                                    <img class="w-100" src="assets/svg/img/vs_icon.png" alt="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-auto rightSideTeams px-2">
+                                                                                <div class="firstTeamsName text-black text-end fw-bold">Ariana AKIF</div>
+                                                                                <div class="team d-flex align-items-center mt-2">
+                                                                                    <div class="teamName text-uppercase text-black fw-bold me-2">CYS</div>
+                                                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center"><img src="assets/svg/img/team2.png" class="w-100" alt=""></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-12 numberOffContest mt-3 text-black">1 Contest Joined</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="winStatus text-white p-1 text-center mx-4">CYS won by 6 wickets.</div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="card matchesCard overflow-hidden border border-1 border-light bg-white">
+                                                                <div class="card-body p-0">
+                                                                    <div class="teamHeadline row mx-0 border-bottom border-bottom-1 border-bottom-light py-1 align-items-center">
+                                                                        <div class="col fw-semibold matchteams text-muted px-2">European Cricket League  T10</div>
+                                                                        <div class="col-auto row mx-0 px-0 align-items-center">
+                                                                            <div class="col-auto px-2 fw-bold  notificationOut">Completed</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="innerBody firstMatchBody pt-2">
+                                                                        <div class="row mx-0 align-items-center">
+                                                                            <div class="col-auto leftSideTeams px-2">
+                                                                                <div class="firstTeamsName text-black fw-bold">CIYMS</div>
+                                                                                <div class="team d-flex align-items-center mt-2">
+                                                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center"><img src="assets/svg/img/team1.png" class="w-100" alt=""></div>
+                                                                                    <div class="teamName text-uppercase text-black fw-bold ms-2">CYS</div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col px-0">
+                                                                                <div class="imgOuter mx-auto">
+                                                                                    <img class="w-100" src="assets/svg/img/vs_icon.png" alt="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-auto rightSideTeams px-2">
+                                                                                <div class="firstTeamsName text-black text-end fw-bold">Ariana AKIF</div>
+                                                                                <div class="team d-flex align-items-center mt-2">
+                                                                                    <div class="teamName text-uppercase text-black fw-bold me-2">CYS</div>
+                                                                                    <div class="teamLogo position-relative rounded-circle border border-1 border-black d-flex justify-content-center align-items-center"><img src="assets/svg/img/team2.png" class="w-100" alt=""></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-12 numberOffContest mt-3 text-black">1 Contest Joined</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="winStatus text-white p-1 text-center mx-4">CYS won by 6 wickets.</div>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                                <div class="col-12 emptyState h-100 align-items-center d-flex justify-content-center">
+                                                    <div class="emptyStateOuter p-4 text-center">
+                                                        <div class="row gap-2">
+                                                            <div class="col-12">
+                                                                <div class="txt">You haven't joined any upcoming contests</div>
+                                                                <div class="imgOuter my-2">
+                                                                    <img class="w-100" src="assets/svg/img/emptyStateImg1.png" alt="">
+                                                                </div>
+                                                                <div class="txt">Join contests for any of the upcoming matches</div>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <a [routerLink]="'/dashboard/home'" class="btn customFontBtn btn-success text-uppercase w-100 text-white">View Upcoming Matches</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane h-100 fade" id="footballMatches" role="tabpanel" aria-labelledby="footballMatches-tab" tabindex="0">
+                            <div class="row mx-0 h-100 flex-column flex-nowrap cardslider mb-4">
+                                <div class="col-12 fw-bold text-secondary fs-6 text-center h-100 align-items-center d-flex justify-content-center">Comming Soon...</div>
+                            </div>
+                        </div>
+                        <div class="tab-pane h-100 fade" id="basketballMatches" role="tabpanel" aria-labelledby="basketballMatches-tab" tabindex="0">
+                            <div class="row mx-0 h-100 flex-column flex-nowrap cardslider mb-4">
+                                <div class="col-12 fw-bold text-secondary fs-6 text-center h-100 align-items-center d-flex justify-content-center">Comming Soon...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <footer class="col-12 footer bottomBar d-flex align-items-center px-0">
+            <div class="row mx-0 align-items-center innerBar w-100">
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/home'" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/Home_Blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Home</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/myMatches'" (click)="api.mymatches()" class="linkTab active text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/My_Matches_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">My Matches</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/profile'" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/Profile_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Profile</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/chat'" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/chat/chaticon.svg" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">Chat</span></a></div>
+                <div class="col px-0 bottombarTabs text-center"><a [routerLink]="'/dashboard/more'" class="linkTab text-decoration-none"><div class="gameImg mx-auto mb-1"><img src="assets/svg/icons/More_blue.png" class="h-100" alt="cricket"></div> <span class="gamesheading pt-1 d-flex justify-content-center">More</span></a></div>
+            </div>
+        </footer>
+    </div>
+</main>

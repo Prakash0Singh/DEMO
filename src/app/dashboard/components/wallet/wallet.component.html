@@ -1,0 +1,106 @@
+<main class="container-fluid">
+    <div class="row mainInner bg-white">
+        <nav class="col-12 header py-3">
+            <div class="row align-items-center h-100">
+                <div class="col-auto"><a (click)="onBack()" style="cursor: pointer;" class="backBtn d-flex align-items-center justify-content-center"><img class="w-100" src="assets/svg/icons/leftCricleArrow.png" alt=""></a></div>
+                <div class="col"><div class="title text-white text-center">Wallet</div></div>
+                <div class="col-auto"><div class="backBtn"></div></div>
+            </div>
+        </nav>
+        <div class="col-12 px-0 flex-fill" data-page-name="walletPage" data-scrollbar>
+            <div class="row mainCenterPart g-4 mx-0 py-4">
+                <div class="col-12">
+                    <div class="row mx-0 align-items-center">
+                        <div class="col-auto"><div class="rounded-circle d-flex align-items-center justify-content-center rupees text-white fw-bold">₹</div></div>
+                        <div class="col">
+                            <div class="balance text-black fw-semibold">Total Balance</div>
+                            <div class="balanceAmount fw-bold text-muted">₹ {{walletDetails.totalamount}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="warningCard bg-white card border-0 rounded-4">
+                        <div class="card-body">
+                            <div class="row mx-0 align-items-center">
+                                <div class="col-auto ps-0"><div class="warningImg rounded-circle"><img src="assets/svg/icons/contests.png" class="w-100" alt=""></div></div>
+                                <div class="col">
+                                    <div class="balanceAmount text-black fw-bold">Your Winnings</div>
+                                    <div class="balance text-muted">Withdraw Your Winnings</div>
+                                </div>
+                                <div class="col-auto pe-0"><div class="winningAmount balanceAmount fw-bold">₹ {{walletDetails.winning}}</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="withdrawAmount card border-0 rounded-4 pt-3 position-relative">
+                        <a href="javascript:;" class="py-4 pb-3 text-decoration-none balanceAmount text-center fw-semibold text-white" (click)="withdrawbtn()" >Withdraw Amount</a>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="dipositCard rounded-4 shadow bg-white p-2 text-center">
+                        <div class="warningImg rounded-circle mx-auto mb-2"><img src="assets/svg/icons/deposit_icon.png" class="w-100" alt=""></div>
+                        <div class="balance fw-bold text-black">Deposited</div>
+                        <div class="subbalance text-muted">Mone`y You Add</div>
+                        <div class="subbalance fw-bold text-danger">₹ {{walletDetails.balance}}</div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="dipositCard rounded-4 shadow bg-white p-2 text-center">
+                        <div class="warningImg rounded-circle mx-auto mb-2"><img src="assets/svg/icons/cash_bonus.png" class="w-100" alt=""></div>
+                        <div class="balance fw-bold text-black">Case Bonus</div>
+                        <div class="subbalance text-muted">Offer Earned Cash Bonus</div>
+                        <div class="subbalance fw-bold text-success">₹ {{walletDetails.bonus}}</div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="warningCard addcase card border-0 rounded-4 position-relative">
+                        <div class="card-body">
+                            <div class="row mx-0 align-items-center">
+                                <div class="col-auto ps-0"><div class="warningImg rounded-circle"><img src="assets/svg/icons/contests.png" class="w-100" alt=""></div></div>
+                                <div class="col">
+                                    <a [routerLink]="'/dashboard/add-cash'" class="balanceAmount stretched-link text-white fw-bold">Add Cash</a>
+                                    <div class="balance text-white">UPI,Credit Card,Debit Card & more</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12"> 
+                    <div class="warningCard bg-w card border-0 rounded-4 position-relative">
+                        <div class="card-body">
+                            <div class="row mx-0 align-items-center">
+                                <div class="col-auto ps-0"><div class="warningImg rounded-circle"><img src="assets/svg/icons/transaction.png" class="w-100" alt=""></div></div>
+                                <div class="col">
+                                    <a [routerLink]="'/dashboard/transaction'" class="balanceAmount stretched-link text-muted fw-bold">Transaction History</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="warningCard bg-w card border-0 rounded-4 position-relative">
+                        <div class="card-body">
+                            <div class="row mx-0 align-items-center">
+                                <div class="col-auto ps-0"><div class="warningImg rounded-circle"><img src="assets/svg/icons/referral.png" class="w-100" alt=""></div></div>
+                                <div class="col">
+                                    <a [routerLink]="'/dashboard/invite'" class="balanceAmount stretched-link text-muted fw-bold">Invite Your Friends</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="warningCard bg-w card border-0 rounded-4 position-relative">
+                        <div class="card-body">
+                            <div class="row mx-0 align-items-center">
+                                <div class="col-auto ps-0"><div class="warningImg rounded-circle"><img src="assets/svg/icons/kyc_icon.png" class="w-100" alt=""></div></div>
+                                <div class="col">
+                                    <a [routerLink]="'/dashboard/kyc'" class="balanceAmount stretched-link text-muted fw-bold">Kyc & Verify Your Account</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
